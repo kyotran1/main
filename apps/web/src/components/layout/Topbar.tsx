@@ -5,6 +5,7 @@ import { Bell, HelpCircle, Menu, Search, Settings, ChevronDown, Wifi, WifiOff } 
 import { clsx } from 'clsx';
 import { useOfficeStore } from '@/store/officeStore';
 import { selectHeadlineStats } from '@/store/selectors';
+import { useDerived } from '@/store/hooks';
 import { useLocale } from '@ads-nolimit/i18n/react';
 import { formatLongDate, formatTime } from '@/lib/format';
 
@@ -14,7 +15,7 @@ export function Topbar({ onOpenMenu }: { onOpenMenu: () => void }) {
   const locale = useLocale();
   const company = useOfficeStore((s) => s.company);
   const connection = useOfficeStore((s) => s.connection);
-  const stats = useOfficeStore(selectHeadlineStats);
+  const stats = useDerived(selectHeadlineStats);
   const [now, setNow] = useState(() => new Date().toISOString());
   useEffect(() => {
     const id = setInterval(() => setNow(new Date().toISOString()), 30_000);

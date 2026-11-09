@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { Sidebar } from './Sidebar';
 import { Topbar } from './Topbar';
 import { ConnectionBanner } from './ConnectionBanner';
+import { AgentDetailDrawer } from '@/features/agents/AgentDetailDrawer';
+import { TaskDetailDrawer } from '@/features/tasks/TaskDetailDrawer';
 
 export function AppShell() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -21,6 +23,8 @@ export function AppShell() {
           <Outlet />
         </main>
       </div>
+      <AgentDetailDrawer />
+      <TaskDetailDrawer />
     </div>
   );
 }

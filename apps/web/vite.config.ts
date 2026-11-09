@@ -11,6 +11,28 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
+    dedupe: ['react', 'react-dom', 'react-i18next', 'i18next', 'three'],
+  },
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'react-dom/client',
+      'react-router-dom',
+      'react-i18next',
+      'i18next',
+      'i18next-browser-languagedetector',
+      'zustand',
+      'zustand/shallow',
+      'socket.io-client',
+      'recharts',
+      'three',
+      '@react-three/fiber',
+      '@react-three/drei',
+      'lucide-react',
+      'date-fns',
+      'clsx',
+    ],
   },
   server: {
     proxy: {
