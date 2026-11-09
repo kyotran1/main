@@ -1,0 +1,102 @@
+{
+  "app": {
+    "name": "ADS-NOLIMIT AI OFFICE",
+    "subtitle": "Trung tâm điều hành công ty AI",
+    "tagline": "Công ty Truyền thông & Marketing vận hành bằng nhân sự AI",
+    "shortName": "AI OFFICE"
+  },
+  "greeting": "Chào bạn, {{name}}!",
+  "greetingSecondary": "Welcome, {{role}}!",
+  "owner": {
+    "title": "Chủ doanh nghiệp",
+    "secondary": "Owner"
+  },
+  "status": {
+    "systemRunning": "Đang hoạt động",
+    "systemRunningSecondary": "Running / Active",
+    "systemOffline": "Mất kết nối máy chủ",
+    "systemOfflineSecondary": "Backend offline",
+    "reconnecting": "Đang kết nối lại…",
+    "liveSync": "Đồng bộ thời gian thực",
+    "liveSyncSecondary": "Realtime Sync"
+  },
+  "time": {
+    "justNow": "Vừa xong",
+    "minutesAgo_one": "{{count}} phút trước",
+    "minutesAgo_other": "{{count}} phút trước",
+    "hoursAgo_one": "{{count}} giờ trước",
+    "hoursAgo_other": "{{count}} giờ trước",
+    "daysAgo_one": "{{count}} ngày trước",
+    "daysAgo_other": "{{count}} ngày trước",
+    "today": "Hôm nay",
+    "thisMonth": "Tháng này",
+    "lastMonth": "Tháng trước",
+    "thisQuarter": "Quý này",
+    "week": "Tuần {{n}}",
+    "dueOn": "Hạn: {{date}}"
+  },
+  "units": {
+    "percent": "{{value}}%",
+    "times": "{{value}}x",
+    "vnd": "{{value}} ₫",
+    "millionVnd": "{{value}} triệu ₫",
+    "tasks_one": "{{count}} công việc",
+    "tasks_other": "{{count}} công việc",
+    "agents_one": "{{count}} nhân sự AI",
+    "agents_other": "{{count}} nhân sự AI",
+    "requests_one": "{{count}} yêu cầu",
+    "requests_other": "{{count}} yêu cầu"
+  },
+  "labels": {
+    "all": "Tất cả",
+    "none": "Không có",
+    "loading": "Đang tải dữ liệu…",
+    "empty": "Chưa có dữ liệu",
+    "unknown": "Không xác định",
+    "yes": "Có",
+    "no": "Không",
+    "cancel": "Hủy",
+    "close": "Đóng",
+    "save": "Lưu",
+    "confirm": "Xác nhận",
+    "back": "Quay lại",
+    "more": "Xem thêm",
+    "less": "Thu gọn",
+    "search": "Tìm kiếm",
+    "searchPlaceholder": "Tìm dự án, nhiệm vụ, nhân sự… (Search)",
+    "shortcut": "Ctrl + K",
+    "priority": "Ưu tiên",
+    "progress": "Tiến độ",
+    "assignee": "Phụ trách",
+    "dueDate": "Hạn hoàn thành",
+    "department": "Phòng ban",
+    "status": "Trạng thái",
+    "task": "Nhiệm vụ",
+    "title": "Tiêu đề",
+    "description": "Mô tả",
+    "created": "Tạo lúc",
+    "updated": "Cập nhật",
+    "updatedAt": "Cập nhật lúc: {{time}}",
+    "version": "Phiên bản: {{version}}",
+    "executionMode": "Chế độ vận hành",
+    "source": "Nguồn dữ liệu",
+    "live": "Trực tiếp",
+    "demo": "Dữ liệu mô phỏng",
+    "noResults": "Không tìm thấy kết quả phù hợp"
+  },
+  "a11y": {
+    "openMenu": "Mở menu điều hướng",
+    "closeMenu": "Đóng menu điều hướng",
+    "notifications": "Thông báo ({{count}} mới)",
+    "userMenu": "Menu tài khoản",
+    "skipToContent": "Bỏ qua tới nội dung chính",
+    "termTooltip": "Thuật ngữ: {{term}} – {{meaning}}"
+  },
+  "language": {
+    "label": "Ngôn ngữ giao diện",
+    "secondary": "Language",
+    "vi-VN": "Tiếng Việt (mặc định)",
+    "en-US": "English (bản xem trước)",
+    "note": "Tiếng Việt là ngôn ngữ mặc định. Thuật ngữ chuyên ngành tiếng Anh luôn kèm nghĩa tiếng Việt."
+  }
+}

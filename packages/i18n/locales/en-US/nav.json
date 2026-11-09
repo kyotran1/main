@@ -1,0 +1,30 @@
+{
+  "groups": {
+    "operate": "Operate",
+    "manage": "Manage",
+    "insight": "Insight",
+    "system": "System"
+  },
+  "items": {
+    "overview": { "label": "Overview", "secondary": "Tổng quan", "description": "Today's big picture of the AI company" },
+    "dashboard": { "label": "Dashboard", "secondary": "Bảng điều khiển", "description": "Metrics, charts and AI agent health" },
+    "office": { "label": "Virtual Office 3D", "secondary": "Văn phòng ảo 3D", "description": "Interactive office model synced with live task status" },
+    "ceo": { "label": "AI CEO Command Center", "secondary": "Giám đốc điều hành AI", "description": "Delegate work, approve plans and receive AI CEO reports" },
+    "orgChart": { "label": "Organization Chart", "secondary": "Sơ đồ tổ chức", "description": "Department structure and reporting lines" },
+    "tasks": { "label": "Task Management", "secondary": "Quản lý công việc", "description": "Track and coordinate every task" },
+    "projects": { "label": "Projects & Campaigns", "secondary": "Dự án & Chiến dịch", "description": "Project and marketing campaign portfolio" },
+    "agents": { "label": "AI Agents", "secondary": "Nhân sự AI – Agent Registry", "description": "Agent roster, profiles and configuration" },
+    "workflow": { "label": "Workflow", "secondary": "Quy trình làm việc", "description": "Receive → Plan → Assign → Execute → Review → Report" },
+    "approvals": { "label": "Approval Center", "secondary": "Trung tâm phê duyệt", "description": "Requests waiting for the Owner's decision" },
+    "connectors": { "label": "Skill & Connector", "secondary": "Kỹ năng & Kết nối", "description": "Agent skills and external connectors" },
+    "activity": { "label": "Activity Log", "secondary": "Nhật ký hoạt động", "description": "Timeline of every system action" },
+    "reports": { "label": "Reports & Analytics", "secondary": "Báo cáo & Phân tích", "description": "KPI and marketing performance reports" },
+    "knowledge": { "label": "Knowledge Base", "secondary": "Kho tri thức", "description": "Documents, guides and reference data" },
+    "settings": { "label": "Settings", "secondary": "Cài đặt hệ thống", "description": "Language, execution mode and general configuration" }
+  },
+  "footer": {
+    "version": "Version: {{version}}",
+    "mode": "Mode: {{mode}}",
+    "modeSecondary": "Hybrid: Local + Cloud"
+  }
+}

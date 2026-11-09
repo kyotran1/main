@@ -1,0 +1,27 @@
+{
+  "templates": {
+    "plan_created": "{{agent}} created the project plan \"{{title}}\"",
+    "tasks_created": "{{agent}} broke \"{{title}}\" down into {{count}} tasks",
+    "task_started": "{{agent}} started: \"{{title}}\"",
+    "task_progress": "{{agent}} is working on \"{{title}}\" – {{progress}}% done",
+    "task_completed": "{{agent}} completed \"{{title}}\"",
+    "review_passed": "{{agent}} passed the review: \"{{title}}\"",
+    "review_failed": "{{agent}} requested changes: \"{{title}}\"",
+    "approval_requested": "{{agent}} requested approval: \"{{title}}\"",
+    "approval_approved": "Owner approved: \"{{title}}\"",
+    "approval_rejected": "Owner rejected: \"{{title}}\"",
+    "agent_message": "{{agent}} sent a message to the Owner",
+    "agent_paused": "Owner paused {{agent}}",
+    "agent_resumed": "Owner resumed {{agent}}",
+    "owner_request": "Owner delegated a new request to {{agent}}",
+    "system": "System: {{message}}"
+  },
+  "title": "Activity Log",
+  "secondary": "Nhật ký hoạt động",
+  "empty": "No activity recorded yet",
+  "filters": {
+    "all": "All",
+    "byAgent": "By agent",
+    "byKind": "By event type"
+  }
+}

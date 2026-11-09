@@ -1,0 +1,39 @@
+{
+  "name": "@ads-nolimit/i18n",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Từ điển giao diện và bảng thuật ngữ dùng chung cho Web + Desktop (vi-VN mặc định, en-US dự phòng)",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./react": "./src/react.tsx",
+    "./glossary": "./src/glossary.ts",
+    "./locales/*": "./locales/*"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json --noEmit",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@ads-nolimit/shared": "workspace:*",
+    "i18next": "^25.5.2"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-i18next": ">=15"
+  },
+  "peerDependenciesMeta": {
+    "react": { "optional": true },
+    "react-i18next": { "optional": true }
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "react": "^19.1.0",
+    "react-i18next": "^15.7.3",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
+}

@@ -1,0 +1,217 @@
+@import 'tailwindcss';
+
+/*
+  HỆ THỐNG TOKEN THIẾT KẾ – ADS-NOLIMIT AI OFFICE
+  Tham chiếu: docs/UI_DESIGN_SYSTEM.md. Giao diện tối, nền xanh navy sâu, điểm nhấn neon
+  cyan/tím/xanh lá, thẻ kính (glass) viền phát sáng. Tất cả màu dùng qua token, không hard-code.
+*/
+@theme {
+  --font-sans: 'Be Vietnam Pro', 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Be Vietnam Pro', 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* Nền */
+  --color-bg-base: #070b1f;
+  --color-bg-deep: #0a0f2c;
+  --color-bg-panel: #0f1535;
+  --color-bg-panel-2: #141b44;
+  --color-bg-elevated: #1a2152;
+  --color-bg-hover: #1f2a63;
+
+  /* Viền */
+  --color-line: rgba(129, 140, 248, 0.22);
+  --color-line-strong: rgba(129, 140, 248, 0.45);
+
+  /* Chữ */
+  --color-text: #e8ecff;
+  --color-text-muted: #a3acd6;
+  --color-text-dim: #6f78a8;
+  --color-text-inverse: #070b1f;
+
+  /* Điểm nhấn thương hiệu */
+  --color-brand-cyan: #22d3ee;
+  --color-brand-blue: #3b82f6;
+  --color-brand-violet: #8b5cf6;
+  --color-brand-purple: #a855f7;
+  --color-brand-magenta: #d946ef;
+  --color-brand-green: #22c55e;
+  --color-brand-emerald: #10b981;
+  --color-brand-amber: #f59e0b;
+  --color-brand-gold: #f5b301;
+  --color-brand-red: #ef4444;
+  --color-brand-orange: #f97316;
+  --color-brand-pink: #ec4899;
+  --color-brand-teal: #14b8a6;
+
+  /* Ngữ nghĩa trạng thái */
+  --color-status-active: #22c55e;
+  --color-status-running: #3b82f6;
+  --color-status-waiting: #f59e0b;
+  --color-status-idle: #94a3b8;
+  --color-status-paused: #a78bfa;
+  --color-status-error: #ef4444;
+  --color-status-review: #d946ef;
+  --color-status-approval: #f472b6;
+  --color-status-done: #22c55e;
+  --color-status-not-started: #64748b;
+
+  /* Ưu tiên */
+  --color-priority-high: #ef4444;
+  --color-priority-medium: #f59e0b;
+  --color-priority-low: #22c55e;
+
+  /* Phòng ban – khớp seed backend */
+  --color-dept-executive: #f5b301;
+  --color-dept-strategy: #6366f1;
+  --color-dept-marketing: #3b82f6;
+  --color-dept-creative-media: #a855f7;
+  --color-dept-social-community: #22d3ee;
+  --color-dept-data-analytics: #10b981;
+  --color-dept-sales-crm: #f97316;
+  --color-dept-tech-automation: #ec4899;
+  --color-dept-meeting-room: #64748b;
+  --color-dept-reception: #8b5cf6;
+  --color-dept-pantry: #14b8a6;
+
+  /* Bo góc, bóng */
+  --radius-card: 1rem;
+  --radius-card-lg: 1.25rem;
+  --shadow-glow-cyan: 0 0 0 1px rgba(34, 211, 238, 0.35), 0 0 24px rgba(34, 211, 238, 0.25);
+  --shadow-glow-violet: 0 0 0 1px rgba(139, 92, 246, 0.4), 0 0 28px rgba(139, 92, 246, 0.28);
+  --shadow-glow-green: 0 0 0 1px rgba(34, 197, 94, 0.35), 0 0 24px rgba(34, 197, 94, 0.22);
+  --shadow-glow-amber: 0 0 0 1px rgba(245, 158, 11, 0.4), 0 0 24px rgba(245, 158, 11, 0.22);
+  --shadow-glow-red: 0 0 0 1px rgba(239, 68, 68, 0.4), 0 0 24px rgba(239, 68, 68, 0.22);
+  --shadow-panel: 0 10px 40px rgba(2, 6, 23, 0.55);
+
+  /* Chuyển động */
+  --animate-pulse-soft: pulse-soft 2.4s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-shimmer: shimmer 2.2s linear infinite;
+
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.55; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(139, 92, 246, 0.22), transparent 60%),
+    radial-gradient(900px 500px at 100% 0%, rgba(34, 211, 238, 0.14), transparent 55%),
+    radial-gradient(800px 600px at 50% 120%, rgba(217, 70, 239, 0.12), transparent 60%),
+    linear-gradient(180deg, var(--color-bg-deep) 0%, var(--color-bg-base) 100%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Thanh cuộn mảnh, tối */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(129, 140, 248, 0.35) transparent;
+}
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb { background: rgba(129, 140, 248, 0.35); border-radius: 999px; }
+
+/* Thẻ kính phát sáng – thành phần nền tảng của mọi panel */
+@utility glass {
+  background: linear-gradient(160deg, rgba(31, 41, 99, 0.72), rgba(15, 21, 53, 0.86));
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-panel), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px);
+}
+
+@utility glass-strong {
+  background: linear-gradient(160deg, rgba(38, 50, 120, 0.85), rgba(15, 21, 53, 0.95));
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-panel), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+}
+
+@utility neon-border-cyan {
+  border-color: rgba(34, 211, 238, 0.55);
+  box-shadow: var(--shadow-glow-cyan);
+}
+@utility neon-border-violet {
+  border-color: rgba(139, 92, 246, 0.6);
+  box-shadow: var(--shadow-glow-violet);
+}
+@utility neon-border-green {
+  border-color: rgba(34, 197, 94, 0.55);
+  box-shadow: var(--shadow-glow-green);
+}
+@utility neon-border-amber {
+  border-color: rgba(245, 158, 11, 0.6);
+  box-shadow: var(--shadow-glow-amber);
+}
+@utility neon-border-red {
+  border-color: rgba(239, 68, 68, 0.6);
+  box-shadow: var(--shadow-glow-red);
+}
+
+@utility text-gradient-brand {
+  background: linear-gradient(90deg, #67e8f9 0%, #a78bfa 55%, #f0abfc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Nhãn song ngữ: dòng chính + dòng phụ nhỏ hơn, không bao giờ tràn */
+@utility term-stack {
+  display: inline-flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.15;
+}
+@utility term-primary {
+  font-weight: 600;
+  color: var(--color-text);
+  overflow-wrap: anywhere;
+}
+@utility term-secondary {
+  font-size: 0.72em;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  overflow-wrap: anywhere;
+}
+
+@utility skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.10) 50%, rgba(255,255,255,0.04) 75%);
+  background-size: 200% 100%;
+  animation: var(--animate-shimmer);
+  border-radius: 0.5rem;
+}
+
+@utility focus-ring {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-bg-base), 0 0 0 4px var(--color-brand-cyan);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

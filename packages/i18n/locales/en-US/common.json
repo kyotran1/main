@@ -1,0 +1,102 @@
+{
+  "app": {
+    "name": "ADS-NOLIMIT AI OFFICE",
+    "subtitle": "AI Company Command Center",
+    "tagline": "Media & Marketing company operated by AI agents",
+    "shortName": "AI OFFICE"
+  },
+  "greeting": "Hello, {{name}}!",
+  "greetingSecondary": "Welcome, {{role}}!",
+  "owner": {
+    "title": "Owner",
+    "secondary": "Chủ doanh nghiệp"
+  },
+  "status": {
+    "systemRunning": "Running",
+    "systemRunningSecondary": "Active",
+    "systemOffline": "Backend offline",
+    "systemOfflineSecondary": "Server unreachable",
+    "reconnecting": "Reconnecting…",
+    "liveSync": "Realtime Sync",
+    "liveSyncSecondary": "Live"
+  },
+  "time": {
+    "justNow": "Just now",
+    "minutesAgo_one": "{{count}} minute ago",
+    "minutesAgo_other": "{{count}} minutes ago",
+    "hoursAgo_one": "{{count}} hour ago",
+    "hoursAgo_other": "{{count}} hours ago",
+    "daysAgo_one": "{{count}} day ago",
+    "daysAgo_other": "{{count}} days ago",
+    "today": "Today",
+    "thisMonth": "This month",
+    "lastMonth": "Last month",
+    "thisQuarter": "This quarter",
+    "week": "Week {{n}}",
+    "dueOn": "Due: {{date}}"
+  },
+  "units": {
+    "percent": "{{value}}%",
+    "times": "{{value}}x",
+    "vnd": "{{value}} ₫",
+    "millionVnd": "{{value}}M ₫",
+    "tasks_one": "{{count}} task",
+    "tasks_other": "{{count}} tasks",
+    "agents_one": "{{count}} AI agent",
+    "agents_other": "{{count}} AI agents",
+    "requests_one": "{{count}} request",
+    "requests_other": "{{count}} requests"
+  },
+  "labels": {
+    "all": "All",
+    "none": "None",
+    "loading": "Loading data…",
+    "empty": "No data yet",
+    "unknown": "Unknown",
+    "yes": "Yes",
+    "no": "No",
+    "cancel": "Cancel",
+    "close": "Close",
+    "save": "Save",
+    "confirm": "Confirm",
+    "back": "Back",
+    "more": "Show more",
+    "less": "Show less",
+    "search": "Search",
+    "searchPlaceholder": "Search projects, tasks, agents…",
+    "shortcut": "Ctrl + K",
+    "priority": "Priority",
+    "progress": "Progress",
+    "assignee": "Assignee",
+    "dueDate": "Due date",
+    "department": "Department",
+    "status": "Status",
+    "task": "Task",
+    "title": "Title",
+    "description": "Description",
+    "created": "Created",
+    "updated": "Updated",
+    "updatedAt": "Updated at: {{time}}",
+    "version": "Version: {{version}}",
+    "executionMode": "Execution mode",
+    "source": "Data source",
+    "live": "Live",
+    "demo": "Simulated data",
+    "noResults": "No matching results"
+  },
+  "a11y": {
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "notifications": "Notifications ({{count}} new)",
+    "userMenu": "Account menu",
+    "skipToContent": "Skip to main content",
+    "termTooltip": "Term: {{term}} – {{meaning}}"
+  },
+  "language": {
+    "label": "Interface language",
+    "secondary": "Ngôn ngữ",
+    "vi-VN": "Tiếng Việt (default)",
+    "en-US": "English (preview)",
+    "note": "Vietnamese is the default language. English technical terms always carry their Vietnamese meaning."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "templates": {
+    "plan_created": "{{agent}} đã tạo kế hoạch dự án \"{{title}}\"",
+    "tasks_created": "{{agent}} đã phân rã {{count}} công việc (tasks) cho \"{{title}}\"",
+    "task_started": "{{agent}} bắt đầu thực hiện: \"{{title}}\"",
+    "task_progress": "{{agent}} đang thực hiện \"{{title}}\" – tiến độ {{progress}}%",
+    "task_completed": "{{agent}} đã hoàn thành \"{{title}}\"",
+    "review_passed": "{{agent}} đã kiểm định đạt yêu cầu: \"{{title}}\"",
+    "review_failed": "{{agent}} yêu cầu chỉnh sửa: \"{{title}}\"",
+    "approval_requested": "{{agent}} gửi yêu cầu phê duyệt: \"{{title}}\"",
+    "approval_approved": "Chủ doanh nghiệp đã duyệt: \"{{title}}\"",
+    "approval_rejected": "Chủ doanh nghiệp đã từ chối: \"{{title}}\"",
+    "agent_message": "{{agent}} đã gửi tin nhắn cho Chủ doanh nghiệp",
+    "agent_paused": "Chủ doanh nghiệp đã tạm dừng {{agent}}",
+    "agent_resumed": "Chủ doanh nghiệp đã cho {{agent}} tiếp tục làm việc",
+    "owner_request": "Chủ doanh nghiệp giao yêu cầu mới cho {{agent}}",
+    "system": "Hệ thống: {{message}}"
+  },
+  "title": "Nhật ký hoạt động",
+  "secondary": "Activity Log",
+  "empty": "Chưa có hoạt động nào được ghi nhận",
+  "filters": {
+    "all": "Tất cả",
+    "byAgent": "Theo nhân sự AI",
+    "byKind": "Theo loại sự kiện"
+  }
+}
