@@ -33,12 +33,12 @@ export function Topbar({ onOpenMenu }: { onOpenMenu: () => void }) {
           <Menu className="size-5" />
         </button>
 
-        <div className="hidden min-w-0 md:block">
+        <div className="hidden min-w-0 shrink-0 lg:block">
           <p className="truncate text-sm font-bold text-text">{t('common:greeting', { name: company?.ownerName ?? t('common:owner.title') })}</p>
           <p className="truncate text-[11px] text-text-muted">{t('common:greetingSecondary', { role: t('common:owner.secondary') })}</p>
         </div>
 
-        <label className="relative ml-auto hidden min-w-0 flex-1 max-w-xl items-center md:flex">
+        <label className="relative ml-auto hidden min-w-[200px] flex-1 max-w-xl items-center md:flex">
           <Search className="pointer-events-none absolute left-3 size-4 text-text-dim" />
           <input
             type="search"
@@ -64,12 +64,12 @@ export function Topbar({ onOpenMenu }: { onOpenMenu: () => void }) {
           </span>
         </div>
 
-        <div className="hidden items-center gap-2 xl:flex">
+        <div className="hidden items-center gap-2 2xl:flex">
           <MiniStat value={stats.running} label={t('nav:items.tasks.label')} secondary={t('glossary:task_status.in_progress.secondary')} color="var(--color-brand-cyan)" to="/tasks" />
           <MiniStat value={stats.needsApproval} label={t('glossary:module.approval_center.label')} secondary={t('glossary:module.approval_center.secondary')} color="var(--color-brand-amber)" to="/approvals" />
         </div>
 
-        <div className="hidden text-right lg:block">
+        <div className="hidden text-right xl:block">
           <p className="text-xs font-semibold text-text">{formatLongDate(now, locale)}</p>
           <p className="text-[11px] text-text-muted">{formatTime(now, locale)}</p>
         </div>
