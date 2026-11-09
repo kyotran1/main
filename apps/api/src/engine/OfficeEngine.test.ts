@@ -68,9 +68,10 @@ describe('OfficeEngine – mô hình AI CEO', () => {
     expect(['in_review', 'completed']).toContain(reviewed.status);
     if (reviewed.status === 'in_review') {
       const qa = store.getAgent('agent_qa')!;
-      expect(qa.location).toEqual({ kind: 'department', departmentId: 'creative_media' });
-      const reviewing = store.getSnapshot().tasks.filter((t) => t.status === 'in_review').map((t) => t.id);
-      expect(reviewing).toContain(qa.currentTaskId);
+      const reviewing = store.getSnapshot().tasks.filter((t) => t.status === 'in_review');
+      expect(qa.location.kind).toBe('department');
+      expect(reviewing.map((t) => t.departmentId)).toContain((qa.location as { departmentId: string }).departmentId);
+      expect(reviewing.map((t) => t.id)).toContain(qa.currentTaskId);
     }
     const engine2 = new OfficeEngine(store, { provider: new MockBrain(), simulation: false, random: () => 0.1 });
     for (let i = 0; i < 6; i++) await engine2.tick();
