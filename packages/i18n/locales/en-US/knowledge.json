@@ -3,15 +3,35 @@
   "toc": {
     "title": "Contents",
     "secondary": "Mục lục",
-    "readingTime": "About {{minutes}} min read"
+    "readingTime": "About {{minutes}} min read",
+    "backToTop": "Back to top",
+    "sectionCount": "{{count}} sections"
   },
   "sections": {
-    "intro": { "title": "System overview", "secondary": "Giới thiệu hệ thống" },
-    "workflow": { "title": "Six-stage workflow", "secondary": "Quy trình vận hành 6 giai đoạn" },
-    "roles": { "title": "AI agent roles", "secondary": "Vai trò nhân sự AI" },
-    "quickstart": { "title": "Quick guides", "secondary": "Hướng dẫn nhanh" },
-    "glossary": { "title": "Glossary", "secondary": "Bảng thuật ngữ" },
-    "faq": { "title": "FAQ", "secondary": "Câu hỏi thường gặp" }
+    "intro": {
+      "title": "System overview",
+      "secondary": "Giới thiệu hệ thống"
+    },
+    "workflow": {
+      "title": "Six-stage workflow",
+      "secondary": "Quy trình vận hành 6 giai đoạn"
+    },
+    "roles": {
+      "title": "AI agent roles",
+      "secondary": "Vai trò nhân sự AI"
+    },
+    "quickstart": {
+      "title": "Quick guides",
+      "secondary": "Hướng dẫn nhanh"
+    },
+    "glossary": {
+      "title": "Glossary",
+      "secondary": "Bảng thuật ngữ"
+    },
+    "faq": {
+      "title": "FAQ",
+      "secondary": "Câu hỏi thường gặp"
+    }
   },
   "intro": {
     "lead": "ADS-NOLIMIT AI OFFICE is the command center of a media & marketing company run by AI agents. You – the Owner – set the goal; the AI team plans, assigns, executes, reviews and reports, while every important decision still waits for your approval.",
@@ -51,14 +71,24 @@
             "Spending and publishing must pass the Approval Center"
           ]
         }
-      }
+      },
+      "caption": "Orchestration data never leaves the local layer; only model calls and ad-platform commands cross the bridge."
     },
     "principles": {
       "title": "Three operating principles",
       "items": [
-        { "title": "Single source of truth", "body": "Every page reads the same data – no copies, no mismatched numbers." },
-        { "title": "The Owner always decides", "body": "Plans, budgets, content and publishing only run after you approve." },
-        { "title": "Transparent at every step", "body": "Each AI agent action appears in the Activity Log and the 3D office." }
+        {
+          "title": "Single source of truth",
+          "body": "Every page reads the same data – no copies, no mismatched numbers."
+        },
+        {
+          "title": "The Owner always decides",
+          "body": "Plans, budgets, content and publishing only run after you approve."
+        },
+        {
+          "title": "Transparent at every step",
+          "body": "Each AI agent action appears in the Activity Log and the 3D office."
+        }
       ]
     }
   },
@@ -91,7 +121,9 @@
         "body": "The AI COO consolidates results, metrics and next steps into a report for the Owner.",
         "output": "Quick reports and periodic reports"
       }
-    }
+    },
+    "stageLabel": "Stage {{n}}",
+    "loopNote": "Failed review → back to Execute"
   },
   "roles": {
     "lead": "Five AI roles form a complete organization that reports in layers, like a real company.",
@@ -101,25 +133,50 @@
     "items": {
       "ai_ceo": {
         "summary": "Receives your goals, sets strategy and coordinates the whole company.",
-        "duties": ["Clarifies requests and builds the master plan", "Proposes budget and priorities", "Answers you in the AI CEO Command Center"]
+        "duties": [
+          "Clarifies requests and builds the master plan",
+          "Proposes budget and priorities",
+          "Answers you in the AI CEO Command Center"
+        ]
       },
       "ai_coo": {
         "summary": "Keeps the machine running: tracks progress, resources and consolidates reports.",
-        "duties": ["Tracks progress across departments", "Reallocates resources under overload", "Produces periodic reports"]
+        "duties": [
+          "Tracks progress across departments",
+          "Reallocates resources under overload",
+          "Produces periodic reports"
+        ]
       },
       "ai_project_manager": {
         "summary": "Turns plans into concrete tasks and keeps them on schedule.",
-        "duties": ["Breaks plans into tasks", "Assigns work by skill", "Flags risks and overdue tasks"]
+        "duties": [
+          "Breaks plans into tasks",
+          "Assigns work by skill",
+          "Flags risks and overdue tasks"
+        ]
       },
       "ai_specialist": {
         "summary": "Hands-on specialists in each department: marketing, content, community, data, sales, tech.",
-        "duties": ["Executes assigned tasks", "Uses granted connectors", "Updates progress in real time"]
+        "duties": [
+          "Executes assigned tasks",
+          "Uses granted connectors",
+          "Updates progress in real time"
+        ]
       },
       "ai_qa_reviewer": {
         "summary": "The quality gate before anything reaches you or a customer.",
-        "duties": ["Quality review and fact checking", "Brand compliance checks", "Returns work for revision when needed"]
+        "duties": [
+          "Quality review and fact checking",
+          "Brand compliance checks",
+          "Returns work for revision when needed"
+        ]
       }
-    }
+    },
+    "chainTitle": "Reporting chain",
+    "chainSecondary": "Chuỗi báo cáo",
+    "holders_one": "{{count}} AI agent holds this role",
+    "holders_other": "{{count}} AI agents hold this role",
+    "noHolders": "No AI agent holds this role yet"
   },
   "quickstart": {
     "lead": "The four actions you will use every day.",
@@ -161,7 +218,8 @@
           "Click a character to open its profile; use Focus Camera from any page to find it quickly."
         ]
       }
-    }
+    },
+    "stepLabel": "Step {{n}}"
   },
   "glossary": {
     "lead": "Every English term shown in the interface is listed here with its standard Vietnamese meaning. Search in English or Vietnamese.",
@@ -197,7 +255,9 @@
       "action": "Actions",
       "connector_category": "Connector categories",
       "execution_mode": "Execution mode"
-    }
+    },
+    "idLabel": "Term id",
+    "noNote": "No note"
   },
   "faq": {
     "lead": "Common questions when getting started.",
@@ -230,6 +290,7 @@
         "q": "What if the connection to the backend drops?",
         "a": "The header shows a warning, the interface keeps the last data and reconnects automatically. You can also click Refresh data in Settings."
       }
-    ]
+    ],
+    "expandHint": "Click to show the answer"
   }
 }

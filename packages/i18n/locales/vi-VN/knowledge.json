@@ -3,15 +3,35 @@
   "toc": {
     "title": "Mục lục",
     "secondary": "Contents",
-    "readingTime": "Khoảng {{minutes}} phút đọc"
+    "readingTime": "Khoảng {{minutes}} phút đọc",
+    "backToTop": "Lên đầu trang",
+    "sectionCount": "{{count}} mục"
   },
   "sections": {
-    "intro": { "title": "Giới thiệu hệ thống", "secondary": "System overview" },
-    "workflow": { "title": "Quy trình vận hành 6 giai đoạn", "secondary": "Six-stage workflow" },
-    "roles": { "title": "Vai trò nhân sự AI", "secondary": "AI agent roles" },
-    "quickstart": { "title": "Hướng dẫn nhanh", "secondary": "Quick guides" },
-    "glossary": { "title": "Bảng thuật ngữ", "secondary": "Glossary" },
-    "faq": { "title": "Câu hỏi thường gặp", "secondary": "FAQ" }
+    "intro": {
+      "title": "Giới thiệu hệ thống",
+      "secondary": "System overview"
+    },
+    "workflow": {
+      "title": "Quy trình vận hành 6 giai đoạn",
+      "secondary": "Six-stage workflow"
+    },
+    "roles": {
+      "title": "Vai trò nhân sự AI",
+      "secondary": "AI agent roles"
+    },
+    "quickstart": {
+      "title": "Hướng dẫn nhanh",
+      "secondary": "Quick guides"
+    },
+    "glossary": {
+      "title": "Bảng thuật ngữ",
+      "secondary": "Glossary"
+    },
+    "faq": {
+      "title": "Câu hỏi thường gặp",
+      "secondary": "FAQ"
+    }
   },
   "intro": {
     "lead": "ADS-NOLIMIT AI OFFICE là trung tâm điều hành của một công ty Truyền thông & Marketing vận hành bằng nhân sự AI. Bạn – Chủ doanh nghiệp – chỉ cần giao mục tiêu; đội ngũ AI tự lập kế hoạch, phân công, thực thi, kiểm định và báo cáo, còn mọi quyết định quan trọng vẫn chờ bạn phê duyệt.",
@@ -51,14 +71,24 @@
             "Chi tiêu và xuất bản phải qua Trung tâm phê duyệt"
           ]
         }
-      }
+      },
+      "caption": "Dữ liệu điều phối không bao giờ rời khỏi lớp cục bộ; chỉ lệnh gọi mô hình và lệnh tới nền tảng quảng cáo đi qua cầu nối."
     },
     "principles": {
       "title": "Ba nguyên tắc vận hành",
       "items": [
-        { "title": "Một nguồn dữ liệu duy nhất", "body": "Mọi trang đọc cùng một bản dữ liệu – không có bản sao, không lệch số." },
-        { "title": "Chủ doanh nghiệp luôn giữ quyền quyết định", "body": "Kế hoạch, ngân sách, nội dung và xuất bản chỉ chạy khi bạn duyệt." },
-        { "title": "Minh bạch từng bước", "body": "Mỗi hành động của nhân sự AI đều hiện trong Nhật ký hoạt động và Văn phòng 3D." }
+        {
+          "title": "Một nguồn dữ liệu duy nhất",
+          "body": "Mọi trang đọc cùng một bản dữ liệu – không có bản sao, không lệch số."
+        },
+        {
+          "title": "Chủ doanh nghiệp luôn giữ quyền quyết định",
+          "body": "Kế hoạch, ngân sách, nội dung và xuất bản chỉ chạy khi bạn duyệt."
+        },
+        {
+          "title": "Minh bạch từng bước",
+          "body": "Mỗi hành động của nhân sự AI đều hiện trong Nhật ký hoạt động và Văn phòng 3D."
+        }
       ]
     }
   },
@@ -91,7 +121,9 @@
         "body": "AI COO tổng hợp kết quả, chỉ số và đề xuất bước tiếp theo thành báo cáo gửi tới Chủ doanh nghiệp.",
         "output": "Báo cáo nhanh và báo cáo định kỳ"
       }
-    }
+    },
+    "stageLabel": "Giai đoạn {{n}}",
+    "loopNote": "Không đạt kiểm định → quay lại Thực thi"
   },
   "roles": {
     "lead": "Năm chức vụ AI tạo thành một bộ máy hoàn chỉnh, báo cáo theo tầng giống một công ty thật.",
@@ -101,25 +133,50 @@
     "items": {
       "ai_ceo": {
         "summary": "Tiếp nhận mục tiêu từ bạn, lập chiến lược và điều phối toàn công ty.",
-        "duties": ["Làm rõ yêu cầu và lập kế hoạch tổng thể", "Đề xuất ngân sách và ưu tiên", "Trả lời bạn qua Trung tâm điều hành AI CEO"]
+        "duties": [
+          "Làm rõ yêu cầu và lập kế hoạch tổng thể",
+          "Đề xuất ngân sách và ưu tiên",
+          "Trả lời bạn qua Trung tâm điều hành AI CEO"
+        ]
       },
       "ai_coo": {
         "summary": "Giữ cho bộ máy chạy đều: theo dõi tiến độ, nguồn lực và tổng hợp báo cáo.",
-        "duties": ["Theo dõi tiến độ mọi phòng ban", "Phân bổ nguồn lực khi quá tải", "Lập báo cáo định kỳ"]
+        "duties": [
+          "Theo dõi tiến độ mọi phòng ban",
+          "Phân bổ nguồn lực khi quá tải",
+          "Lập báo cáo định kỳ"
+        ]
       },
       "ai_project_manager": {
         "summary": "Biến kế hoạch thành công việc cụ thể và bảo đảm đúng hạn.",
-        "duties": ["Phân rã kế hoạch thành công việc", "Giao việc theo kỹ năng", "Cảnh báo rủi ro và công việc quá hạn"]
+        "duties": [
+          "Phân rã kế hoạch thành công việc",
+          "Giao việc theo kỹ năng",
+          "Cảnh báo rủi ro và công việc quá hạn"
+        ]
       },
       "ai_specialist": {
         "summary": "Chuyên viên thực thi ở từng phòng ban: tiếp thị, nội dung, cộng đồng, dữ liệu, kinh doanh, kỹ thuật.",
-        "duties": ["Thực hiện công việc được giao", "Sử dụng công cụ kết nối đã cấp quyền", "Cập nhật tiến độ theo thời gian thực"]
+        "duties": [
+          "Thực hiện công việc được giao",
+          "Sử dụng công cụ kết nối đã cấp quyền",
+          "Cập nhật tiến độ theo thời gian thực"
+        ]
       },
       "ai_qa_reviewer": {
         "summary": "Chốt chặn chất lượng trước khi bất kỳ sản phẩm nào đến tay bạn hoặc khách hàng.",
-        "duties": ["Kiểm định chất lượng và kiểm chứng thông tin", "Đối chiếu nhận diện thương hiệu", "Trả về chỉnh sửa khi chưa đạt"]
+        "duties": [
+          "Kiểm định chất lượng và kiểm chứng thông tin",
+          "Đối chiếu nhận diện thương hiệu",
+          "Trả về chỉnh sửa khi chưa đạt"
+        ]
       }
-    }
+    },
+    "chainTitle": "Chuỗi báo cáo",
+    "chainSecondary": "Reporting chain",
+    "holders_one": "{{count}} nhân sự AI đang giữ chức vụ",
+    "holders_other": "{{count}} nhân sự AI đang giữ chức vụ",
+    "noHolders": "Chưa có nhân sự AI ở chức vụ này"
   },
   "quickstart": {
     "lead": "Bốn thao tác bạn sẽ dùng hằng ngày.",
@@ -161,7 +218,8 @@
           "Bấm vào nhân vật để mở hồ sơ; dùng nút Đưa camera tới từ bất kỳ trang nào để tìm nhanh."
         ]
       }
-    }
+    },
+    "stepLabel": "Bước {{n}}"
   },
   "glossary": {
     "lead": "Mọi thuật ngữ tiếng Anh xuất hiện trên giao diện đều có ở đây kèm nghĩa tiếng Việt chuẩn. Gõ để tìm theo tiếng Anh hoặc tiếng Việt.",
@@ -197,7 +255,9 @@
       "action": "Hành động",
       "connector_category": "Nhóm công cụ kết nối",
       "execution_mode": "Chế độ vận hành"
-    }
+    },
+    "idLabel": "Mã thuật ngữ",
+    "noNote": "Không có ghi chú"
   },
   "faq": {
     "lead": "Những thắc mắc phổ biến khi bắt đầu dùng hệ thống.",
@@ -230,6 +290,7 @@
         "q": "Mất kết nối với hệ thống nền thì sao?",
         "a": "Giao diện hiện cảnh báo trên thanh tiêu đề, giữ nguyên dữ liệu cuối cùng và tự kết nối lại. Bạn cũng có thể bấm Làm mới dữ liệu trong Cài đặt hệ thống."
       }
-    ]
+    ],
+    "expandHint": "Bấm để xem câu trả lời"
   }
 }
