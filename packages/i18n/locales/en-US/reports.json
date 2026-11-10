@@ -1,1 +1,82 @@
-{}
+{
+  "description": "Weekly KPIs, AI agent performance, department progress and AI COO insights – compiled from live operating data",
+  "loading": "Compiling report data…",
+  "export": {
+    "button": "Export",
+    "buttonSecondary": "Xuất dữ liệu",
+    "json": "Download JSON",
+    "jsonHint": "Full data snapshot",
+    "csv": "Download CSV",
+    "csvHint": "Task table, opens in Excel",
+    "menuLabel": "Choose an export format",
+    "done": "Created file {{file}}"
+  },
+  "weekly": {
+    "title": "Weekly marketing performance",
+    "secondary": "Hiệu suất tiếp thị theo tuần",
+    "description": "Three panels share the week axis; each metric keeps its own scale so magnitudes are never mixed",
+    "ariaLabel": "Weekly chart: reach, leads and conversion rate",
+    "week": "Week",
+    "empty": "No weekly data yet",
+    "tableToggle": "Table view",
+    "tableToggleSecondary": "Xem dạng bảng"
+  },
+  "byDepartment": {
+    "title": "Tasks by department",
+    "secondary": "Công việc theo phòng ban",
+    "description": "One bar per department, split by task status; overdue is hatched to tell it apart from blocked",
+    "ariaLabel": "Stacked bar chart: task count by status for each department",
+    "empty": "No tasks to summarize yet",
+    "total": "Total"
+  },
+  "performance": {
+    "title": "Agent performance",
+    "secondary": "Hiệu suất nhân sự AI",
+    "description": "Performance score 0–100 rated by the system; colored by role",
+    "ariaLabel": "Horizontal bar chart: performance score per AI agent",
+    "empty": "No AI agents yet",
+    "openProfile": "Open profile: {{name}}",
+    "tasksDone_one": "{{count}} task done",
+    "tasksDone_other": "{{count}} tasks done"
+  },
+  "table": {
+    "title": "Department summary",
+    "secondary": "Tổng hợp theo phòng ban",
+    "department": "Department",
+    "agents": "Agents",
+    "agentsSecondary": "Nhân sự AI",
+    "open": "Open",
+    "openSecondary": "Việc đang mở",
+    "completed": "Completed",
+    "completedSecondary": "Hoàn thành",
+    "rate": "Completion rate",
+    "rateSecondary": "Tỷ lệ hoàn thành",
+    "totalRow": "Company total",
+    "totalRowSecondary": "Toàn công ty",
+    "empty": "No department has AI agents yet"
+  },
+  "insights": {
+    "title": "AI COO insights",
+    "secondary": "Nhận định của AI COO",
+    "intro": "Generated automatically from current operating data – updates in real time.",
+    "completion": "The company has completed {{done}}/{{total}} tasks, a {{rate}}% completion rate.",
+    "completionHigh": "On track: the {{rate}}% completion rate is above the 70% target.",
+    "completionLow": "Attention: completion is only {{rate}}%, below the 70% target.",
+    "overdueNone": "No overdue tasks – the schedule is holding.",
+    "overdueSome_one": "{{count}} task is overdue and needs immediate attention.",
+    "overdueSome_other": "{{count}} tasks are overdue and need immediate attention.",
+    "blocked_one": "{{count}} task is blocked and needs the Owner to step in.",
+    "blocked_other": "{{count}} tasks are blocked and need the Owner to step in.",
+    "approvalsNone": "No requests are waiting for approval.",
+    "approvalsSome_one": "{{count}} request is waiting for the Owner's approval – decide soon to avoid delays.",
+    "approvalsSome_other": "{{count}} requests are waiting for the Owner's approval – decide soon to avoid delays.",
+    "topDepartment": "Leading department by progress: {{department}} ({{rate}}%).",
+    "laggingDepartment": "Department needing support: {{department}} ({{rate}}%).",
+    "agentsRunning_one": "{{count}}/{{total}} AI agent is executing work.",
+    "agentsRunning_other": "{{count}}/{{total}} AI agents are executing work.",
+    "kpi": "Leads grew {{leads}} and conversion rate grew {{conversion}} vs the previous period; ROI reached {{roi}}.",
+    "goToApprovals": "Open Approval Center",
+    "goToTasks": "Open Task Management",
+    "empty": "Not enough data for insights yet"
+  }
+}

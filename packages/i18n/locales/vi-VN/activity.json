@@ -23,5 +23,61 @@
     "all": "Tất cả",
     "byAgent": "Theo nhân sự AI",
     "byKind": "Theo loại sự kiện"
-  }
+  },
+  "description": "Dòng thời gian đầy đủ mọi hoạt động của nhân sự AI và Chủ doanh nghiệp – lọc theo nhân sự, loại sự kiện hoặc từ khóa",
+  "loading": "Đang nạp nhật ký hoạt động…",
+  "kinds": {
+    "plan_created": "Lập kế hoạch",
+    "tasks_created": "Phân rã công việc",
+    "task_started": "Bắt đầu công việc",
+    "task_progress": "Cập nhật tiến độ",
+    "task_completed": "Hoàn thành công việc",
+    "review_passed": "Kiểm định đạt",
+    "review_failed": "Kiểm định chưa đạt",
+    "approval_requested": "Gửi yêu cầu phê duyệt",
+    "approval_decided": "Quyết định phê duyệt",
+    "agent_message": "Tin nhắn từ nhân sự AI",
+    "agent_paused": "Tạm dừng nhân sự AI",
+    "agent_resumed": "Tiếp tục nhân sự AI",
+    "owner_request": "Yêu cầu từ Chủ doanh nghiệp",
+    "system": "Hệ thống"
+  },
+  "filterBar": {
+    "agent": "Nhân sự AI",
+    "agentSecondary": "Agent",
+    "allAgents": "Tất cả nhân sự AI",
+    "kind": "Loại sự kiện",
+    "kindSecondary": "Event type",
+    "allKinds": "Tất cả loại sự kiện",
+    "search": "Tìm kiếm",
+    "searchSecondary": "Search",
+    "searchPlaceholder": "Tìm theo nội dung, tên công việc…",
+    "clear": "Xóa bộ lọc",
+    "result_one": "{{count}} hoạt động",
+    "result_other": "{{count}} hoạt động",
+    "resultOf": "{{shown}}/{{total}} hoạt động"
+  },
+  "groups": {
+    "today": "Hôm nay",
+    "yesterday": "Hôm qua"
+  },
+  "loadMore": "Tải thêm",
+  "loadMoreRemaining_one": "Tải thêm ({{count}} hoạt động nữa)",
+  "loadMoreRemaining_other": "Tải thêm ({{count}} hoạt động nữa)",
+  "endOfList": "Đã hiển thị toàn bộ hoạt động",
+  "realtime": {
+    "live": "Đang cập nhật trực tiếp",
+    "liveSecondary": "Live",
+    "connecting": "Đang kết nối…",
+    "connectingSecondary": "Connecting",
+    "reconnecting": "Đang kết nối lại…",
+    "reconnectingSecondary": "Reconnecting",
+    "offline": "Mất kết nối – dữ liệu có thể cũ",
+    "offlineSecondary": "Offline",
+    "updatedAt": "Cập nhật lúc {{time}}",
+    "neverUpdated": "Chưa nhận dữ liệu"
+  },
+  "emptyFiltered": "Không có hoạt động nào khớp bộ lọc",
+  "emptyFilteredDescription": "Thử bỏ bớt điều kiện lọc hoặc đổi từ khóa tìm kiếm.",
+  "emptyDescription": "Khi nhân sự AI bắt đầu làm việc, mọi hoạt động sẽ được ghi lại tại đây theo thời gian thực."
 }

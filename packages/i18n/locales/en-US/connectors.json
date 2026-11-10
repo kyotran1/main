@@ -1,1 +1,107 @@
-{}
+{
+  "description": "The tools AI agents are allowed to use and the skills they hold – all read from the same data source as the 3D office",
+  "loading": "Loading connectors and skills…",
+  "stats": {
+    "total": {
+      "label": "Connectors",
+      "secondary": "Công cụ kết nối"
+    },
+    "connected": {
+      "label": "Connected",
+      "secondary": "Đã kết nối"
+    },
+    "local": {
+      "label": "Running locally",
+      "secondary": "Local"
+    },
+    "cloud": {
+      "label": "In the cloud",
+      "secondary": "Cloud"
+    }
+  },
+  "list": {
+    "title": "Connectors by category",
+    "secondary": "Công cụ kết nối theo nhóm",
+    "count_one": "{{count}} connector",
+    "count_other": "{{count}} connectors",
+    "empty": "No connectors yet",
+    "emptyDescription": "When the backend registers new tools they will appear here, grouped by category."
+  },
+  "card": {
+    "mode": "Mode",
+    "modeSecondary": "Chế độ",
+    "lastSync": "Last sync",
+    "lastSyncSecondary": "Đồng bộ lần cuối",
+    "neverSynced": "Never synced",
+    "usedBy": "Used by",
+    "usedBySecondary": "Nhân sự đang dùng",
+    "noUsers": "No AI agent uses this yet",
+    "moreUsers": "+{{count}}",
+    "openAgent": "Open AI agent profile"
+  },
+  "request": {
+    "button": "Request connector access",
+    "secondary": "Yêu cầu cấp quyền kết nối",
+    "hint": "Coming in the next release: requests will go through the Approval Center so the Owner confirms before access is granted."
+  },
+  "vendors": {
+    "meta_ads": "Facebook & Instagram advertising",
+    "google_ads": "Google search & display advertising",
+    "tiktok_ads": "TikTok short-video advertising",
+    "google_drive": "Document storage & sharing",
+    "google_analytics": "Website traffic measurement",
+    "zalo_oa": "Messaging & customer care on Zalo",
+    "hubspot_crm": "Lead & customer management",
+    "canva": "Visual & print design",
+    "ollama_local": "AI models running on your machine",
+    "anthropic_cloud": "Claude AI models in the cloud"
+  },
+  "skillsPanel": {
+    "title": "Team skills",
+    "secondary": "Kỹ năng của đội ngũ AI",
+    "description": "Aggregated from every AI agent profile – shared skills are listed first",
+    "count_one": "{{count}} skill",
+    "count_other": "{{count}} skills",
+    "owners": "Owners",
+    "ownersSecondary": "Nhân sự sở hữu",
+    "avgLevel": "Average level",
+    "avgLevelSecondary": "Mức thành thạo trung bình",
+    "levelValue": "{{value}}%",
+    "empty": "No skills recorded yet",
+    "emptyDescription": "Skills are loaded from AI agent profiles on the backend.",
+    "showAll": "Show all {{count}} skills",
+    "showLess": "Show fewer"
+  },
+  "skills": {
+    "strategic_planning": "Strategic planning",
+    "marketing_strategy": "Marketing strategy",
+    "delegation": "Delegation",
+    "operations": "Operations",
+    "reporting": "Reporting",
+    "resource_allocation": "Resource allocation",
+    "task_breakdown": "Task breakdown",
+    "scheduling": "Scheduling",
+    "risk_management": "Risk management",
+    "paid_ads": "Paid advertising",
+    "market_research": "Market research",
+    "copywriting": "Copywriting",
+    "content_production": "Content production",
+    "video_scripting": "Video scripting",
+    "brand_design": "Brand design",
+    "community_management": "Community management",
+    "social_publishing": "Social publishing",
+    "customer_care": "Customer care",
+    "data_analysis": "Data analysis",
+    "attribution": "Attribution",
+    "dashboarding": "Dashboarding",
+    "lead_qualification": "Lead qualification",
+    "crm_automation": "CRM automation",
+    "proposal_writing": "Proposal writing",
+    "workflow_automation": "Workflow automation",
+    "integration": "Integration",
+    "monitoring": "Monitoring",
+    "quality_review": "Quality review",
+    "brand_compliance": "Brand compliance",
+    "fact_checking": "Fact checking"
+  }
+}

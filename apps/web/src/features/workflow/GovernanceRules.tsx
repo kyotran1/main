@@ -7,16 +7,16 @@ import { bilingual, termIdForRole } from '@ads-nolimit/i18n';
 import { ROLE_COLOR_VAR } from '@/lib/colors';
 import { Card, CardHeader } from '@/components/ui/Card';
 
-type Actor = { role: AgentRole } | { owner: true };
+type Actor = { kind: 'agent'; role: AgentRole } | { kind: 'owner' };
 
 /** Chuỗi trách nhiệm cố định: AI CEO lập kế hoạch → Owner phê duyệt → PM phân công → … */
 const CHAIN: { actor: Actor; actionKey: string }[] = [
-  { actor: { role: 'ai_ceo' }, actionKey: 'workflow:rules.actions.plan' },
-  { actor: { owner: true }, actionKey: 'workflow:rules.actions.approve' },
-  { actor: { role: 'ai_project_manager' }, actionKey: 'workflow:rules.actions.assign' },
-  { actor: { role: 'ai_specialist' }, actionKey: 'workflow:rules.actions.execute' },
-  { actor: { role: 'ai_qa_reviewer' }, actionKey: 'workflow:rules.actions.review' },
-  { actor: { role: 'ai_coo' }, actionKey: 'workflow:rules.actions.report' },
+  { actor: { kind: 'agent', role: 'ai_ceo' }, actionKey: 'workflow:rules.actions.plan' },
+  { actor: { kind: 'owner' }, actionKey: 'workflow:rules.actions.approve' },
+  { actor: { kind: 'agent', role: 'ai_project_manager' }, actionKey: 'workflow:rules.actions.assign' },
+  { actor: { kind: 'agent', role: 'ai_specialist' }, actionKey: 'workflow:rules.actions.execute' },
+  { actor: { kind: 'agent', role: 'ai_qa_reviewer' }, actionKey: 'workflow:rules.actions.review' },
+  { actor: { kind: 'agent', role: 'ai_coo' }, actionKey: 'workflow:rules.actions.report' },
 ];
 
 const RULE_KEYS = ['workflow:rules.items.approvalFirst', 'workflow:rules.items.qaGate', 'workflow:rules.items.realtime'] as const;
@@ -30,11 +30,13 @@ export function GovernanceRules({ className }: { className?: string }) {
       <CardHeader icon={<ShieldCheck className="size-4.5" aria-hidden="true" />} title={t('workflow:rules.title')} subtitle={`${t('workflow:rules.secondary')} · ${t('workflow:rules.description')}`} />
       <ol className="flex flex-wrap items-center gap-y-2">
         {CHAIN.map((step, idx) => {
-          const isOwner = 'owner' in step.actor;
-          const label = isOwner
-            ? { term: t('common:owner.title'), meaning: t('common:owner.secondary'), inline: `${t('common:owner.secondary')} – ${t('common:owner.title')}` }
-            : bilingual(termIdForRole(step.actor.role), locale);
-          const color = isOwner ? 'var(--color-brand-green)' : ROLE_COLOR_VAR[step.actor.role];
+          // Phân biệt Chủ doanh nghiệp (không phải nhân sự AI) với vai trò AI theo trường `kind`.
+          const actor = step.actor;
+          const label =
+            actor.kind === 'owner'
+              ? { term: t('common:owner.title'), meaning: t('common:owner.secondary'), inline: `${t('common:owner.secondary')} – ${t('common:owner.title')}` }
+              : bilingual(termIdForRole(actor.role), locale);
+          const color = actor.kind === 'owner' ? 'var(--color-brand-green)' : ROLE_COLOR_VAR[actor.role];
           return (
             <Fragment key={step.actionKey}>
               <li className="flex items-center gap-2 rounded-xl border px-2.5 py-1.5" style={{ borderColor: `color-mix(in srgb, ${color} 45%, transparent)`, background: `color-mix(in srgb, ${color} 10%, transparent)` }} title={label.inline}>

@@ -1,1 +1,235 @@
-{}
+{
+  "description": "Hướng dẫn sử dụng hệ thống, quy trình vận hành, vai trò nhân sự AI và bảng tra cứu thuật ngữ",
+  "toc": {
+    "title": "Mục lục",
+    "secondary": "Contents",
+    "readingTime": "Khoảng {{minutes}} phút đọc"
+  },
+  "sections": {
+    "intro": { "title": "Giới thiệu hệ thống", "secondary": "System overview" },
+    "workflow": { "title": "Quy trình vận hành 6 giai đoạn", "secondary": "Six-stage workflow" },
+    "roles": { "title": "Vai trò nhân sự AI", "secondary": "AI agent roles" },
+    "quickstart": { "title": "Hướng dẫn nhanh", "secondary": "Quick guides" },
+    "glossary": { "title": "Bảng thuật ngữ", "secondary": "Glossary" },
+    "faq": { "title": "Câu hỏi thường gặp", "secondary": "FAQ" }
+  },
+  "intro": {
+    "lead": "ADS-NOLIMIT AI OFFICE là trung tâm điều hành của một công ty Truyền thông & Marketing vận hành bằng nhân sự AI. Bạn – Chủ doanh nghiệp – chỉ cần giao mục tiêu; đội ngũ AI tự lập kế hoạch, phân công, thực thi, kiểm định và báo cáo, còn mọi quyết định quan trọng vẫn chờ bạn phê duyệt.",
+    "paragraphs": [
+      "Mọi màn hình (Bảng điều khiển, Sơ đồ tổ chức, Văn phòng ảo 3D, Quản lý công việc…) đọc từ cùng một nguồn dữ liệu duy nhất do hệ thống nền phát hành, vì vậy con số ở đâu cũng khớp nhau và cập nhật theo thời gian thực.",
+      "Giao diện dùng tiếng Việt làm ngôn ngữ chính; thuật ngữ chuyên ngành tiếng Anh luôn kèm nghĩa tiếng Việt. Khi gặp từ chưa quen, hãy tra ở Bảng thuật ngữ bên dưới."
+    ],
+    "architecture": {
+      "title": "Kiến trúc kết hợp cục bộ và đám mây",
+      "secondary": "Hybrid Local + Cloud",
+      "body": "Hệ thống chia làm hai lớp. Lớp điều phối (dữ liệu, công việc, nhật ký, quy tắc phê duyệt) luôn chạy trên máy của bạn. Lớp mô hình AI có thể chạy cục bộ qua Ollama, gọi lên đám mây qua Anthropic Claude, hoặc kết hợp cả hai tùy chế độ vận hành bạn chọn trong Cài đặt hệ thống.",
+      "layers": {
+        "local": {
+          "title": "Lớp cục bộ",
+          "secondary": "Local layer",
+          "items": [
+            "Hệ thống nền điều phối công việc và lưu toàn bộ dữ liệu",
+            "Giao diện web / ứng dụng máy tính",
+            "Mô hình AI chạy trên máy qua Ollama (tùy chọn)"
+          ]
+        },
+        "cloud": {
+          "title": "Lớp đám mây",
+          "secondary": "Cloud layer",
+          "items": [
+            "Mô hình AI Anthropic Claude cho việc cần suy luận sâu",
+            "Nền tảng quảng cáo: Meta Ads, Google Ads, TikTok Ads",
+            "Dịch vụ lưu trữ, phân tích, CRM và nhắn tin"
+          ]
+        },
+        "bridge": {
+          "title": "Cầu nối",
+          "secondary": "Bridge",
+          "items": [
+            "Công cụ kết nối (Connector) được cấp quyền từng cái một",
+            "Mọi lệnh gửi ra ngoài đều ghi vào Nhật ký hoạt động",
+            "Chi tiêu và xuất bản phải qua Trung tâm phê duyệt"
+          ]
+        }
+      }
+    },
+    "principles": {
+      "title": "Ba nguyên tắc vận hành",
+      "items": [
+        { "title": "Một nguồn dữ liệu duy nhất", "body": "Mọi trang đọc cùng một bản dữ liệu – không có bản sao, không lệch số." },
+        { "title": "Chủ doanh nghiệp luôn giữ quyền quyết định", "body": "Kế hoạch, ngân sách, nội dung và xuất bản chỉ chạy khi bạn duyệt." },
+        { "title": "Minh bạch từng bước", "body": "Mỗi hành động của nhân sự AI đều hiện trong Nhật ký hoạt động và Văn phòng 3D." }
+      ]
+    }
+  },
+  "workflow": {
+    "lead": "Mọi yêu cầu bạn gửi cho AI CEO đều đi qua đúng sáu giai đoạn. Mỗi giai đoạn có một chức vụ chịu trách nhiệm chính và một kết quả rõ ràng.",
+    "ownerLabel": "Phụ trách",
+    "outputLabel": "Kết quả",
+    "stages": {
+      "receive": {
+        "body": "AI CEO đọc yêu cầu, làm rõ mục tiêu, đối tượng, ngân sách và thời hạn; nếu thiếu thông tin sẽ hỏi lại bạn qua khung trò chuyện.",
+        "output": "Yêu cầu được xác nhận và ghi nhận trong hệ thống"
+      },
+      "plan": {
+        "body": "AI CEO xây dựng kế hoạch tổng thể: chiến lược, kênh triển khai, mốc thời gian và KPI. Kế hoạch được gửi tới Trung tâm phê duyệt.",
+        "output": "Bản kế hoạch chờ bạn phê duyệt"
+      },
+      "assign": {
+        "body": "AI Project Manager phân rã kế hoạch thành công việc cụ thể và giao cho đúng chuyên viên theo kỹ năng và tải việc hiện tại.",
+        "output": "Danh sách công việc có người phụ trách và hạn hoàn thành"
+      },
+      "execute": {
+        "body": "AI Specialist thực hiện công việc bằng các công cụ kết nối đã được cấp quyền; tiến độ cập nhật liên tục trên mọi màn hình.",
+        "output": "Sản phẩm công việc: nội dung, chiến dịch, báo cáo dữ liệu…"
+      },
+      "review": {
+        "body": "AI QA Reviewer kiểm tra chất lượng, tuân thủ thương hiệu và tính chính xác. Không đạt sẽ trả về giai đoạn Thực thi kèm nhận xét.",
+        "output": "Kết quả đạt chuẩn hoặc yêu cầu chỉnh sửa"
+      },
+      "report": {
+        "body": "AI COO tổng hợp kết quả, chỉ số và đề xuất bước tiếp theo thành báo cáo gửi tới Chủ doanh nghiệp.",
+        "output": "Báo cáo nhanh và báo cáo định kỳ"
+      }
+    }
+  },
+  "roles": {
+    "lead": "Năm chức vụ AI tạo thành một bộ máy hoàn chỉnh, báo cáo theo tầng giống một công ty thật.",
+    "reportsTo": "Báo cáo cho",
+    "reportsToOwner": "Chủ doanh nghiệp",
+    "responsibilities": "Trách nhiệm chính",
+    "items": {
+      "ai_ceo": {
+        "summary": "Tiếp nhận mục tiêu từ bạn, lập chiến lược và điều phối toàn công ty.",
+        "duties": ["Làm rõ yêu cầu và lập kế hoạch tổng thể", "Đề xuất ngân sách và ưu tiên", "Trả lời bạn qua Trung tâm điều hành AI CEO"]
+      },
+      "ai_coo": {
+        "summary": "Giữ cho bộ máy chạy đều: theo dõi tiến độ, nguồn lực và tổng hợp báo cáo.",
+        "duties": ["Theo dõi tiến độ mọi phòng ban", "Phân bổ nguồn lực khi quá tải", "Lập báo cáo định kỳ"]
+      },
+      "ai_project_manager": {
+        "summary": "Biến kế hoạch thành công việc cụ thể và bảo đảm đúng hạn.",
+        "duties": ["Phân rã kế hoạch thành công việc", "Giao việc theo kỹ năng", "Cảnh báo rủi ro và công việc quá hạn"]
+      },
+      "ai_specialist": {
+        "summary": "Chuyên viên thực thi ở từng phòng ban: tiếp thị, nội dung, cộng đồng, dữ liệu, kinh doanh, kỹ thuật.",
+        "duties": ["Thực hiện công việc được giao", "Sử dụng công cụ kết nối đã cấp quyền", "Cập nhật tiến độ theo thời gian thực"]
+      },
+      "ai_qa_reviewer": {
+        "summary": "Chốt chặn chất lượng trước khi bất kỳ sản phẩm nào đến tay bạn hoặc khách hàng.",
+        "duties": ["Kiểm định chất lượng và kiểm chứng thông tin", "Đối chiếu nhận diện thương hiệu", "Trả về chỉnh sửa khi chưa đạt"]
+      }
+    }
+  },
+  "quickstart": {
+    "lead": "Bốn thao tác bạn sẽ dùng hằng ngày.",
+    "openModule": "Mở {{module}}",
+    "guides": {
+      "assign": {
+        "title": "Giao việc cho AI CEO",
+        "secondary": "Brief the AI CEO",
+        "steps": [
+          "Mở Trung tâm điều hành AI CEO và nhập mục tiêu bằng tiếng Việt, ví dụ: tăng 30% khách hàng tiềm năng trong 30 ngày.",
+          "Chọn mức ưu tiên rồi gửi. AI CEO sẽ trả lời và lập bản kế hoạch tóm tắt.",
+          "Theo dõi kế hoạch chuyển sang Trung tâm phê duyệt để bạn quyết định."
+        ]
+      },
+      "approve": {
+        "title": "Phê duyệt hoặc từ chối",
+        "secondary": "Approve or reject",
+        "steps": [
+          "Vào Trung tâm phê duyệt – các yêu cầu đang chờ xếp lên đầu.",
+          "Đọc tóm tắt, số tiền (nếu có) và công việc liên quan.",
+          "Bấm Duyệt để triển khai ngay, hoặc Từ chối kèm ghi chú để AI CEO điều chỉnh phương án."
+        ]
+      },
+      "pause": {
+        "title": "Tạm dừng một nhân sự AI",
+        "secondary": "Pause an agent",
+        "steps": [
+          "Mở trang Nhân sự AI hoặc bấm vào nhân vật trong Văn phòng 3D.",
+          "Trong ngăn chi tiết, bấm Tạm dừng – nhân sự ngừng nhận việc mới và công việc hiện tại chuyển sang Đang chờ.",
+          "Bấm Tiếp tục khi muốn nhân sự hoạt động trở lại."
+        ]
+      },
+      "office": {
+        "title": "Đọc hiểu Văn phòng ảo 3D",
+        "secondary": "Read the 3D office",
+        "steps": [
+          "Mỗi phòng sáng theo màu phòng ban; nhân vật đứng ở bàn là đang làm việc, ở phòng họp là đang lập kế hoạch.",
+          "Chấm màu trên đầu nhân vật là trạng thái: xanh lá đang hoạt động, xanh dương đang thực hiện, vàng đang chờ, tím tạm dừng, đỏ lỗi.",
+          "Bấm vào nhân vật để mở hồ sơ; dùng nút Đưa camera tới từ bất kỳ trang nào để tìm nhanh."
+        ]
+      }
+    }
+  },
+  "glossary": {
+    "lead": "Mọi thuật ngữ tiếng Anh xuất hiện trên giao diện đều có ở đây kèm nghĩa tiếng Việt chuẩn. Gõ để tìm theo tiếng Anh hoặc tiếng Việt.",
+    "searchLabel": "Tìm thuật ngữ",
+    "searchPlaceholder": "Tìm theo tiếng Anh hoặc tiếng Việt, ví dụ: Dashboard, phê duyệt…",
+    "filterLabel": "Nhóm thuật ngữ",
+    "filterSecondary": "Category",
+    "all": "Tất cả",
+    "columns": {
+      "term": "Thuật ngữ tiếng Anh",
+      "meaning": "Nghĩa tiếng Việt",
+      "short": "Rút gọn",
+      "note": "Ghi chú"
+    },
+    "result_one": "{{count}} thuật ngữ",
+    "result_other": "{{count}} thuật ngữ",
+    "empty": "Không có thuật ngữ nào khớp",
+    "emptyDescription": "Thử từ khóa khác hoặc bỏ bộ lọc nhóm.",
+    "clear": "Xóa tìm kiếm",
+    "categories": {
+      "module": "Chức năng & phân hệ",
+      "role": "Chức vụ AI",
+      "department": "Phòng ban",
+      "task_status": "Trạng thái công việc",
+      "agent_status": "Trạng thái nhân sự",
+      "priority": "Mức ưu tiên",
+      "stage": "Giai đoạn quy trình",
+      "approval_type": "Loại phê duyệt",
+      "approval_status": "Trạng thái phê duyệt",
+      "project_status": "Trạng thái dự án",
+      "metric": "Chỉ số",
+      "tech": "Kỹ thuật",
+      "action": "Hành động",
+      "connector_category": "Nhóm công cụ kết nối",
+      "execution_mode": "Chế độ vận hành"
+    }
+  },
+  "faq": {
+    "lead": "Những thắc mắc phổ biến khi bắt đầu dùng hệ thống.",
+    "items": [
+      {
+        "q": "Dữ liệu công ty có bị gửi lên đám mây không?",
+        "a": "Dữ liệu điều phối (công việc, phê duyệt, nhật ký) luôn nằm trên máy của bạn. Chỉ nội dung cần mô hình AI xử lý mới được gửi đi khi bạn chọn chế độ Cloud hoặc Hybrid. Ở chế độ Local, không có gì rời khỏi máy."
+      },
+      {
+        "q": "Vì sao con số trên Bảng điều khiển và Văn phòng 3D luôn giống nhau?",
+        "a": "Vì mọi trang đọc từ cùng một nguồn dữ liệu duy nhất do hệ thống nền phát hành và được đẩy xuống theo thời gian thực. Không trang nào giữ bản sao riêng."
+      },
+      {
+        "q": "Nhân sự AI có thể tự chi tiền quảng cáo không?",
+        "a": "Không. Mọi khoản chi, kế hoạch, nội dung và lệnh xuất bản đều phải qua Trung tâm phê duyệt. Nhân sự AI chỉ được triển khai sau khi bạn bấm Duyệt."
+      },
+      {
+        "q": "Tôi nên chọn chế độ vận hành nào?",
+        "a": "Hybrid là lựa chọn cân bằng cho đa số doanh nghiệp: việc thường ngày chạy cục bộ, việc cần chất lượng cao mới gọi đám mây. Chọn Local nếu ưu tiên riêng tư tuyệt đối, Cloud nếu máy yếu và cần chất lượng cao nhất."
+      },
+      {
+        "q": "Tại sao nhãn trên giao diện vừa có tiếng Việt vừa có tiếng Anh?",
+        "a": "Đây là chuẩn ngôn ngữ của hệ thống: tiếng Việt là nhãn chính để hiểu ngay, thuật ngữ tiếng Anh đi kèm để bạn quen dần với ngôn ngữ chuyên ngành khi làm việc với đối tác và nền tảng quảng cáo."
+      },
+      {
+        "q": "Điều gì xảy ra khi tôi từ chối một yêu cầu?",
+        "a": "AI CEO nhận ghi chú của bạn, điều chỉnh phương án và gửi lại yêu cầu mới. Công việc liên quan chuyển sang trạng thái Đang chờ cho tới khi có quyết định."
+      },
+      {
+        "q": "Mất kết nối với hệ thống nền thì sao?",
+        "a": "Giao diện hiện cảnh báo trên thanh tiêu đề, giữ nguyên dữ liệu cuối cùng và tự kết nối lại. Bạn cũng có thể bấm Làm mới dữ liệu trong Cài đặt hệ thống."
+      }
+    ]
+  }
+}

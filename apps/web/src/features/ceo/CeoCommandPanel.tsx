@@ -361,11 +361,11 @@ function CeoComposer({ ceo }: { ceo: Agent }) {
           value={text}
           onChange={(e) => setText(e.target.value)}
           onKeyDown={onKeyDown}
-          rows={2}
+          rows={3}
           maxLength={4000}
           placeholder={t('ceo:chat.placeholder')}
           disabled={sending}
-          className="max-h-32 min-h-[44px] flex-1 resize-none bg-transparent px-2 py-1.5 text-sm text-text placeholder:text-text-dim focus:outline-none disabled:opacity-60"
+          className="max-h-32 min-h-[60px] flex-1 resize-none bg-transparent px-2 py-1.5 text-sm text-text placeholder:text-text-dim focus:outline-none disabled:opacity-60"
         />
         <Button
           type="submit"

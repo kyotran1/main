@@ -1,1 +1,58 @@
-{}
+{
+  "description": "Marketing projects and campaigns led by AI agents – progress, budget, timeline and related tasks",
+  "loading": "Loading projects…",
+  "summary": {
+    "total": "Projects",
+    "totalSecondary": "Tổng số dự án",
+    "active": "Active projects",
+    "activeSecondary": "Đang triển khai",
+    "budget": "Total budget",
+    "budgetSecondary": "Tổng ngân sách",
+    "avgProgress": "Average progress",
+    "avgProgressSecondary": "Tiến độ trung bình"
+  },
+  "filter": {
+    "label": "Filter by status",
+    "secondary": "Lọc theo trạng thái",
+    "all": "All",
+    "count": "{{shown}}/{{total}} projects"
+  },
+  "card": {
+    "objective": "Objective",
+    "objectiveSecondary": "Mục tiêu",
+    "owner": "Owner",
+    "ownerSecondary": "Chủ trì",
+    "departments": "Departments",
+    "departmentsSecondary": "Phòng ban tham gia",
+    "budget": "Budget",
+    "budgetSecondary": "Ngân sách",
+    "timeline": "Timeline",
+    "timelineSecondary": "Mốc thời gian",
+    "noBudget": "No budget set",
+    "noEnd": "No end date",
+    "daysLeft_one": "{{count}} day left",
+    "daysLeft_other": "{{count}} days left",
+    "daysOverdue_one": "{{count}} day overdue",
+    "daysOverdue_other": "{{count}} days overdue",
+    "endsToday": "Ends today",
+    "progress": "Project progress",
+    "progressSecondary": "Tiến độ dự án",
+    "tasks": "Project tasks",
+    "tasksSecondary": "Công việc thuộc dự án",
+    "taskCount_one": "{{count}} task",
+    "taskCount_other": "{{count}} tasks",
+    "doneOf": "{{done}}/{{total}} completed",
+    "noTasks": "No tasks are linked to this project yet",
+    "showTasks": "Show task list",
+    "hideTasks": "Hide task list",
+    "openTask": "Open task details: {{title}}",
+    "unassigned": "Unassigned",
+    "ownerUnknown": "Owner not set"
+  },
+  "empty": {
+    "title": "No projects yet",
+    "description": "When the AI CEO plans a new request, the project will appear here.",
+    "filtered": "No projects match the selected status",
+    "filteredDescription": "Pick another status or view all projects."
+  }
+}

@@ -1,1 +1,82 @@
-{}
+{
+  "description": "Chỉ số KPI theo tuần, hiệu suất nhân sự AI, tiến độ theo phòng ban và nhận định của AI COO – tổng hợp từ dữ liệu vận hành thời gian thực",
+  "loading": "Đang tổng hợp số liệu báo cáo…",
+  "export": {
+    "button": "Xuất dữ liệu",
+    "buttonSecondary": "Export",
+    "json": "Tải tệp JSON",
+    "jsonHint": "Toàn bộ ảnh chụp dữ liệu (snapshot)",
+    "csv": "Tải tệp CSV",
+    "csvHint": "Bảng công việc, mở được bằng Excel",
+    "menuLabel": "Chọn định dạng xuất dữ liệu",
+    "done": "Đã tạo tệp {{file}}"
+  },
+  "weekly": {
+    "title": "Hiệu suất tiếp thị theo tuần",
+    "secondary": "Weekly marketing performance",
+    "description": "Ba bảng vẽ chung trục tuần, mỗi chỉ số một thang đo riêng để không lẫn độ lớn",
+    "ariaLabel": "Biểu đồ theo tuần: lượt tiếp cận, khách hàng tiềm năng và tỷ lệ chuyển đổi",
+    "week": "Tuần",
+    "empty": "Chưa có dữ liệu theo tuần",
+    "tableToggle": "Xem dạng bảng",
+    "tableToggleSecondary": "Table view"
+  },
+  "byDepartment": {
+    "title": "Công việc theo phòng ban",
+    "secondary": "Tasks by department",
+    "description": "Mỗi thanh là một phòng ban, chia theo trạng thái công việc; quá hạn được gạch chéo để phân biệt với bị chặn",
+    "ariaLabel": "Biểu đồ cột xếp chồng: số công việc theo trạng thái của từng phòng ban",
+    "empty": "Chưa có công việc nào để thống kê",
+    "total": "Tổng"
+  },
+  "performance": {
+    "title": "Hiệu suất nhân sự AI",
+    "secondary": "Agent performance",
+    "description": "Điểm hiệu suất 0–100 do hệ thống đánh giá; màu theo chức vụ",
+    "ariaLabel": "Biểu đồ cột ngang: điểm hiệu suất của từng nhân sự AI",
+    "empty": "Chưa có nhân sự AI nào",
+    "openProfile": "Xem hồ sơ: {{name}}",
+    "tasksDone_one": "{{count}} việc đã xong",
+    "tasksDone_other": "{{count}} việc đã xong"
+  },
+  "table": {
+    "title": "Tổng hợp theo phòng ban",
+    "secondary": "Department summary",
+    "department": "Phòng ban",
+    "agents": "Nhân sự AI",
+    "agentsSecondary": "Agents",
+    "open": "Việc đang mở",
+    "openSecondary": "Open",
+    "completed": "Hoàn thành",
+    "completedSecondary": "Completed",
+    "rate": "Tỷ lệ hoàn thành",
+    "rateSecondary": "Completion rate",
+    "totalRow": "Toàn công ty",
+    "totalRowSecondary": "Company total",
+    "empty": "Chưa có phòng ban nào có nhân sự AI"
+  },
+  "insights": {
+    "title": "Nhận định của AI COO",
+    "secondary": "AI COO insights",
+    "intro": "Tổng hợp tự động từ dữ liệu vận hành hiện tại – cập nhật theo thời gian thực.",
+    "completion": "Toàn công ty đã hoàn thành {{done}}/{{total}} công việc, đạt {{rate}}%.",
+    "completionHigh": "Tiến độ tốt: tỷ lệ hoàn thành {{rate}}% vượt ngưỡng mục tiêu 70%.",
+    "completionLow": "Cần lưu ý: tỷ lệ hoàn thành mới đạt {{rate}}%, thấp hơn ngưỡng mục tiêu 70%.",
+    "overdueNone": "Không có công việc quá hạn – lịch trình đang được giữ đúng cam kết.",
+    "overdueSome_one": "Có {{count}} công việc quá hạn, cần ưu tiên xử lý ngay.",
+    "overdueSome_other": "Có {{count}} công việc quá hạn, cần ưu tiên xử lý ngay.",
+    "blocked_one": "{{count}} công việc đang bị chặn và cần Chủ doanh nghiệp can thiệp.",
+    "blocked_other": "{{count}} công việc đang bị chặn và cần Chủ doanh nghiệp can thiệp.",
+    "approvalsNone": "Không có yêu cầu nào đang chờ phê duyệt.",
+    "approvalsSome_one": "{{count}} yêu cầu đang chờ Chủ doanh nghiệp phê duyệt – xử lý sớm để tránh trì hoãn quy trình.",
+    "approvalsSome_other": "{{count}} yêu cầu đang chờ Chủ doanh nghiệp phê duyệt – xử lý sớm để tránh trì hoãn quy trình.",
+    "topDepartment": "Phòng ban dẫn đầu về tiến độ: {{department}} ({{rate}}%).",
+    "laggingDepartment": "Phòng ban cần hỗ trợ thêm: {{department}} ({{rate}}%).",
+    "agentsRunning_one": "{{count}}/{{total}} nhân sự AI đang thực hiện công việc.",
+    "agentsRunning_other": "{{count}}/{{total}} nhân sự AI đang thực hiện công việc.",
+    "kpi": "Khách hàng tiềm năng tăng {{leads}} và tỷ lệ chuyển đổi tăng {{conversion}} so với kỳ trước; ROI đạt {{roi}}.",
+    "goToApprovals": "Mở Trung tâm phê duyệt",
+    "goToTasks": "Mở Quản lý công việc",
+    "empty": "Chưa đủ dữ liệu để đưa ra nhận định"
+  }
+}

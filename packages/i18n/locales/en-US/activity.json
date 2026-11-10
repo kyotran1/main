@@ -23,5 +23,61 @@
     "all": "All",
     "byAgent": "By agent",
     "byKind": "By event type"
-  }
+  },
+  "description": "Full timeline of every AI agent and Owner activity – filter by agent, event type or keyword",
+  "loading": "Loading activity log…",
+  "kinds": {
+    "plan_created": "Plan created",
+    "tasks_created": "Tasks created",
+    "task_started": "Task started",
+    "task_progress": "Progress update",
+    "task_completed": "Task completed",
+    "review_passed": "Review passed",
+    "review_failed": "Review failed",
+    "approval_requested": "Approval requested",
+    "approval_decided": "Approval decided",
+    "agent_message": "Agent message",
+    "agent_paused": "Agent paused",
+    "agent_resumed": "Agent resumed",
+    "owner_request": "Owner request",
+    "system": "System"
+  },
+  "filterBar": {
+    "agent": "Agent",
+    "agentSecondary": "Nhân sự AI",
+    "allAgents": "All agents",
+    "kind": "Event type",
+    "kindSecondary": "Loại sự kiện",
+    "allKinds": "All event types",
+    "search": "Search",
+    "searchSecondary": "Tìm kiếm",
+    "searchPlaceholder": "Search by text or task name…",
+    "clear": "Clear filters",
+    "result_one": "{{count}} activity",
+    "result_other": "{{count}} activities",
+    "resultOf": "{{shown}}/{{total}} activities"
+  },
+  "groups": {
+    "today": "Today",
+    "yesterday": "Yesterday"
+  },
+  "loadMore": "Load more",
+  "loadMoreRemaining_one": "Load more ({{count}} more activity)",
+  "loadMoreRemaining_other": "Load more ({{count}} more activities)",
+  "endOfList": "All activities are shown",
+  "realtime": {
+    "live": "Updating live",
+    "liveSecondary": "Trực tiếp",
+    "connecting": "Connecting…",
+    "connectingSecondary": "Đang kết nối",
+    "reconnecting": "Reconnecting…",
+    "reconnectingSecondary": "Đang kết nối lại",
+    "offline": "Offline – data may be stale",
+    "offlineSecondary": "Mất kết nối",
+    "updatedAt": "Updated at {{time}}",
+    "neverUpdated": "No data received yet"
+  },
+  "emptyFiltered": "No activities match the filters",
+  "emptyFilteredDescription": "Remove a filter or change the search keyword.",
+  "emptyDescription": "As AI agents start working, every activity will be recorded here in real time."
 }

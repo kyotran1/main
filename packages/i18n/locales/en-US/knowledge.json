@@ -1,1 +1,235 @@
-{}
+{
+  "description": "How the system works, the operating workflow, AI agent roles and the glossary of terms",
+  "toc": {
+    "title": "Contents",
+    "secondary": "Mục lục",
+    "readingTime": "About {{minutes}} min read"
+  },
+  "sections": {
+    "intro": { "title": "System overview", "secondary": "Giới thiệu hệ thống" },
+    "workflow": { "title": "Six-stage workflow", "secondary": "Quy trình vận hành 6 giai đoạn" },
+    "roles": { "title": "AI agent roles", "secondary": "Vai trò nhân sự AI" },
+    "quickstart": { "title": "Quick guides", "secondary": "Hướng dẫn nhanh" },
+    "glossary": { "title": "Glossary", "secondary": "Bảng thuật ngữ" },
+    "faq": { "title": "FAQ", "secondary": "Câu hỏi thường gặp" }
+  },
+  "intro": {
+    "lead": "ADS-NOLIMIT AI OFFICE is the command center of a media & marketing company run by AI agents. You – the Owner – set the goal; the AI team plans, assigns, executes, reviews and reports, while every important decision still waits for your approval.",
+    "paragraphs": [
+      "Every screen (Dashboard, Org Chart, 3D Virtual Office, Task Management…) reads from one single source of truth published by the backend, so numbers match everywhere and update in real time.",
+      "The interface uses Vietnamese as its primary language; English industry terms are always paired with their Vietnamese meaning. When a term is unfamiliar, look it up in the glossary below."
+    ],
+    "architecture": {
+      "title": "Hybrid Local + Cloud architecture",
+      "secondary": "Kiến trúc kết hợp cục bộ và đám mây",
+      "body": "The system has two layers. The orchestration layer (data, tasks, logs, approval rules) always runs on your machine. The AI model layer can run locally through Ollama, in the cloud through Anthropic Claude, or both, depending on the execution mode you pick in Settings.",
+      "layers": {
+        "local": {
+          "title": "Local layer",
+          "secondary": "Lớp cục bộ",
+          "items": [
+            "Backend that orchestrates work and stores all data",
+            "Web interface / desktop app",
+            "AI models running on the machine through Ollama (optional)"
+          ]
+        },
+        "cloud": {
+          "title": "Cloud layer",
+          "secondary": "Lớp đám mây",
+          "items": [
+            "Anthropic Claude models for deep reasoning",
+            "Ad platforms: Meta Ads, Google Ads, TikTok Ads",
+            "Storage, analytics, CRM and messaging services"
+          ]
+        },
+        "bridge": {
+          "title": "Bridge",
+          "secondary": "Cầu nối",
+          "items": [
+            "Connectors are granted one at a time",
+            "Every outbound command is written to the Activity Log",
+            "Spending and publishing must pass the Approval Center"
+          ]
+        }
+      }
+    },
+    "principles": {
+      "title": "Three operating principles",
+      "items": [
+        { "title": "Single source of truth", "body": "Every page reads the same data – no copies, no mismatched numbers." },
+        { "title": "The Owner always decides", "body": "Plans, budgets, content and publishing only run after you approve." },
+        { "title": "Transparent at every step", "body": "Each AI agent action appears in the Activity Log and the 3D office." }
+      ]
+    }
+  },
+  "workflow": {
+    "lead": "Every request you send to the AI CEO passes through the same six stages. Each stage has one responsible role and one clear output.",
+    "ownerLabel": "Owner",
+    "outputLabel": "Output",
+    "stages": {
+      "receive": {
+        "body": "The AI CEO reads the request and clarifies goal, audience, budget and deadline; if something is missing it asks you in the chat.",
+        "output": "A confirmed request recorded in the system"
+      },
+      "plan": {
+        "body": "The AI CEO builds the master plan: strategy, channels, timeline and KPIs. The plan is sent to the Approval Center.",
+        "output": "A plan waiting for your approval"
+      },
+      "assign": {
+        "body": "The AI Project Manager breaks the plan into concrete tasks and assigns each to the right specialist by skill and current workload.",
+        "output": "A task list with assignees and due dates"
+      },
+      "execute": {
+        "body": "AI Specialists do the work using the connectors they have been granted; progress updates continuously on every screen.",
+        "output": "Deliverables: content, campaigns, data reports…"
+      },
+      "review": {
+        "body": "The AI QA Reviewer checks quality, brand compliance and accuracy. Failed work goes back to Execute with comments.",
+        "output": "Approved deliverables or change requests"
+      },
+      "report": {
+        "body": "The AI COO consolidates results, metrics and next steps into a report for the Owner.",
+        "output": "Quick reports and periodic reports"
+      }
+    }
+  },
+  "roles": {
+    "lead": "Five AI roles form a complete organization that reports in layers, like a real company.",
+    "reportsTo": "Reports to",
+    "reportsToOwner": "Owner",
+    "responsibilities": "Key responsibilities",
+    "items": {
+      "ai_ceo": {
+        "summary": "Receives your goals, sets strategy and coordinates the whole company.",
+        "duties": ["Clarifies requests and builds the master plan", "Proposes budget and priorities", "Answers you in the AI CEO Command Center"]
+      },
+      "ai_coo": {
+        "summary": "Keeps the machine running: tracks progress, resources and consolidates reports.",
+        "duties": ["Tracks progress across departments", "Reallocates resources under overload", "Produces periodic reports"]
+      },
+      "ai_project_manager": {
+        "summary": "Turns plans into concrete tasks and keeps them on schedule.",
+        "duties": ["Breaks plans into tasks", "Assigns work by skill", "Flags risks and overdue tasks"]
+      },
+      "ai_specialist": {
+        "summary": "Hands-on specialists in each department: marketing, content, community, data, sales, tech.",
+        "duties": ["Executes assigned tasks", "Uses granted connectors", "Updates progress in real time"]
+      },
+      "ai_qa_reviewer": {
+        "summary": "The quality gate before anything reaches you or a customer.",
+        "duties": ["Quality review and fact checking", "Brand compliance checks", "Returns work for revision when needed"]
+      }
+    }
+  },
+  "quickstart": {
+    "lead": "The four actions you will use every day.",
+    "openModule": "Open {{module}}",
+    "guides": {
+      "assign": {
+        "title": "Brief the AI CEO",
+        "secondary": "Giao việc cho AI CEO",
+        "steps": [
+          "Open the AI CEO Command Center and type your goal, e.g. grow leads by 30% in 30 days.",
+          "Pick a priority and send. The AI CEO replies and drafts a plan summary.",
+          "Watch the plan move to the Approval Center for your decision."
+        ]
+      },
+      "approve": {
+        "title": "Approve or reject",
+        "secondary": "Phê duyệt hoặc từ chối",
+        "steps": [
+          "Go to the Approval Center – pending requests are listed first.",
+          "Read the summary, amount (if any) and the linked task.",
+          "Click Approve to execute now, or Reject with a note so the AI CEO revises the plan."
+        ]
+      },
+      "pause": {
+        "title": "Pause an agent",
+        "secondary": "Tạm dừng một nhân sự AI",
+        "steps": [
+          "Open the AI Agents page or click a character in the 3D office.",
+          "In the detail drawer click Pause – the agent stops taking new work and its current task becomes Pending.",
+          "Click Resume when you want the agent back."
+        ]
+      },
+      "office": {
+        "title": "Read the 3D office",
+        "secondary": "Đọc hiểu Văn phòng ảo 3D",
+        "steps": [
+          "Each room glows in its department color; a character at a desk is working, in the meeting room is planning.",
+          "The dot above a character is its status: green active, blue running, amber waiting, violet paused, red error.",
+          "Click a character to open its profile; use Focus Camera from any page to find it quickly."
+        ]
+      }
+    }
+  },
+  "glossary": {
+    "lead": "Every English term shown in the interface is listed here with its standard Vietnamese meaning. Search in English or Vietnamese.",
+    "searchLabel": "Search terms",
+    "searchPlaceholder": "Search in English or Vietnamese, e.g. Dashboard, phê duyệt…",
+    "filterLabel": "Category",
+    "filterSecondary": "Nhóm thuật ngữ",
+    "all": "All",
+    "columns": {
+      "term": "English term",
+      "meaning": "Vietnamese meaning",
+      "short": "Short form",
+      "note": "Note"
+    },
+    "result_one": "{{count}} term",
+    "result_other": "{{count}} terms",
+    "empty": "No matching terms",
+    "emptyDescription": "Try another keyword or clear the category filter.",
+    "clear": "Clear search",
+    "categories": {
+      "module": "Modules & features",
+      "role": "AI roles",
+      "department": "Departments",
+      "task_status": "Task status",
+      "agent_status": "Agent status",
+      "priority": "Priority",
+      "stage": "Workflow stage",
+      "approval_type": "Approval type",
+      "approval_status": "Approval status",
+      "project_status": "Project status",
+      "metric": "Metrics",
+      "tech": "Technical",
+      "action": "Actions",
+      "connector_category": "Connector categories",
+      "execution_mode": "Execution mode"
+    }
+  },
+  "faq": {
+    "lead": "Common questions when getting started.",
+    "items": [
+      {
+        "q": "Is company data sent to the cloud?",
+        "a": "Orchestration data (tasks, approvals, logs) always stays on your machine. Only content that needs an AI model is sent out, and only in Cloud or Hybrid mode. In Local mode nothing leaves the machine."
+      },
+      {
+        "q": "Why are the numbers on the Dashboard and in the 3D office always identical?",
+        "a": "Because every page reads from one single source of truth published by the backend and pushed in real time. No page keeps its own copy."
+      },
+      {
+        "q": "Can AI agents spend ad budget on their own?",
+        "a": "No. Every spend, plan, piece of content and publish command must pass the Approval Center. Agents execute only after you click Approve."
+      },
+      {
+        "q": "Which execution mode should I choose?",
+        "a": "Hybrid is the balanced choice for most businesses: routine work runs locally, quality-critical work goes to the cloud. Pick Local for absolute privacy, Cloud if your machine is weak and you need top quality."
+      },
+      {
+        "q": "Why do labels show both Vietnamese and English?",
+        "a": "This is the system's language standard: Vietnamese is the primary label for instant understanding, the English term is attached so you grow familiar with industry vocabulary used by partners and ad platforms."
+      },
+      {
+        "q": "What happens when I reject a request?",
+        "a": "The AI CEO reads your note, revises the plan and submits a new request. Related tasks stay Pending until a decision is made."
+      },
+      {
+        "q": "What if the connection to the backend drops?",
+        "a": "The header shows a warning, the interface keeps the last data and reconnects automatically. You can also click Refresh data in Settings."
+      }
+    ]
+  }
+}

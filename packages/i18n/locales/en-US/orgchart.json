@@ -1,1 +1,61 @@
-{}
+{
+  "description": "Reporting structure of the AI company – from the AI CEO down to each specialist, with status and open tasks",
+  "loading": "Building the organization chart…",
+  "view": {
+    "label": "View",
+    "labelSecondary": "Chế độ xem",
+    "tree": "Tree",
+    "treeSecondary": "Cây tổ chức",
+    "department": "By department",
+    "departmentSecondary": "Theo phòng ban"
+  },
+  "zoom": {
+    "label": "Zoom",
+    "labelSecondary": "Thu phóng",
+    "in": "Zoom in",
+    "out": "Zoom out",
+    "reset": "Actual size"
+  },
+  "tree": {
+    "expandAll": "Expand all",
+    "collapseAll": "Collapse all",
+    "collapse": "Collapse branch ({{count}})",
+    "expand": "Expand branch ({{count}})",
+    "scrollHint": "Scroll sideways to see the whole chart",
+    "owner": "Owner",
+    "ownerSecondary": "Chủ doanh nghiệp",
+    "ownerHint": "Approves and sends requests to the AI CEO"
+  },
+  "node": {
+    "openTasks_one": "{{count}} open task",
+    "openTasks_other": "{{count}} open tasks",
+    "openProfile": "Open profile: {{name}}",
+    "reports_one": "{{count}} direct report",
+    "reports_other": "{{count}} direct reports"
+  },
+  "department": {
+    "members_one": "{{count}} agent",
+    "members_other": "{{count}} agents",
+    "openTasks_one": "{{count}} open task",
+    "openTasks_other": "{{count}} open tasks",
+    "empty": "No agents in this department yet"
+  },
+  "legend": {
+    "title": "Status legend",
+    "secondary": "Chú thích trạng thái",
+    "roleTitle": "Ring colors by role",
+    "roleSecondary": "Màu viền theo chức vụ"
+  },
+  "summary": {
+    "levels": "Levels",
+    "levelsSecondary": "Cấp bậc",
+    "agents": "AI agents",
+    "agentsSecondary": "Nhân sự AI",
+    "departments": "Departments",
+    "departmentsSecondary": "Phòng ban",
+    "openTasks": "Open tasks",
+    "openTasksSecondary": "Việc đang mở"
+  },
+  "empty": "No organization data yet",
+  "emptyDescription": "The chart appears here once the server has set up the AI team."
+}

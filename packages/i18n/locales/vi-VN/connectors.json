@@ -1,1 +1,107 @@
-{}
+{
+  "description": "Các công cụ nhân sự AI được phép sử dụng và những kỹ năng họ đang nắm giữ – tất cả lấy từ cùng nguồn dữ liệu với Văn phòng 3D",
+  "loading": "Đang nạp danh sách công cụ kết nối và kỹ năng…",
+  "stats": {
+    "total": {
+      "label": "Công cụ kết nối",
+      "secondary": "Connectors"
+    },
+    "connected": {
+      "label": "Đã kết nối",
+      "secondary": "Connected"
+    },
+    "local": {
+      "label": "Chạy cục bộ",
+      "secondary": "Local"
+    },
+    "cloud": {
+      "label": "Trên đám mây",
+      "secondary": "Cloud"
+    }
+  },
+  "list": {
+    "title": "Công cụ kết nối theo nhóm",
+    "secondary": "Connectors by category",
+    "count_one": "{{count}} công cụ",
+    "count_other": "{{count}} công cụ",
+    "empty": "Chưa có công cụ kết nối nào",
+    "emptyDescription": "Khi hệ thống nền (Backend) đăng ký công cụ mới, chúng sẽ xuất hiện tại đây theo từng nhóm."
+  },
+  "card": {
+    "mode": "Chế độ",
+    "modeSecondary": "Mode",
+    "lastSync": "Đồng bộ lần cuối",
+    "lastSyncSecondary": "Last sync",
+    "neverSynced": "Chưa đồng bộ",
+    "usedBy": "Nhân sự đang dùng",
+    "usedBySecondary": "Used by",
+    "noUsers": "Chưa có nhân sự AI nào sử dụng",
+    "moreUsers": "+{{count}}",
+    "openAgent": "Mở hồ sơ nhân sự AI"
+  },
+  "request": {
+    "button": "Yêu cầu cấp quyền kết nối",
+    "secondary": "Request connector access",
+    "hint": "Tính năng sẽ mở ở bản tiếp theo: yêu cầu sẽ đi qua Trung tâm phê duyệt (Approval Center) để Chủ doanh nghiệp xác nhận trước khi cấp quyền."
+  },
+  "vendors": {
+    "meta_ads": "Quảng cáo Facebook & Instagram",
+    "google_ads": "Quảng cáo tìm kiếm & hiển thị Google",
+    "tiktok_ads": "Quảng cáo video ngắn TikTok",
+    "google_drive": "Lưu trữ & chia sẻ tài liệu",
+    "google_analytics": "Đo lường lưu lượng website",
+    "zalo_oa": "Nhắn tin & chăm sóc khách hàng qua Zalo",
+    "hubspot_crm": "Quản lý khách hàng tiềm năng",
+    "canva": "Thiết kế hình ảnh & ấn phẩm",
+    "ollama_local": "Mô hình AI chạy trên máy của bạn",
+    "anthropic_cloud": "Mô hình AI Claude trên đám mây"
+  },
+  "skillsPanel": {
+    "title": "Kỹ năng của đội ngũ AI",
+    "secondary": "Team skills",
+    "description": "Tổng hợp từ hồ sơ của mọi nhân sự AI – kỹ năng dùng chung được xếp lên đầu",
+    "count_one": "{{count}} kỹ năng",
+    "count_other": "{{count}} kỹ năng",
+    "owners": "Nhân sự sở hữu",
+    "ownersSecondary": "Owners",
+    "avgLevel": "Mức thành thạo trung bình",
+    "avgLevelSecondary": "Average level",
+    "levelValue": "{{value}}%",
+    "empty": "Chưa có kỹ năng nào được ghi nhận",
+    "emptyDescription": "Kỹ năng được nạp từ hồ sơ nhân sự AI trên hệ thống nền.",
+    "showAll": "Xem tất cả {{count}} kỹ năng",
+    "showLess": "Thu gọn danh sách"
+  },
+  "skills": {
+    "strategic_planning": "Hoạch định chiến lược",
+    "marketing_strategy": "Chiến lược tiếp thị",
+    "delegation": "Phân công & ủy quyền",
+    "operations": "Điều phối vận hành",
+    "reporting": "Lập báo cáo",
+    "resource_allocation": "Phân bổ nguồn lực",
+    "task_breakdown": "Phân rã công việc",
+    "scheduling": "Lập lịch triển khai",
+    "risk_management": "Quản trị rủi ro",
+    "paid_ads": "Quảng cáo trả phí",
+    "market_research": "Nghiên cứu thị trường",
+    "copywriting": "Viết nội dung quảng cáo",
+    "content_production": "Sản xuất nội dung",
+    "video_scripting": "Viết kịch bản video",
+    "brand_design": "Thiết kế thương hiệu",
+    "community_management": "Quản lý cộng đồng",
+    "social_publishing": "Đăng tải mạng xã hội",
+    "customer_care": "Chăm sóc khách hàng",
+    "data_analysis": "Phân tích dữ liệu",
+    "attribution": "Phân bổ nguồn chuyển đổi",
+    "dashboarding": "Dựng bảng theo dõi số liệu",
+    "lead_qualification": "Sàng lọc khách hàng tiềm năng",
+    "crm_automation": "Tự động hóa CRM",
+    "proposal_writing": "Soạn đề xuất & báo giá",
+    "workflow_automation": "Tự động hóa quy trình",
+    "integration": "Tích hợp hệ thống",
+    "monitoring": "Giám sát hệ thống",
+    "quality_review": "Kiểm định chất lượng",
+    "brand_compliance": "Tuân thủ nhận diện thương hiệu",
+    "fact_checking": "Kiểm chứng thông tin"
+  }
+}

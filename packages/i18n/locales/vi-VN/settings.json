@@ -1,1 +1,96 @@
-{}
+{
+  "description": "Ngôn ngữ giao diện, chế độ vận hành, thông tin công ty và kết nối tới hệ thống nền",
+  "loading": "Đang nạp cấu hình hệ thống…",
+  "saved": "Đã lưu thay đổi",
+  "saving": "Đang lưu…",
+  "language": {
+    "description": "Giao diện luôn hiển thị tiếng Việt làm nhãn chính; bản tiếng Anh chỉ dùng để xem trước và đối chiếu thuật ngữ.",
+    "current": "Đang dùng",
+    "applied": "Đã chuyển ngôn ngữ giao diện"
+  },
+  "executionMode": {
+    "description": "Quyết định nơi mô hình AI chạy. Dữ liệu điều phối, công việc và nhật ký luôn nằm trên máy của bạn ở mọi chế độ.",
+    "current": "Chế độ hiện tại",
+    "currentSecondary": "Current mode",
+    "apply": "Áp dụng chế độ",
+    "applied": "Đã chuyển sang chế độ {{mode}}",
+    "modes": {
+      "local": {
+        "title": "Chạy trên máy của bạn",
+        "body": "Mô hình AI chạy qua Ollama ngay trên máy. Không gửi dữ liệu ra ngoài, tốc độ phụ thuộc phần cứng.",
+        "badge": "Riêng tư nhất"
+      },
+      "cloud": {
+        "title": "Gọi mô hình đám mây",
+        "body": "Dùng mô hình Anthropic Claude qua API. Chất lượng suy luận cao nhất, cần kết nối mạng và khóa truy cập.",
+        "badge": "Mạnh nhất"
+      },
+      "hybrid": {
+        "title": "Kết hợp cục bộ và đám mây",
+        "body": "Việc thường ngày chạy cục bộ; việc phức tạp hoặc cần chất lượng cao mới gọi lên đám mây. Cân bằng chi phí, tốc độ và riêng tư.",
+        "badge": "Khuyến nghị"
+      }
+    }
+  },
+  "company": {
+    "title": "Thông tin công ty",
+    "secondary": "Company profile",
+    "description": "Tên hiển thị trên thanh tiêu đề, lời chào và báo cáo do nhân sự AI tạo.",
+    "name": "Tên công ty",
+    "nameSecondary": "Company name",
+    "namePlaceholder": "Ví dụ: ADS-NOLIMIT AI OFFICE",
+    "ownerName": "Tên Chủ doanh nghiệp",
+    "ownerNameSecondary": "Owner name",
+    "ownerNamePlaceholder": "Ví dụ: Nguyễn Văn A",
+    "tagline": "Khẩu hiệu",
+    "taglineSecondary": "Tagline",
+    "version": "Phiên bản hệ thống",
+    "versionSecondary": "Version",
+    "save": "Lưu thông tin công ty",
+    "saved": "Đã cập nhật thông tin công ty",
+    "unchanged": "Chưa có thay đổi để lưu"
+  },
+  "backend": {
+    "title": "Kết nối hệ thống nền",
+    "secondary": "Backend connection",
+    "description": "Giao diện đọc toàn bộ dữ liệu từ một nguồn duy nhất và nhận cập nhật thời gian thực.",
+    "status": "Trạng thái kết nối",
+    "statusSecondary": "Connection status",
+    "states": {
+      "connecting": "Đang kết nối…",
+      "live": "Đồng bộ thời gian thực",
+      "reconnecting": "Đang kết nối lại…",
+      "offline": "Mất kết nối máy chủ"
+    },
+    "revision": "Số hiệu bản dữ liệu",
+    "revisionSecondary": "Revision",
+    "updatedAt": "Cập nhật gần nhất",
+    "updatedAtSecondary": "Last update",
+    "notYet": "Chưa có dữ liệu",
+    "endpoint": "Địa chỉ dịch vụ",
+    "endpointSecondary": "Endpoint",
+    "refresh": "Làm mới dữ liệu",
+    "refreshSecondary": "Refresh snapshot",
+    "refreshed": "Đã tải lại toàn bộ dữ liệu từ hệ thống nền",
+    "reset": "Đặt lại dữ liệu mẫu",
+    "resetSecondary": "Reset demo data",
+    "resetConfirmTitle": "Đặt lại toàn bộ dữ liệu mẫu?",
+    "resetConfirmBody": "Mọi công việc, phê duyệt, tin nhắn và nhật ký hiện tại sẽ bị thay bằng bộ dữ liệu mẫu ban đầu. Thao tác không thể hoàn tác.",
+    "resetConfirm": "Xác nhận đặt lại",
+    "resetDone": "Đã đặt lại dữ liệu mẫu"
+  },
+  "standard": {
+    "title": "Chuẩn ngôn ngữ giao diện",
+    "secondary": "UI language standard",
+    "description": "Mọi màn hình của hệ thống tuân theo cùng một bộ quy tắc để người dùng Việt Nam hiểu ngay mà vẫn nắm được thuật ngữ gốc.",
+    "rules": [
+      "Tiếng Việt là ngôn ngữ mặc định của toàn bộ giao diện; tiếng Anh chỉ là bản xem trước.",
+      "Thuật ngữ chuyên ngành tiếng Anh luôn đi kèm nghĩa tiếng Việt – trên một dòng hoặc dòng phụ nhỏ hơn bên dưới.",
+      "Chức vụ AI hiển thị đầy đủ, ví dụ AI CEO – Giám đốc điều hành AI.",
+      "Tên thương hiệu và định danh kỹ thuật (Meta Ads, Google Ads, Zalo OA, mã lỗi) giữ nguyên, không dịch.",
+      "Nội dung do nhân sự AI tạo ra (tiêu đề công việc, tin nhắn, báo cáo) là dữ liệu – hiển thị nguyên văn."
+    ],
+    "link": "Tra cứu bảng thuật ngữ trong Kho tri thức",
+    "linkSecondary": "Open the glossary"
+  }
+}
