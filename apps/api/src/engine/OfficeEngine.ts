@@ -17,7 +17,7 @@ import { ApiError, notFound } from '../errors.js';
 import { daysFromNow, newId, nowIso } from '../ids.js';
 import type { OfficeStore } from '../store/OfficeStore.js';
 import type { AgentBrain, BrainContext } from './brain.js';
-import { MockBrain } from './providers/mock.js';
+import { MockBrain, detectDepartments } from './providers/mock.js';
 
 export interface OfficeEngineOptions {
   provider: AgentBrain;
@@ -211,8 +211,15 @@ export class OfficeEngine {
   }
 
   createTask(body: CreateTaskBody): Task {
-    const assignee = body.assigneeId ? this.requireAgent(body.assigneeId) : undefined;
+    let assignee = body.assigneeId ? this.requireAgent(body.assigneeId) : undefined;
     if (assignee) this.assertNotPaused(assignee);
+    let autoAssigned = false;
+    if (!assignee) {
+      // "Để AI Project Manager phân công": chọn phòng ban theo nội dung (hoặc theo yêu cầu) và chuyên viên ít việc nhất.
+      const dept = body.departmentId ?? detectDepartments(`${body.title} ${body.description ?? ''}`)[0] ?? 'marketing';
+      assignee = this.pickAssignee(dept, 'ai_specialist');
+      autoAssigned = !!assignee;
+    }
     const departmentId: DepartmentId = body.departmentId ?? assignee?.departmentId ?? 'executive';
     const now = nowIso();
     const task = this.store.upsertTask({
@@ -220,11 +227,11 @@ export class OfficeEngine {
       projectId: body.projectId,
       title: body.title,
       description: body.description,
-      status: assignee ? 'in_progress' : 'not_started',
-      stage: assignee ? 'execute' : 'receive',
+      status: assignee && !autoAssigned ? 'in_progress' : 'not_started',
+      stage: assignee ? (autoAssigned ? 'assign' : 'execute') : 'receive',
       priority: body.priority ?? 'medium',
       assigneeId: assignee?.id,
-      requesterId: OWNER_ID,
+      requesterId: autoAssigned ? (this.store.agentsByRole('ai_project_manager')[0]?.id ?? OWNER_ID) : OWNER_ID,
       departmentId,
       progress: 0,
       dueAt: body.dueAt,
@@ -233,11 +240,16 @@ export class OfficeEngine {
       updatedAt: now,
       tags: [],
     });
-    if (assignee) {
+    if (assignee && autoAssigned) {
+      const pm = this.store.agentsByRole('ai_project_manager')[0];
+      this.activity({ agentId: pm?.id ?? assignee.id, taskId: task.id, kind: 'tasks_created', templateKey: 'tasks_created', params: { agent: pm?.id ?? assignee.id, title: task.title, count: 1 } });
+      this.startQueuedTasks([task.id]);
+      this.refreshAgent(assignee.id);
+    } else if (assignee) {
       this.activity({ agentId: assignee.id, taskId: task.id, kind: 'task_started', templateKey: 'task_started', params: { agent: assignee.id, title: task.title } });
       this.refreshAgent(assignee.id);
     }
-    return task;
+    return this.store.getTask(task.id) ?? task;
   }
 
   updateTask(taskId: string, patch: UpdateTaskBody): Task {
@@ -309,8 +321,10 @@ export class OfficeEngine {
         } else if (approval.type === 'connector') {
           this.store.upsertTask({ ...task, status: 'in_progress', stage: 'execute', startedAt: task.startedAt ?? nowIso() });
           const connectorIds = this.store.getAgent(task.assigneeId ?? '')?.connectorIds ?? [];
-          const snapshot = this.store.getSnapshot();
-          snapshot.connectors = snapshot.connectors.map((c) => (connectorIds.includes(c.id) ? { ...c, connected: true, lastSyncAt: nowIso() } : c));
+          // Đi qua store để phát sự kiện realtime – client đang mở cập nhật thẻ kết nối ngay.
+          this.store.setConnectors(
+            this.store.getSnapshot().connectors.map((c) => (connectorIds.includes(c.id) ? { ...c, connected: true, lastSyncAt: nowIso() } : c)),
+          );
         } else {
           const done = this.store.upsertTask({ ...task, status: 'completed', stage: 'report', progress: 100, completedAt: nowIso() });
           if (task.status !== 'completed') this.creditCompletion(done);
@@ -477,12 +491,14 @@ export class OfficeEngine {
   }
 
   private moveToReview(task: Task): void {
-    const qa = this.store.agentsByRole('ai_qa_reviewer').find((a) => a.status !== 'paused');
+    // Có QA Reviewer (kể cả đang tạm dừng) → xếp hàng kiểm định; QA tạm dừng chỉ hoãn, không bỏ qua kiểm định.
+    const qaAll = this.store.agentsByRole('ai_qa_reviewer');
+    const qa = qaAll.find((a) => a.status !== 'paused' && a.status !== 'error') ?? qaAll[0];
     const updated = this.store.upsertTask({ ...task, progress: 100, status: qa ? 'in_review' : 'completed', stage: qa ? 'review' : 'report', completedAt: qa ? undefined : nowIso() });
     if (task.assigneeId) {
       this.activity({ agentId: task.assigneeId, taskId: task.id, kind: 'task_completed', templateKey: 'task_completed', params: { agent: task.assigneeId, title: updated.title } });
     }
-    if (qa) {
+    if (qa && qa.status !== 'paused' && qa.status !== 'error') {
       // QA đi tới phòng ban của công việc để kiểm định – văn phòng 3D hiển thị di chuyển này.
       this.setAgentState(qa.id, { status: 'running', currentTaskId: task.id, location: { kind: 'department', departmentId: task.departmentId } });
     }

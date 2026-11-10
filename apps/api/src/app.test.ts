@@ -170,10 +170,13 @@ describe('nhân sự AI: tạm dừng, giao việc, nhắn tin', () => {
     expect(task.departmentId).toBe('marketing');
   });
 
-  it('POST /api/tasks không có người phụ trách → 201, trạng thái chưa bắt đầu', async () => {
+  it('POST /api/tasks không có người phụ trách → 201, AI Project Manager tự phân công', async () => {
     const res = await app.inject({ method: 'POST', url: '/api/tasks', payload: { title: 'Việc chờ phân công' } });
     expect(res.statusCode).toBe(201);
-    expect(res.json<Task>().status).toBe('not_started');
+    const task = res.json<Task>();
+    expect(task.assigneeId).toBeDefined();
+    expect(task.stage).not.toBe('receive');
+    expect(['not_started', 'pending', 'in_progress']).toContain(task.status);
   });
 
   it('POST /api/tasks với tiêu đề quá ngắn → 400 validation_failed', async () => {

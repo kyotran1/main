@@ -7,6 +7,7 @@ import type {
   Approval,
   ChatMessage,
   CompanyInfo,
+  Connector,
   KpiSummary,
   OfficeEvent,
   OfficeSnapshot,
@@ -118,6 +119,11 @@ export class OfficeStore extends EventEmitter {
   setKpis(kpis: KpiSummary): void {
     this.snapshot.kpis = kpis;
     this.commit({ type: 'kpi.updated', kpis, revision: 0 });
+  }
+
+  setConnectors(connectors: Connector[]): void {
+    this.snapshot.connectors = connectors;
+    this.commit({ type: 'connectors.updated', connectors, revision: 0 });
   }
 
   addMessage(message: ChatMessage): ChatMessage {

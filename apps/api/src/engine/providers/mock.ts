@@ -14,7 +14,7 @@ const KEYWORDS: Array<{ dept: DepartmentId; words: string[] }> = [
   { dept: 'tech_automation', words: ['tự động', 'webhook', 'kết nối', 'tích hợp', 'api', 'kỹ thuật', 'hệ thống', 'website', 'landing'] },
 ];
 
-function detectDepartments(text: string): DepartmentId[] {
+export function detectDepartments(text: string): DepartmentId[] {
   const lower = text.toLowerCase();
   const hits = KEYWORDS.filter((k) => k.words.some((w) => lower.includes(w))).map((k) => k.dept);
   return hits.length ? Array.from(new Set(hits)) : ['marketing', 'creative_media'];

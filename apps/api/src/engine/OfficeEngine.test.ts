@@ -222,10 +222,13 @@ describe('OfficeEngine – vòng review 2: hàng đợi quá hạn, đọc lại
 
   it('giao người phụ trách cho việc chưa bắt đầu đưa việc vào hàng đợi và được khởi động', async () => {
     const { store, engine } = setup(() => 0.99);
+    // Không chọn người phụ trách → AI PM tự phân công và đưa vào hàng đợi (không còn ở giai đoạn receive).
     const task = engine.createTask({ title: 'Việc chưa có người phụ trách' });
-    expect(task.stage).toBe('receive');
-    engine.updateTask(task.id, { assigneeId: 'agent_spec_data' });
-    expect(store.getTask(task.id)?.stage).toBe('assign');
+    expect(task.assigneeId).toBeDefined();
+    expect(task.stage).not.toBe('receive');
+    // Owner đổi người phụ trách thủ công → việc vẫn trong hàng đợi và được khởi động.
+    engine.updateTask(task.id, { assigneeId: 'agent_spec_data', status: 'not_started' });
+    expect(store.getTask(task.id)?.stage).not.toBe('receive');
     await engine.tick();
     expect(store.getTask(task.id)?.status).toBe('in_progress');
   });
@@ -263,5 +266,38 @@ describe('OfficeEngine – vòng review 3: QA tạm dừng, đếm việc hoàn 
     expect(store.getProject('proj_q4_launch')!.status).toBe('completed');
     engine.updateTask('task_content_batch', { status: 'in_progress' });
     expect(store.getProject('proj_q4_launch')!.status).toBe('active');
+  });
+});
+
+describe('OfficeEngine – vòng review 4: kết nối phát sự kiện, QA tạm dừng xếp hàng, tự phân công', () => {
+  it('duyệt cấp quyền kết nối phát sự kiện connectors.updated', () => {
+    const { store, engine } = setup();
+    const events: string[] = [];
+    store.on('event', (e: { type: string }) => events.push(e.type));
+    const appr = store.upsertApproval({ ...store.getApproval('appr_connector_webhook')!, id: 'appr_conn_2', status: 'pending', decidedAt: undefined });
+    engine.decideApproval(appr.id, 'approve');
+    expect(events).toContain('connectors.updated');
+    expect(store.getSnapshot().connectors.find((c) => c.id === 'ollama_local')?.connected).toBe(true);
+  });
+
+  it('QA tạm dừng: việc đạt 100% xếp hàng kiểm định thay vì hoàn thành ngay', async () => {
+    const { store, engine } = setup(() => 0.99);
+    engine.pauseAgent('agent_qa');
+    const task = engine.createTask({ title: 'Việc gần xong', assigneeId: 'agent_spec_content' });
+    engine.updateTask(task.id, { progress: 99 });
+    await engine.tick();
+    expect(store.getTask(task.id)?.status).toBe('in_review');
+    expect(store.getAgent('agent_qa')?.status).toBe('paused');
+  });
+
+  it('tạo việc không chọn người phụ trách → AI PM tự phân công theo nội dung', async () => {
+    const { store, engine } = setup(() => 0.99);
+    const task = engine.createTask({ title: 'Phân tích dữ liệu chuyển đổi tuần này và cập nhật báo cáo KPI' });
+    expect(task.assigneeId).toBe('agent_spec_data');
+    expect(task.departmentId).toBe('data_analytics');
+    expect(task.requesterId).toBe('agent_pm');
+    expect(['in_progress', 'pending']).toContain(task.status);
+    await engine.tick();
+    expect(store.getTask(task.id)?.status).not.toBe('not_started');
   });
 });

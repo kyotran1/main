@@ -15,29 +15,35 @@ export function CompanyCard() {
   const locale = useLocale();
   const company = useOfficeStore((s) => s.company);
   const action = useAsyncAction();
-  const [name, setName] = useState(company?.name ?? '');
-  const [ownerName, setOwnerName] = useState(company?.ownerName ?? '');
+  // Giá trị đang gõ: null = người dùng chưa chạm vào ô → luôn theo dữ liệu backend (realtime từ client khác).
+  const [nameDraft, setNameDraft] = useState<string | null>(null);
+  const [ownerDraft, setOwnerDraft] = useState<string | null>(null);
   const versionTerm = bilingual('tech.version', locale);
 
-  // Khi backend cập nhật (realtime) và người dùng chưa gõ gì khác, đồng bộ lại ô nhập.
-  useEffect(() => {
-    if (!company) return;
-    setName((prev) => (prev === '' || prev === company.name ? company.name : prev));
-    setOwnerName((prev) => (prev === '' || prev === company.ownerName ? company.ownerName : prev));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [company?.name, company?.ownerName]);
-
+  const name = nameDraft ?? company?.name ?? '';
+  const ownerName = ownerDraft ?? company?.ownerName ?? '';
   const trimmedName = name.trim();
   const trimmedOwner = ownerName.trim();
-  const dirty = !!company && (trimmedName !== company.name || trimmedOwner !== company.ownerName);
+  // Chỉ ô người dùng đã sửa mới được coi là thay đổi và được gửi đi.
+  const nameDirty = nameDraft !== null && !!company && trimmedName !== company.name;
+  const ownerDirty = ownerDraft !== null && !!company && trimmedOwner !== company.ownerName;
+  const dirty = nameDirty || ownerDirty;
   const valid = trimmedName.length > 0 && trimmedOwner.length > 0;
+
+  // Sau khi lưu thành công, bỏ bản nháp để ô nhập theo lại backend.
+  useEffect(() => {
+    if (action.success) {
+      setNameDraft(null);
+      setOwnerDraft(null);
+    }
+  }, [action.success]);
 
   const submit = (e?: FormEvent) => {
     e?.preventDefault();
     if (!company || !dirty || !valid) return;
     const patch: { companyName?: string; ownerName?: string } = {};
-    if (trimmedName !== company.name) patch.companyName = trimmedName;
-    if (trimmedOwner !== company.ownerName) patch.ownerName = trimmedOwner;
+    if (nameDirty) patch.companyName = trimmedName;
+    if (ownerDirty) patch.ownerName = trimmedOwner;
     void action.run(() => api.updateSettings(patch), t('settings:company.saved'));
   };
 
@@ -60,7 +66,7 @@ export function CompanyCard() {
               id="settings-company-name"
               className={INPUT_CLASS}
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setNameDraft(e.target.value)}
               placeholder={t('settings:company.namePlaceholder')}
               disabled={!company}
               maxLength={80}
@@ -73,7 +79,7 @@ export function CompanyCard() {
               id="settings-owner-name"
               className={INPUT_CLASS}
               value={ownerName}
-              onChange={(e) => setOwnerName(e.target.value)}
+              onChange={(e) => setOwnerDraft(e.target.value)}
               placeholder={t('settings:company.ownerNamePlaceholder')}
               disabled={!company}
               maxLength={80}

@@ -1,6 +1,7 @@
 import type {
   Agent,
   Approval,
+  Connector,
   ActivityEvent,
   ChatMessage,
   KpiSummary,
@@ -22,6 +23,7 @@ export type OfficeEvent =
   | { type: 'activity.created'; activity: ActivityEvent; revision: number }
   | { type: 'project.upserted'; project: Project; revision: number }
   | { type: 'kpi.updated'; kpis: KpiSummary; revision: number }
+  | { type: 'connectors.updated'; connectors: Connector[]; revision: number }
   | { type: 'message.created'; message: ChatMessage; revision: number };
 
 export const SOCKET_EVENT_NAME = 'office:event';

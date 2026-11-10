@@ -169,6 +169,9 @@ export const useOfficeStore = create<OfficeStore>()((set, get) => ({
       case 'kpi.updated':
         set({ kpis: event.kpis, revision: event.revision, updatedAt });
         break;
+      case 'connectors.updated':
+        set({ connectors: event.connectors, revision: event.revision, updatedAt });
+        break;
       case 'message.created':
         set({
           messages: [...state.messages.filter((m) => m.id !== event.message.id), event.message].slice(-MAX_MESSAGES),
