@@ -21,6 +21,7 @@
 6. [Chất lượng](#6-chất-lượng)
 7. [Phát hành](#7-phát-hành)
 8. [Checklist cho mỗi tính năng mới](#8-checklist-cho-mỗi-tính-năng-mới)
+9. [Trạng thái tạm dừng và việc đang dở](#9-trạng-thái-tạm-dừng-và-việc-đang-dở)
 
 ---
 
@@ -306,3 +307,44 @@ Sao chép vào mô tả PR và đánh dấu đầy đủ trước khi yêu cầu
 - [ ] Kiểm tra 1440×900 và 390×844: không cuộn ngang, không tràn chữ, 0 lỗi console
 - [ ] pnpm typecheck · pnpm lint:i18n · pnpm test đạt; cập nhật docs/IMPLEMENTATION_CHECKLIST.md
 ```
+
+---
+
+## 9. Trạng thái tạm dừng và việc đang dở
+
+> Dự án **tạm dừng theo yêu cầu của Owner ngày 2026-11-10**. Mọi thay đổi đã được commit và push lên nhánh
+> `claude/ads-nolimit-vietnamese-ui-sd1x09`; PR #2 (`https://github.com/kyotran1/main/pull/2`) đang mở, sẵn sàng review và
+> **chưa được hợp nhất**. Lịch tự kiểm tra định kỳ và theo dõi PR tự động đã được hủy.
+
+### 9.1 Trạng thái tại thời điểm tạm dừng (commit `8f48ccd`)
+
+| Hạng mục | Kết quả |
+|---|---|
+| `pnpm typecheck` (5 gói) | 0 lỗi |
+| `pnpm lint:i18n` | 0 lỗi – 2.723 khóa vi-VN, 202 thuật ngữ |
+| `pnpm test` | 113/113 (i18n 8, api 51, web 54) |
+| `pnpm build` | web, api, desktop dựng thành công |
+| `pnpm e2e` (15 trang × 1440/390 px) | 30/30 đạt |
+| Review tự động (Codex) | 20 phát hiện qua 5 vòng đều đã sửa và giải quyết; commit `8f48ccd` chưa được Codex review lại |
+
+### 9.2 Việc đang dở / cần làm khi tiếp tục
+
+- [ ] **Đợi/đọc kết quả Codex review cho `8f48ccd`** (vòng 6, nếu có) và xử lý các phát hiện mới theo mục 8.
+- [ ] **Quyết định hợp nhất PR #2** (Owner): hợp nhất vào `main`, sau đó đặt `main` làm nhánh mặc định trong Settings của kho
+      (hiện GitHub lấy nhánh được push đầu tiên làm mặc định).
+- [ ] Sau khi hợp nhất: bật CI (GitHub Actions) chạy `pnpm check` + `pnpm e2e` cho mọi PR – repo hiện **chưa có workflow CI**.
+- [ ] Các mục `[ ]` còn lại ở mục 1 (tìm kiếm toàn cục Ctrl+K, xóa công việc từ giao diện, tạo/sửa dự án, đổi tên/cấu hình mô hình
+      nhân sự từ giao diện, kết nối/ngắt connector thật, xuất PDF, cấu hình nhà cung cấp mô hình từ giao diện, đóng gói installer
+      Desktop, Web lắng nghe `desktop:locale-changed`).
+- [ ] Kiểm thử thủ công Electron (`pnpm build` → chạy Local Runtime `pnpm --filter @ads-nolimit/api start` → `pnpm --filter @ads-nolimit/desktop start`)
+      trên máy có giao diện đồ họa – môi trường phát triển hiện tại không có màn hình nên mới chỉ kiểm tra bản build Web qua HTTP.
+- [ ] Chạy thử với mô hình thật (`AI_PROVIDER=ollama` hoặc `anthropic`) để kiểm chứng `LlmBrain` và fallback về `MockBrain`;
+      mới kiểm thử bằng bộ não mô phỏng.
+
+### 9.3 Ghi chú kỹ thuật cho người tiếp tục
+
+- Nhánh tính năng đã **hợp nhất** `main` (commit khởi tạo rỗng) để có lịch sử chung – không rebase/force-push nhánh này.
+- Dữ liệu trạng thái cục bộ nằm ở `apps/api/data/office-state.json` (bị gitignore); `SEED_RESET=1` để dựng lại dữ liệu mẫu.
+- Bộ não mô phỏng (`MockBrain.reviewTask`) dùng `Math.random`; kiểm thử cần kết quả xác định phải ghi đè `reviewTask`
+  (xem `OfficeEngine.test.ts`).
+- Mọi phát hiện review đã sửa đều có kiểm thử tương ứng trong `apps/api/src/engine/OfficeEngine.test.ts` và `apps/web/src/i18n.test.ts`.
