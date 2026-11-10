@@ -17,12 +17,14 @@ import { createProvider } from './engine/providers/index.js';
  *   SEED_RESET=1         bỏ file trạng thái cũ, dựng lại dữ liệu mẫu
  *   SIMULATION=off       tắt mô phỏng tiến độ tự động của nhân sự AI
  *   AI_PROVIDER          mock | ollama | anthropic (mặc định mock)
+ *   WEB_DIST             thư mục bản build Web để phục vụ cùng origin (mặc định apps/web/dist nếu tồn tại; đặt "off" để tắt)
  */
 const here = dirname(fileURLToPath(import.meta.url));
 const port = Number(process.env.PORT ?? 4000);
 const host = process.env.HOST ?? '127.0.0.1';
 const dataFile = process.env.DATA_FILE ?? resolve(here, '..', 'data', 'office-state.json');
 const reset = process.env.SEED_RESET === '1';
+const webDist = process.env.WEB_DIST === 'off' ? undefined : (process.env.WEB_DIST ?? resolve(here, '..', '..', 'web', 'dist'));
 
 const store = OfficeStore.loadOrSeed(createSeedSnapshot, dataFile, reset);
 const engine = new OfficeEngine(store, {
@@ -30,7 +32,7 @@ const engine = new OfficeEngine(store, {
   simulation: process.env.SIMULATION !== 'off',
 });
 
-const app = await buildApp({ store, engine, corsOrigin: process.env.CORS_ORIGIN ?? true, logger: true });
+const app = await buildApp({ store, engine, corsOrigin: process.env.CORS_ORIGIN ?? true, logger: true, webDist });
 const realtime = attachRealtime(app.server, store, process.env.CORS_ORIGIN ?? true);
 
 engine.start();

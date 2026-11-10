@@ -92,7 +92,8 @@ curl -X POST http://localhost:4000/api/admin/reset   # đặt lại dữ liệu 
 | `SIMULATION` | bật | `off` → tắt mô phỏng tiến độ tự động |
 | `VITE_API_PROXY_TARGET` | `http://localhost:4000` | Đích proxy của Vite dev/preview |
 | `VITE_API_BASE_URL` | rỗng | Tiền tố API khi giao diện và backend khác origin (bản build) |
-| `ADS_NOLIMIT_WEB_URL` | – | URL Web cho Electron khi phát triển (`pnpm dev:desktop` đặt sẵn) |
+| `WEB_DIST` | `apps/web/dist` | Bản build Web được Local Runtime phục vụ cùng origin với API (đặt `off` để tắt) |
+| `ADS_NOLIMIT_WEB_URL` | `http://127.0.0.1:4000` | URL Web cho Electron (khi phát triển `pnpm dev:desktop` đặt `http://localhost:5173`) |
 
 Ví dụ chạy với mô hình cục bộ:
 

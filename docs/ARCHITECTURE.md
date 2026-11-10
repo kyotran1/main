@@ -557,7 +557,8 @@ qua trong git.
 | `ANTHROPIC_MODEL` | api | `claude-opus-5-5` | Mô hình Claude |
 | `VITE_API_PROXY_TARGET` | web (dev/preview) | `http://localhost:4000` | Đích proxy `/api` và `/socket.io` |
 | `VITE_API_BASE_URL` | web (build) | rỗng (cùng origin) | Tiền tố API khi giao diện và API khác origin |
-| `ADS_NOLIMIT_WEB_URL` | desktop | – | URL giao diện Web khi phát triển (`pnpm dev:desktop` đặt `http://localhost:5173`); không có → tải `apps/web/dist/index.html` |
+| `WEB_DIST` | api | `apps/web/dist` (nếu tồn tại) | Thư mục bản build Web mà Local Runtime phục vụ cùng origin với API (đường dẫn SPA trả về `index.html`); đặt `off` để tắt |
+| `ADS_NOLIMIT_WEB_URL` | desktop | `http://127.0.0.1:4000` | URL giao diện Web mà Electron tải: khi phát triển `pnpm dev:desktop` đặt `http://localhost:5173`; mặc định là Local Runtime đang phục vụ bản build (không dùng `file://` vì Chromium chặn module script) |
 
 ---
 

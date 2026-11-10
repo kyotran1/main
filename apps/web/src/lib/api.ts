@@ -16,6 +16,7 @@ import type {
   CompanyInfo,
 } from '@ads-nolimit/shared';
 import { API_ROUTES } from '@ads-nolimit/shared';
+import { getApiBaseUrl } from './env';
 
 /** Lỗi API có mã kỹ thuật – giao diện dịch sang tiếng Việt bằng errors:codes.<code>. */
 export class ApiError extends Error {
@@ -31,7 +32,7 @@ export class ApiError extends Error {
   }
 }
 
-const BASE = import.meta.env.VITE_API_BASE_URL ?? '';
+const BASE = getApiBaseUrl();
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   let res: Response;

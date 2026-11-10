@@ -105,3 +105,84 @@ describe('OfficeEngine – mô hình AI CEO', () => {
     expect(reply.text).toMatch(/công việc/);
   });
 });
+
+describe('OfficeEngine – phản hồi review: đồng thời, hàng đợi, chế độ vận hành', () => {
+  it('hai nhịp mô phỏng chồng nhau không chạy song song (chỉ một lần kiểm định cho cùng công việc)', async () => {
+    const store = new OfficeStore(createSeedSnapshot());
+    let reviews = 0;
+    let release: (() => void) | undefined;
+    const slow = new MockBrain();
+    slow.reviewTask = () => {
+      reviews += 1;
+      return new Promise((r) => { release = () => r({ passed: true, note: 'ok' }); });
+    };
+    const engine = new OfficeEngine(store, { provider: slow, simulation: false, random: () => 0.01 });
+    const first = engine.tick();
+    const second = engine.tick(); // bị bỏ qua vì nhịp trước chưa xong
+    release!();
+    await Promise.all([first, second]);
+    expect(reviews).toBe(1);
+    expect(store.getTask('task_qa_landing')?.status).toBe('completed');
+  });
+
+  it('kiểm định không ghi đè khi công việc đã đổi trạng thái trong lúc chờ bộ não', async () => {
+    const store = new OfficeStore(createSeedSnapshot());
+    let release: (() => void) | undefined;
+    const slow = new MockBrain();
+    slow.reviewTask = () => new Promise((r) => { release = () => r({ passed: true, note: 'ok' }); });
+    const engine = new OfficeEngine(store, { provider: slow, simulation: false, random: () => 0.01 });
+    const task = store.getTask('task_qa_landing')!;
+    expect(task.status).toBe('in_review');
+    const pending = engine.tick();
+    // Owner hoàn thành thủ công trong lúc QA đang chờ mô hình.
+    engine.updateTask(task.id, { status: 'in_progress' });
+    release!();
+    await pending;
+    expect(store.getTask(task.id)?.status).toBe('in_progress');
+    expect(store.getSnapshot().activities.filter((a) => a.kind === 'review_passed' && a.taskId === task.id)).toHaveLength(0);
+  });
+
+  it('việc chờ vì hết chỗ được khởi động ở nhịp sau khi nhân sự rảnh', async () => {
+    const { store, engine } = setup(() => 0.99);
+    // Chuyên viên nội dung đã có 1 việc đang chạy trong seed; thêm 2 việc nữa → 1 việc phải chờ (giới hạn 2).
+    engine.createTask({ title: 'Việc B', assigneeId: 'agent_spec_content' });
+    const c = engine.createTask({ title: 'Việc C', assigneeId: 'agent_spec_content' });
+    const { approval } = await engine.handleOwnerRequest('Lập kế hoạch nội dung video và bài viết cho tháng tới.');
+    engine.decideApproval(approval!.id, 'approve');
+    const waiting = store.getSnapshot().tasks.filter((t) => t.assigneeId === 'agent_spec_content' && t.status === 'pending' && t.stage === 'assign');
+    expect(waiting.length).toBeGreaterThan(0);
+    // Giải phóng chỗ bằng cách hoàn thành việc đang chạy.
+    for (const t of store.getSnapshot().tasks.filter((x) => x.assigneeId === 'agent_spec_content' && x.status === 'in_progress')) {
+      engine.updateTask(t.id, { status: 'completed' });
+    }
+    await engine.tick();
+    const started = store.getSnapshot().tasks.filter((t) => waiting.some((w) => w.id === t.id) && t.status === 'in_progress');
+    expect(started.length).toBeGreaterThan(0);
+    void c;
+  });
+
+  it('việc con của kế hoạch chưa duyệt KHÔNG được khởi động dù nhân sự rảnh', async () => {
+    const { store, engine } = setup(() => 0.99);
+    const { planTask } = await engine.handleOwnerRequest('Chiến dịch quảng cáo mùa lễ hội.');
+    await engine.tick();
+    const children = store.getSnapshot().tasks.filter((t) => t.parentId === planTask.id);
+    expect(children.every((t) => t.status === 'pending')).toBe(true);
+  });
+
+  it('chế độ Local không gọi mô hình đám mây', async () => {
+    const store = new OfficeStore(createSeedSnapshot());
+    let cloudCalls = 0;
+    const cloud = new MockBrain();
+    Object.defineProperty(cloud, 'mode', { value: 'cloud' });
+    const originalReply = cloud.replyToOwner.bind(cloud);
+    cloud.replyToOwner = (...args) => { cloudCalls += 1; return originalReply(...args); };
+    const engine = new OfficeEngine(store, { provider: cloud, simulation: false });
+    engine.updateSettings({ executionMode: 'local' });
+    await engine.sendMessage('agent_pm', 'Tiến độ thế nào?');
+    expect(cloudCalls).toBe(0);
+    expect(engine.activeBrain()).not.toBe(cloud);
+    engine.updateSettings({ executionMode: 'hybrid' });
+    await engine.sendMessage('agent_pm', 'Tiến độ thế nào?');
+    expect(cloudCalls).toBe(1);
+  });
+});

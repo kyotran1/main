@@ -1,5 +1,8 @@
 import Fastify, { type FastifyInstance } from 'fastify';
 import cors from '@fastify/cors';
+import fastifyStatic from '@fastify/static';
+import { existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { ZodError } from 'zod';
 import type { ApiErrorBody } from '@ads-nolimit/shared';
 import { ApiError } from './errors.js';
@@ -13,12 +16,21 @@ export interface BuildAppOptions {
   engine: OfficeEngine;
   corsOrigin?: string | string[] | boolean;
   logger?: boolean;
+  /** Thư mục bản build giao diện Web (apps/web/dist) để Local Runtime phục vụ qua HTTP – dùng cho Desktop/triển khai một tiến trình. */
+  webDist?: string;
 }
 
 /** Tạo ứng dụng Fastify với xử lý lỗi chuẩn hóa (code kỹ thuật + thông điệp kỹ thuật). */
-export async function buildApp({ store, engine, corsOrigin = true, logger = false }: BuildAppOptions): Promise<FastifyInstance> {
+export async function buildApp({ store, engine, corsOrigin = true, logger = false, webDist }: BuildAppOptions): Promise<FastifyInstance> {
   const app = Fastify({ logger });
   await app.register(cors, { origin: corsOrigin });
+
+  // Phục vụ giao diện Web đã build (nếu có) trên cùng origin với API → Electron tải http://127.0.0.1:4000
+  // thay vì file:// (Chromium chặn module script qua file://). Các đường dẫn SPA trả về index.html.
+  const webIndex = webDist && existsSync(join(webDist, 'index.html')) ? join(webDist, 'index.html') : null;
+  if (webDist && webIndex) {
+    await app.register(fastifyStatic, { root: webDist, prefix: '/', wildcard: false, index: ['index.html'] });
+  }
 
   app.setErrorHandler((err, _req, reply) => {
     if (err instanceof ApiError) {
@@ -39,7 +51,11 @@ export async function buildApp({ store, engine, corsOrigin = true, logger = fals
     return reply.status(anyErr.statusCode && anyErr.statusCode >= 400 ? anyErr.statusCode : 500).send(body);
   });
 
-  app.setNotFoundHandler((_req, reply) => {
+  app.setNotFoundHandler((req, reply) => {
+    const wantsHtml = req.method === 'GET' && !req.url.startsWith('/api') && !req.url.startsWith('/socket.io');
+    if (webIndex && wantsHtml) {
+      return reply.type('text/html; charset=utf-8').send(readFileSync(webIndex, 'utf8'));
+    }
     const body: ApiErrorBody = { code: 'not_found', message: 'Route not found' };
     return reply.status(404).send(body);
   });

@@ -1,20 +1,19 @@
 import { app, BrowserWindow, Menu, dialog, ipcMain, shell, type MenuItemConstructorOptions } from 'electron';
-import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { Locale } from '@ads-nolimit/shared';
 import { initI18n, normalizeLocale, bilingual } from '@ads-nolimit/i18n';
 
 /**
  * Tiến trình chính Electron – ỨNG DỤNG MÁY TÍNH (Desktop App).
- * - Tải giao diện Web (dev: ADS_NOLIMIT_WEB_URL; prod: apps/web/dist).
+ * - Tải giao diện Web qua HTTP: dev ADS_NOLIMIT_WEB_URL (Vite), prod mặc định Local Runtime http://127.0.0.1:4000
+ *   (apps/api phục vụ apps/web/dist cùng origin với API – không dùng file:// vì Chromium chặn module script).
  * - Menu, hộp thoại dùng CÙNG từ điển @ads-nolimit/i18n với bản Web (vi-VN mặc định).
  */
 let mainWindow: BrowserWindow | null = null;
 let locale: Locale = 'vi-VN';
 let i18n: Awaited<ReturnType<typeof initI18n>>;
 
-const WEB_URL = process.env.ADS_NOLIMIT_WEB_URL;
-const WEB_DIST_INDEX = resolve(__dirname, '..', '..', 'web', 'dist', 'index.html');
+const WEB_URL = (process.env.ADS_NOLIMIT_WEB_URL ?? process.env.ADS_NOLIMIT_API_URL ?? 'http://127.0.0.1:4000').replace(/\/$/, '');
 
 function t(key: string, options?: Record<string, unknown>): string {
   return i18n.t(key, { lng: locale, ...options }) as string;
@@ -74,11 +73,7 @@ function buildMenu(): void {
 
 function navigate(path: string): void {
   if (!mainWindow) return;
-  if (WEB_URL) {
-    void mainWindow.loadURL(`${WEB_URL.replace(/\/$/, '')}${path}`);
-  } else {
-    void mainWindow.loadFile(WEB_DIST_INDEX, { hash: path });
-  }
+  void mainWindow.loadURL(`${WEB_URL}${path}`);
 }
 
 async function showAbout(): Promise<void> {
@@ -112,13 +107,12 @@ function createWindow(): void {
     },
   });
   mainWindow.on('closed', () => (mainWindow = null));
-  if (WEB_URL) {
-    void mainWindow.loadURL(WEB_URL);
-  } else if (existsSync(WEB_DIST_INDEX)) {
-    void mainWindow.loadFile(WEB_DIST_INDEX);
-  } else {
-    void dialog.showErrorBox(t('desktop:errors.webMissing.title'), t('desktop:errors.webMissing.explain'));
-  }
+  // Không kết nối được Local Runtime/Vite → báo lỗi tiếng Việt kèm cách khắc phục.
+  mainWindow.webContents.on('did-fail-load', (_e, code, description, url) => {
+    if (code === -3) return; // ERR_ABORTED khi điều hướng – bỏ qua
+    void dialog.showErrorBox(t('desktop:errors.webMissing.title'), `${t('desktop:errors.webMissing.explain', { url: WEB_URL })}\n\n${description} (${code}) – ${url}`);
+  });
+  void mainWindow.loadURL(WEB_URL);
 }
 
 app.whenReady().then(async () => {

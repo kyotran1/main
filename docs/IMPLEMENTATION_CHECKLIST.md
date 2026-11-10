@@ -142,7 +142,7 @@ Tệp tham chiếu: `apps/web/src/app/routes.ts`, `apps/web/src/pages/*.tsx`, `a
 
 ### 1.17 Ứng dụng máy tính (`apps/desktop`)
 
-- [x] Tiến trình chính Electron tải Web (dev `ADS_NOLIMIT_WEB_URL` / prod `apps/web/dist`), menu song ngữ dùng `@ads-nolimit/i18n`,
+- [x] Tiến trình chính Electron tải Web qua HTTP (dev `ADS_NOLIMIT_WEB_URL` / prod Local Runtime `http://127.0.0.1:4000` phục vụ `apps/web/dist`), menu song ngữ dùng `@ads-nolimit/i18n`,
   đổi ngôn ngữ, hộp thoại "Giới thiệu", `preload.ts` với `contextIsolation`
 - [x] Build bằng esbuild (`build.mjs`), typecheck riêng
 - [ ] Đóng gói cài đặt (installer) cho Windows/macOS/Linux (chưa có electron-builder/forge)

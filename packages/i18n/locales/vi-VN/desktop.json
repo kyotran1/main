@@ -17,8 +17,8 @@
   },
   "errors": {
     "webMissing": {
-      "title": "Chưa có bản dựng giao diện Web",
-      "explain": "Không tìm thấy apps/web/dist. Hãy chạy `pnpm --filter @ads-nolimit/web build` hoặc đặt biến ADS_NOLIMIT_WEB_URL trỏ tới máy chủ phát triển."
+      "title": "Không kết nối được giao diện Web",
+      "explain": "Không tải được giao diện từ {{url}}. Hãy chạy Local Runtime bằng `pnpm --filter @ads-nolimit/api start` (sau khi `pnpm build`) hoặc đặt biến ADS_NOLIMIT_WEB_URL trỏ tới máy chủ phát triển (http://localhost:5173)."
     }
   }
 }

@@ -21,22 +21,50 @@ export interface DrawerShellProps {
  * Vỏ ngăn trượt từ phải dùng chung cho ngăn chi tiết nhân sự AI và công việc.
  * Đóng bằng nút, phím Esc hoặc bấm nền mờ; khóa cuộn trang khi mở; focus vào ngăn khi mở.
  */
+/**
+ * Ngăn xếp các ngăn đang mở (ngăn nhân sự có thể mở ngăn công việc chồng lên).
+ * Khóa cuộn trang theo kiểu đếm tham chiếu: chỉ khóa khi ngăn đầu tiên mở và chỉ mở khóa khi ngăn cuối cùng đóng;
+ * phím Esc chỉ đóng ngăn trên cùng.
+ */
+const openDrawers: symbol[] = [];
+let savedBodyOverflow: string | null = null;
+
+function pushDrawer(id: symbol) {
+  if (openDrawers.length === 0) {
+    savedBodyOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+  }
+  openDrawers.push(id);
+}
+
+function popDrawer(id: symbol) {
+  const idx = openDrawers.indexOf(id);
+  if (idx !== -1) openDrawers.splice(idx, 1);
+  if (openDrawers.length === 0 && savedBodyOverflow !== null) {
+    document.body.style.overflow = savedBodyOverflow;
+    savedBodyOverflow = null;
+  }
+}
+
+const isTopDrawer = (id: symbol) => openDrawers[openDrawers.length - 1] === id;
+
 export function DrawerShell({ open, onClose, label, closeLabel, header, accent = 'var(--color-brand-cyan)', children, className }: DrawerShellProps) {
   const panelRef = useRef<HTMLElement>(null);
+  const idRef = useRef<symbol>(Symbol('drawer'));
 
   useEffect(() => {
     if (!open) return;
+    const id = idRef.current;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === 'Escape' && isTopDrawer(id)) onClose();
     };
     window.addEventListener('keydown', onKey);
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
+    pushDrawer(id);
     // Đưa tiêu điểm vào ngăn để bàn phím/đọc màn hình bắt đầu từ đây.
     panelRef.current?.focus({ preventScroll: true });
     return () => {
       window.removeEventListener('keydown', onKey);
-      document.body.style.overflow = prevOverflow;
+      popDrawer(id);
     };
   }, [open, onClose]);
 

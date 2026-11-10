@@ -17,8 +17,8 @@
   },
   "errors": {
     "webMissing": {
-      "title": "Web build not found",
-      "explain": "apps/web/dist is missing. Run `pnpm --filter @ads-nolimit/web build` or set ADS_NOLIMIT_WEB_URL to the dev server."
+      "title": "Cannot reach the Web interface",
+      "explain": "Failed to load the interface from {{url}}. Start the Local Runtime with `pnpm --filter @ads-nolimit/api start` (after `pnpm build`) or set ADS_NOLIMIT_WEB_URL to the dev server (http://localhost:5173)."
     }
   }
 }

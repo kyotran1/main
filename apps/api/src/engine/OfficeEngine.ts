@@ -17,6 +17,7 @@ import { ApiError, notFound } from '../errors.js';
 import { daysFromNow, newId, nowIso } from '../ids.js';
 import type { OfficeStore } from '../store/OfficeStore.js';
 import type { AgentBrain, BrainContext } from './brain.js';
+import { MockBrain } from './providers/mock.js';
 
 export interface OfficeEngineOptions {
   provider: AgentBrain;
@@ -50,6 +51,10 @@ const ROUTINE_TASKS: ReadonlyArray<{ title: string; description: string; departm
 export class OfficeEngine {
   private timer: NodeJS.Timeout | null = null;
   private tickCount = 0;
+  /** Chặn hai nhịp mô phỏng chạy chồng khi bộ não AI phản hồi chậm hơn chu kỳ. */
+  private ticking = false;
+  /** Bộ não cục bộ dự phòng – dùng khi Owner chọn chế độ Local mà provider đang là đám mây. */
+  private readonly localFallback: AgentBrain = new MockBrain();
   private readonly provider: AgentBrain;
   private readonly simulation: boolean;
   private readonly tickMs: number;
@@ -81,6 +86,18 @@ export class OfficeEngine {
     return this.provider.name;
   }
 
+  /**
+   * Bộ não đang có hiệu lực theo Chế độ vận hành (Execution Mode) Owner đã chọn:
+   * - local  → KHÔNG gọi mô hình đám mây; nếu provider là cloud thì dùng bộ não cục bộ dự phòng.
+   * - cloud / hybrid → dùng provider đã cấu hình (tự quay về mock khi không khả dụng).
+   * Đảm bảo lời hứa "không gửi dữ liệu ra ngoài ở chế độ Local" trong Cài đặt.
+   */
+  activeBrain(): AgentBrain {
+    const mode = this.store.getSnapshot().company.executionMode;
+    if (mode === 'local' && this.provider.mode === 'cloud') return this.localFallback;
+    return this.provider;
+  }
+
   // ───────────────────────── Lệnh từ Owner ─────────────────────────
 
   /** Owner giao yêu cầu cho AI CEO → kế hoạch + công việc con + yêu cầu phê duyệt. */
@@ -96,7 +113,7 @@ export class OfficeEngine {
     this.setAgentState(ceo.id, { status: 'running', location: { kind: 'meeting_room' } });
     this.setAgentState(pm.id, { status: 'running', location: { kind: 'meeting_room' } });
 
-    const draft = await this.provider.planRequest({ text, priority }, this.brainContext());
+    const draft = await this.activeBrain().planRequest({ text, priority }, this.brainContext());
     const now = nowIso();
 
     const project = this.store.upsertProject({
@@ -325,7 +342,7 @@ export class OfficeEngine {
     this.store.upsertAgent({ ...agent, status: 'idle', location: { kind: 'desk' } });
     const queued = this.store
       .getSnapshot()
-      .tasks.filter((t) => t.assigneeId === agentId && t.status === 'pending' && t.stage === 'execute')
+      .tasks.filter((t) => t.assigneeId === agentId && t.status === 'pending' && (t.stage === 'execute' || t.stage === 'assign') && !this.awaitsPlanApproval(t))
       .map((t) => t.id);
     this.startQueuedTasks(queued);
     this.activity({ agentId, kind: 'agent_resumed', templateKey: 'agent_resumed', params: { agent: agentId } });
@@ -339,7 +356,7 @@ export class OfficeEngine {
     const replyText =
       agent.status === 'paused'
         ? 'Tôi đang ở trạng thái tạm dừng (Paused) theo yêu cầu của bạn. Hãy chọn "Tiếp tục" để tôi quay lại xử lý công việc và trả lời chi tiết.'
-        : await this.provider.replyToOwner(agent, text, { ...this.brainContext(), agentTasks });
+        : await this.activeBrain().replyToOwner(agent, text, { ...this.brainContext(), agentTasks });
     const reply = this.store.addMessage({ id: newId('msg'), agentId, from: 'agent', text: replyText, createdAt: nowIso() });
     this.activity({ agentId, kind: 'agent_message', templateKey: 'agent_message', params: { agent: agentId } });
     return { owner, reply };
@@ -357,6 +374,16 @@ export class OfficeEngine {
 
   /** Một nhịp mô phỏng: chuyên viên tiến hành công việc, QA kiểm định, báo cáo hoàn tất. */
   async tick(): Promise<void> {
+    if (this.ticking) return;
+    this.ticking = true;
+    try {
+      await this.runTick();
+    } finally {
+      this.ticking = false;
+    }
+  }
+
+  private async runTick(): Promise<void> {
     this.tickCount += 1;
     const snapshot = this.store.getSnapshot();
     const now = Date.now();
@@ -384,7 +411,15 @@ export class OfficeEngine {
     }
 
     // Khởi động công việc đang xếp hàng khi chuyên viên rảnh.
-    const queued = this.store.getSnapshot().tasks.filter((t) => t.status === 'not_started' && t.assigneeId && t.stage !== 'receive');
+    // Khởi động việc đang xếp hàng: chưa bắt đầu, hoặc đang chờ vì hết chỗ (pending/assign) nhưng kế hoạch cha đã được duyệt.
+    const queued = this.store
+      .getSnapshot()
+      .tasks.filter(
+        (t) =>
+          t.assigneeId &&
+          t.stage !== 'receive' &&
+          (t.status === 'not_started' || (t.status === 'pending' && t.stage === 'assign' && !this.awaitsPlanApproval(t))),
+      );
     this.startQueuedTasks(queued.map((t) => t.id));
 
     this.generateRoutineWork();
@@ -443,7 +478,11 @@ export class OfficeEngine {
 
   private async completeReview(task: Task): Promise<void> {
     const qa = this.store.agentsByRole('ai_qa_reviewer')[0];
-    const verdict = await this.provider.reviewTask(task, this.brainContext());
+    const verdict = await this.activeBrain().reviewTask(task, this.brainContext());
+    // Kiểm tra lại trạng thái sau khi chờ bộ não: công việc có thể đã được xử lý/đổi bởi lệnh khác.
+    const current = this.store.getTask(task.id);
+    if (!current || current.status !== 'in_review') return;
+    task = current;
     if (verdict.passed) {
       const done = this.store.upsertTask({ ...task, status: 'completed', stage: 'report', progress: 100, completedAt: nowIso() });
       if (qa) this.activity({ agentId: qa.id, taskId: task.id, kind: 'review_passed', templateKey: 'review_passed', params: { agent: qa.id, title: done.title } });
@@ -560,6 +599,13 @@ export class OfficeEngine {
       default:
         break;
     }
+  }
+
+  /** Công việc con còn chờ Owner duyệt kế hoạch cha thì chưa được khởi động. */
+  private awaitsPlanApproval(task: Task): boolean {
+    if (!task.parentId) return false;
+    const parent = this.store.getTask(task.parentId);
+    return !!parent && (parent.status === 'needs_approval' || parent.status === 'pending' || parent.status === 'blocked');
   }
 
   private pickAssignee(departmentId: DepartmentId, role: Agent['role']): Agent | undefined {

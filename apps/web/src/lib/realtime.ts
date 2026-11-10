@@ -2,6 +2,7 @@ import { io, type Socket } from 'socket.io-client';
 import { SOCKET_EVENT_NAME, SOCKET_HELLO_NAME, type OfficeEvent } from '@ads-nolimit/shared';
 import { useOfficeStore } from '@/store/officeStore';
 import { api } from './api';
+import { getSocketUrl } from './env';
 
 /**
  * Kết nối thời gian thực với backend. Backend là nguồn dữ liệu duy nhất:
@@ -17,12 +18,19 @@ export function startRealtime(): void {
   const store = useOfficeStore.getState();
   store.setConnection('connecting');
 
+  // Snapshot HTTP ban đầu chỉ dùng khi store chưa có dữ liệu hoặc không cũ hơn dữ liệu socket đã đưa về
+  // (socket có thể kết nối và phát sự kiện trước khi HTTP trả lời). Snapshot từ socket luôn là nguồn có thẩm quyền.
   void api
     .getState()
-    .then((snapshot) => useOfficeStore.getState().hydrate(snapshot))
-    .catch((err: Error) => useOfficeStore.getState().setConnection('offline', err.message));
+    .then((snapshot) => {
+      const s = useOfficeStore.getState();
+      if (!s.hydrated || snapshot.revision >= s.revision) s.hydrate(snapshot);
+    })
+    .catch((err: Error) => {
+      if (!useOfficeStore.getState().hydrated) useOfficeStore.getState().setConnection('offline', err.message);
+    });
 
-  socket = io(import.meta.env.VITE_API_BASE_URL ?? '/', {
+  socket = io(getSocketUrl(), {
     path: '/socket.io',
     transports: ['websocket', 'polling'],
     reconnection: true,
