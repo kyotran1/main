@@ -5,7 +5,7 @@
 > Quy tắc: một thuật ngữ tiếng Anh chỉ có **một** bản dịch tiếng Việt chuẩn trên toàn hệ thống (Web, Desktop, báo cáo của AI Agent).
 > Khi hiển thị: tiếng Việt là nhãn chính, thuật ngữ tiếng Anh đi kèm (dạng `EN – VI` hoặc dòng phụ/tooltip).
 
-Tổng số thuật ngữ: **151**.
+Tổng số thuật ngữ: **202**.
 
 ## Chức năng / phân hệ (Modules)
 
@@ -50,6 +50,32 @@ Tổng số thuật ngữ: **151**.
 | `module.due_date` | Due Date | Hạn hoàn thành |  |  |
 | `module.department` | Department | Phòng ban |  |  |
 | `module.language` | Language | Ngôn ngữ |  |  |
+| `module.decision_history` | Decision History | Lịch sử quyết định |  |  |
+| `module.governance_rules` | Governance Rules | Quy tắc quản trị |  |  |
+| `module.pipeline` | Pipeline | Sơ đồ quy trình |  |  |
+| `module.recent_flow` | Recent Flow | Luồng gần đây |  |  |
+| `module.virtual_office_mini` | Virtual Office 3D (Mini View) | Văn phòng ảo 3D (Thu nhỏ) |  |  |
+| `module.progress_by_department` | Progress by Department | Tiến độ theo phòng ban |  |  |
+| `module.reporting_period` | Reporting Period | Kỳ báo cáo |  |  |
+| `module.department_details` | Department Details | Chi tiết phòng ban |  |  |
+| `module.current_task` | Current Task | Công việc hiện tại |  |  |
+| `module.status_legend` | Status Legend | Chú giải trạng thái |  |  |
+| `module.legend` | Legend | Chú thích |  |  |
+| `module.labels` | Labels | Nhãn hiển thị |  |  |
+| `module.kanban_board` | Kanban Board | Bảng Kanban (thẻ theo trạng thái) | Bảng Kanban |  |
+| `module.table_view` | Table View | Dạng bảng |  |  |
+| `module.tree_view` | Tree View | Dạng cây tổ chức | Dạng cây |  |
+| `module.by_department` | By Department | Theo phòng ban |  |  |
+| `module.task_details` | Task Details | Chi tiết công việc |  |  |
+| `module.agent_profile` | AI Agent Profile | Hồ sơ nhân sự AI |  |  |
+| `module.quick_chat` | Quick Chat | Hội thoại nhanh |  |  |
+| `module.quick_actions` | Quick Actions | Thao tác nhanh |  |  |
+| `module.timeline` | Timeline | Mốc thời gian |  |  |
+| `module.objective` | Objective | Mục tiêu |  |  |
+| `module.project_owner` | Project Owner | Chủ trì dự án |  |  |
+| `module.event_type` | Event Type | Loại sự kiện |  |  |
+| `module.department_summary` | Department Summary | Tổng hợp theo phòng ban |  |  |
+| `module.coo_insights` | AI COO Insights | Nhận định của AI COO |  |  |
 
 ## Chức vụ nhân sự AI (Agent Roles)
 
@@ -160,6 +186,16 @@ Tổng số thuật ngữ: **151**.
 | `metric.progress` | Progress | Tiến độ |  |  |
 | `metric.completion_rate` | Completion Rate | Tỷ lệ hoàn thành |  |  |
 | `metric.budget` | Budget | Ngân sách |  |  |
+| `metric.vs_previous_period` | vs previous period | so với kỳ trước |  |  |
+| `metric.running_tasks` | Running Tasks | Công việc đang chạy |  |  |
+| `metric.open_tasks` | Open Tasks | Việc đang mở |  |  |
+| `metric.tasks_completed` | Tasks Completed | Việc đã hoàn thành |  |  |
+| `metric.workload` | Workload | Khối lượng công việc |  |  |
+| `metric.average_progress` | Average Progress | Tiến độ trung bình |  |  |
+| `metric.levels` | Levels | Cấp bậc |  |  |
+| `metric.decision_note` | Decision Note | Ghi chú quyết định |  |  |
+| `metric.requested_by` | Requested by | Đề xuất bởi |  |  |
+| `metric.linked_task` | Linked Task | Công việc liên quan |  |  |
 
 ## Thuật ngữ kỹ thuật (Technical)
 
@@ -189,6 +225,12 @@ Tổng số thuật ngữ: **151**.
 | `tech.offline` | Offline | Ngoại tuyến |  |  |
 | `tech.connected` | Connected | Đã kết nối |  |  |
 | `tech.disconnected` | Disconnected | Chưa kết nối |  |  |
+| `tech.live` | Live | Đang cập nhật trực tiếp | Trực tiếp |  |
+| `tech.reports_to` | Reports to | Báo cáo cho |  |  |
+| `tech.parent_task` | Parent Task | Công việc cha |  |  |
+| `tech.subtask` | Subtask | Công việc con |  |  |
+| `tech.tags` | Tags | Thẻ phân loại |  |  |
+| `tech.focus_today` | Focus Today | Trọng tâm hôm nay |  |  |
 
 ## Chế độ vận hành (Execution Mode)
 
@@ -221,6 +263,15 @@ Tổng số thuật ngữ: **151**.
 | `action.message_agent` | Message Agent | Nhắn cho nhân sự AI |  |  |
 | `action.focus_camera` | Focus Camera | Đưa camera tới |  |  |
 | `action.reset_view` | Reset View | Đặt lại góc nhìn |  |  |
+| `action.exit_full_screen` | Exit Full Screen | Thoát toàn màn hình |  |  |
+| `action.filter_by_department` | Filter by Department | Lọc theo phòng ban |  |  |
+| `action.load_more` | Load More | Tải thêm |  |  |
+| `action.clear_filters` | Clear Filters | Xóa bộ lọc |  |  |
+| `action.mark_completed` | Mark as Completed | Đánh dấu hoàn thành |  |  |
+| `action.collapse_all` | Collapse All | Thu gọn tất cả |  |  |
+| `action.expand_all` | Expand All | Mở rộng tất cả |  |  |
+| `action.zoom` | Zoom | Thu phóng |  |  |
+| `action.sort` | Sort | Sắp xếp |  |  |
 
 ## Nhóm công cụ kết nối (Connector Categories)
 
