@@ -230,3 +230,38 @@ describe('OfficeEngine – vòng review 2: hàng đợi quá hạn, đọc lại
     expect(store.getTask(task.id)?.status).toBe('in_progress');
   });
 });
+
+describe('OfficeEngine – vòng review 3: QA tạm dừng, đếm việc hoàn thành, dự án mở lại', () => {
+  it('tạm dừng QA thì không kiểm định và không gọi bộ não', async () => {
+    const store = new OfficeStore(createSeedSnapshot());
+    let reviews = 0;
+    const brain = new MockBrain();
+    brain.reviewTask = async () => { reviews += 1; return { passed: true, note: 'ok' }; };
+    const engine = new OfficeEngine(store, { provider: brain, simulation: false, random: () => 0.01 });
+    engine.pauseAgent('agent_qa');
+    await engine.tick();
+    expect(reviews).toBe(0);
+    expect(store.getTask('task_qa_landing')?.status).toBe('in_review');
+    engine.resumeAgent('agent_qa');
+    await engine.tick();
+    expect(reviews).toBe(1);
+  });
+
+  it('hoàn thành thủ công cộng đúng một lần vào tasksCompleted của người phụ trách', () => {
+    const { store, engine } = setup();
+    const before = store.getAgent('agent_spec_content')!.tasksCompleted;
+    const task = engine.createTask({ title: 'Bài viết giới thiệu', assigneeId: 'agent_spec_content' });
+    engine.updateTask(task.id, { status: 'completed' });
+    engine.updateTask(task.id, { status: 'completed' });
+    expect(store.getAgent('agent_spec_content')!.tasksCompleted).toBe(before + 1);
+  });
+
+  it('dự án đã hoàn thành quay lại đang triển khai khi một việc được mở lại', () => {
+    const { store, engine } = setup();
+    const tasks = store.getSnapshot().tasks.filter((t) => t.projectId === 'proj_q4_launch');
+    for (const t of tasks) if (t.status !== 'completed') engine.updateTask(t.id, { status: 'completed' });
+    expect(store.getProject('proj_q4_launch')!.status).toBe('completed');
+    engine.updateTask('task_content_batch', { status: 'in_progress' });
+    expect(store.getProject('proj_q4_launch')!.status).toBe('active');
+  });
+});

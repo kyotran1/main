@@ -60,6 +60,8 @@ export function DrawerShell({ open, onClose, label, closeLabel, header, accent =
     };
     window.addEventListener('keydown', onKey);
     pushDrawer(id);
+    // Ngăn được gắn ở AppShell, nằm ngoài phần tử đang toàn màn hình (vd: cảnh 3D) → thoát toàn màn hình để ngăn hiển thị được.
+    if (document.fullscreenElement) void document.exitFullscreen().catch(() => undefined);
     // Đưa tiêu điểm vào ngăn để bàn phím/đọc màn hình bắt đầu từ đây.
     panelRef.current?.focus({ preventScroll: true });
     return () => {

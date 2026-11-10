@@ -262,6 +262,7 @@ export class OfficeEngine {
     if (patch.progress !== undefined) next.progress = Math.max(0, Math.min(100, Math.round(patch.progress)));
     if (patch.status) this.applyStatus(next, patch.status);
     const saved = this.store.upsertTask(next);
+    if (patch.status === 'completed' && task.status !== 'completed') this.creditCompletion(saved);
     if (patch.status === 'completed' && saved.assigneeId) {
       this.activity({ agentId: saved.assigneeId, taskId: saved.id, kind: 'task_completed', templateKey: 'task_completed', params: { agent: saved.assigneeId, title: saved.title } });
     } else if (patch.status === 'in_progress' && saved.assigneeId && task.status !== 'in_progress') {
@@ -311,7 +312,8 @@ export class OfficeEngine {
           const snapshot = this.store.getSnapshot();
           snapshot.connectors = snapshot.connectors.map((c) => (connectorIds.includes(c.id) ? { ...c, connected: true, lastSyncAt: nowIso() } : c));
         } else {
-          this.store.upsertTask({ ...task, status: 'completed', stage: 'report', progress: 100, completedAt: nowIso() });
+          const done = this.store.upsertTask({ ...task, status: 'completed', stage: 'report', progress: 100, completedAt: nowIso() });
+          if (task.status !== 'completed') this.creditCompletion(done);
         }
       }
       this.notifyOwnerFromCeo(`Cảm ơn bạn đã duyệt "${approval.title}". Tôi đã kích hoạt các công việc liên quan và sẽ báo cáo tiến độ định kỳ.`);
@@ -409,7 +411,9 @@ export class OfficeEngine {
           }
         }
       } else if (task.status === 'in_review') {
-        if (this.random() < 0.12) await this.completeReview(task);
+        // Chỉ kiểm định khi có QA Reviewer sẵn sàng – tạm dừng QA thì việc kiểm định cũng dừng.
+        const qaAvailable = this.store.agentsByRole('ai_qa_reviewer').some((a) => a.status !== 'paused' && a.status !== 'error');
+        if (qaAvailable && this.random() < 0.12) await this.completeReview(task);
       } else if (task.status !== 'completed' && task.dueAt && new Date(task.dueAt).getTime() < now && task.status !== 'overdue' && task.status !== 'needs_approval' && task.status !== 'blocked') {
         this.store.upsertTask({ ...task, status: 'overdue' });
       }
@@ -494,10 +498,7 @@ export class OfficeEngine {
     if (verdict.passed) {
       const done = this.store.upsertTask({ ...task, status: 'completed', stage: 'report', progress: 100, completedAt: nowIso() });
       if (qa) this.activity({ agentId: qa.id, taskId: task.id, kind: 'review_passed', templateKey: 'review_passed', params: { agent: qa.id, title: done.title } });
-      if (task.assigneeId) {
-        const assignee = this.store.getAgent(task.assigneeId);
-        if (assignee) this.store.upsertAgent({ ...assignee, tasksCompleted: assignee.tasksCompleted + 1 });
-      }
+      this.creditCompletion(done);
     } else {
       const redo = this.store.upsertTask({ ...task, status: 'in_progress', stage: 'execute', progress: Math.max(40, task.progress - 35) });
       if (qa) this.activity({ agentId: qa.id, taskId: task.id, kind: 'review_failed', templateKey: 'review_failed', params: { agent: qa.id, title: redo.title } });
@@ -578,7 +579,12 @@ export class OfficeEngine {
     if (!tasks.length) return;
     const progress = Math.round(tasks.reduce((sum, t) => sum + (t.status === 'completed' ? 100 : t.progress), 0) / tasks.length);
     const allDone = tasks.every((t) => t.status === 'completed');
-    const status = allDone ? 'completed' : project.status === 'planning' && tasks.some((t) => t.status === 'in_progress') ? 'active' : project.status;
+    // Dự án đã hoàn thành nhưng có việc được mở lại → quay về đang triển khai.
+    const status = allDone
+      ? 'completed'
+      : project.status === 'completed' || (project.status === 'planning' && tasks.some((t) => t.status === 'in_progress'))
+        ? 'active'
+        : project.status;
     if (progress !== project.progress || status !== project.status) this.store.upsertProject({ ...project, progress, status });
   }
 
@@ -608,6 +614,13 @@ export class OfficeEngine {
       default:
         break;
     }
+  }
+
+  /** Cộng một việc hoàn thành cho người phụ trách (gọi đúng một lần tại thời điểm chuyển sang completed). */
+  private creditCompletion(task: Task): void {
+    if (!task.assigneeId) return;
+    const assignee = this.store.getAgent(task.assigneeId);
+    if (assignee) this.store.upsertAgent({ ...assignee, tasksCompleted: assignee.tasksCompleted + 1 });
   }
 
   /** Công việc con còn chờ Owner duyệt kế hoạch cha thì chưa được khởi động. */
