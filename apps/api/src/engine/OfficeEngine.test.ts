@@ -63,7 +63,7 @@ describe('OfficeEngine – mô hình AI CEO', () => {
     const { store, engine } = setup(() => 0.99);
     const task = engine.createTask({ title: 'Viết 3 bài giới thiệu dịch vụ', assigneeId: 'agent_spec_content', priority: 'high' });
     expect(task.status).toBe('in_progress');
-    for (let i = 0; i < 12; i++) await engine.tick();
+    for (let i = 0; i < 30; i++) await engine.tick();
     const reviewed = store.getTask(task.id)!;
     expect(['in_review', 'completed']).toContain(reviewed.status);
     if (reviewed.status === 'in_review') {

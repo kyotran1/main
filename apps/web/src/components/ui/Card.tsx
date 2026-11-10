@@ -48,7 +48,7 @@ export function CardHeader({ icon, title, subtitle, action, className }: CardHea
           </span>
         ) : null}
         <div className="min-w-0">
-          <h2 className="truncate text-[15px] font-semibold leading-tight text-text md:text-base">{title}</h2>
+          <h2 className="line-clamp-2 text-[15px] font-semibold leading-tight text-text md:text-base">{title}</h2>
           {subtitle ? <p className="truncate text-xs text-text-muted">{subtitle}</p> : null}
         </div>
       </div>

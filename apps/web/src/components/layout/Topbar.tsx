@@ -91,11 +91,11 @@ export function Topbar({ onOpenMenu }: { onOpenMenu: () => void }) {
           <span className="flex size-8 items-center justify-center rounded-full bg-gradient-to-br from-brand-cyan to-brand-violet text-xs font-bold text-white">
             {(company?.ownerName ?? 'O').slice(0, 1).toUpperCase()}
           </span>
-          <span className="term-stack hidden sm:inline-flex">
+          <span className="term-stack hidden lg:inline-flex">
             <span className="term-primary text-xs">{t('common:owner.title')}</span>
             <span className="term-secondary">{t('common:owner.secondary')}</span>
           </span>
-          <ChevronDown className="hidden size-4 text-text-dim sm:block" />
+          <ChevronDown className="hidden size-4 text-text-dim lg:block" />
         </Link>
       </div>
     </header>

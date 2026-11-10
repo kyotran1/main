@@ -31,7 +31,7 @@ export const TASK_STATUS_COLOR_VAR: Record<TaskStatus, string> = {
   needs_approval: 'var(--color-status-approval)',
   in_review: 'var(--color-status-review)',
   completed: 'var(--color-status-done)',
-  blocked: 'var(--color-status-error)',
+  blocked: 'var(--color-brand-orange)',
   overdue: 'var(--color-status-error)',
 };
 

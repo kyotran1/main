@@ -30,6 +30,18 @@ export interface OfficeEngineOptions {
 const OWNER_ID = 'owner';
 const MAX_CONCURRENT_PER_AGENT = 2;
 
+/** Mẫu công việc thường kỳ của công ty marketing (dữ liệu tiếng Việt do PM tạo – không phải bản dịch giao diện). */
+const ROUTINE_TASKS: ReadonlyArray<{ title: string; description: string; departmentId: DepartmentId; priority: TaskPriority }> = [
+  { title: 'Tối ưu bộ quảng cáo đang chạy theo chi phí trên mỗi khách hàng tiềm năng', description: 'Rà soát CPL (chi phí trên mỗi khách hàng tiềm năng) từng nhóm quảng cáo, tắt nhóm kém hiệu quả, tăng ngân sách nhóm tốt.', departmentId: 'marketing', priority: 'high' },
+  { title: 'Soạn 5 bài đăng cho lịch nội dung tuần tới', description: 'Bám theo thông điệp chủ đạo của chiến dịch và hướng dẫn giọng điệu thương hiệu.', departmentId: 'creative_media', priority: 'medium' },
+  { title: 'Phản hồi bình luận và tin nhắn khách hàng trên các kênh mạng xã hội', description: 'Phân loại câu hỏi, chuyển khách hàng tiềm năng sang CRM, ghi nhận phản hồi tiêu cực.', departmentId: 'social_community', priority: 'medium' },
+  { title: 'Cập nhật bảng theo dõi KPI tuần và phát hiện bất thường', description: 'So sánh với tuần trước, đánh dấu chỉ số lệch trên 15% để báo cáo AI COO.', departmentId: 'data_analytics', priority: 'medium' },
+  { title: 'Chấm điểm và phân loại khách hàng tiềm năng mới trong CRM', description: 'Áp dụng tiêu chí chấm điểm, giao khách hàng nóng cho kịch bản tư vấn.', departmentId: 'sales_crm', priority: 'high' },
+  { title: 'Kiểm tra tình trạng các kết nối tự động và webhook', description: 'Chạy kiểm tra sức khỏe, xử lý lỗi đồng bộ, ghi nhật ký kỹ thuật.', departmentId: 'tech_automation', priority: 'low' },
+  { title: 'Dựng kịch bản video ngắn giới thiệu dịch vụ mới', description: 'Kịch bản 30 giây, 3 phiên bản thông điệp để thử nghiệm A/B.', departmentId: 'creative_media', priority: 'medium' },
+  { title: 'Phân tích đối thủ: thông điệp và ưu đãi trong tuần', description: 'Tổng hợp 5 đối thủ chính, đề xuất phản ứng cho chiến dịch hiện tại.', departmentId: 'marketing', priority: 'low' },
+];
+
 /**
  * ENGINE ĐIỀU PHỐI CÔNG TY AI.
  * Thực thi mô hình AI CEO và quy trình: Tiếp nhận → Lập kế hoạch → Phân công → Thực thi → Kiểm định → Báo cáo.
@@ -49,7 +61,7 @@ export class OfficeEngine {
   ) {
     this.provider = options.provider;
     this.simulation = options.simulation ?? true;
-    this.tickMs = options.tickMs ?? 4000;
+    this.tickMs = options.tickMs ?? 5000;
     this.random = options.random ?? Math.random;
   }
 
@@ -353,7 +365,8 @@ export class OfficeEngine {
       if (task.status === 'in_progress' && task.assigneeId) {
         const agent = this.store.getAgent(task.assigneeId);
         if (!agent || agent.status === 'paused' || agent.status === 'error') continue;
-        const step = 3 + Math.floor(this.random() * 9);
+        // Bước tiến chậm (1–4%/nhịp) để văn phòng luôn có việc đang chạy; ưu tiên cao nhanh hơn một chút.
+        const step = 1 + Math.floor(this.random() * (task.priority === 'high' ? 4 : 3));
         const progress = Math.min(100, task.progress + step);
         if (progress >= 100) {
           this.moveToReview(task);
@@ -364,7 +377,7 @@ export class OfficeEngine {
           }
         }
       } else if (task.status === 'in_review') {
-        if (this.random() < 0.35) await this.completeReview(task);
+        if (this.random() < 0.12) await this.completeReview(task);
       } else if (task.status !== 'completed' && task.dueAt && new Date(task.dueAt).getTime() < now && task.status !== 'overdue' && task.status !== 'needs_approval' && task.status !== 'blocked') {
         this.store.upsertTask({ ...task, status: 'overdue' });
       }
@@ -374,8 +387,46 @@ export class OfficeEngine {
     const queued = this.store.getSnapshot().tasks.filter((t) => t.status === 'not_started' && t.assigneeId && t.stage !== 'receive');
     this.startQueuedTasks(queued.map((t) => t.id));
 
+    this.generateRoutineWork();
+
     for (const agent of this.store.getSnapshot().agents) this.refreshAgent(agent.id);
     for (const project of this.store.getSnapshot().projects) this.refreshProjectProgress(project.id);
+  }
+
+  /**
+   * Sinh công việc thường kỳ khi khối lượng việc đang chạy xuống thấp – mô phỏng một công ty
+   * marketing luôn có việc (lịch đăng, tối ưu quảng cáo, báo cáo tuần…). Chỉ chạy ở chế độ mô phỏng,
+   * tối đa một việc mỗi 12 nhịp (~1 phút) và chỉ khi còn dưới 3 việc đang thực hiện.
+   */
+  private generateRoutineWork(): void {
+    if (!this.simulation || this.tickCount % 12 !== 0) return;
+    const tasks = this.store.getSnapshot().tasks;
+    const running = tasks.filter((t) => t.status === 'in_progress').length;
+    if (running >= 3) return;
+    const pm = this.store.agentsByRole('ai_project_manager').find((a) => a.status !== 'paused');
+    if (!pm) return;
+    const template = ROUTINE_TASKS[Math.floor(this.random() * ROUTINE_TASKS.length)]!;
+    if (tasks.some((t) => t.title === template.title && t.status !== 'completed')) return;
+    const assignee = this.pickAssignee(template.departmentId, 'ai_specialist');
+    if (!assignee) return;
+    const now = nowIso();
+    const task = this.store.upsertTask({
+      id: newId('task'),
+      title: template.title,
+      description: template.description,
+      status: 'not_started',
+      stage: 'assign',
+      priority: template.priority,
+      assigneeId: assignee.id,
+      requesterId: pm.id,
+      departmentId: template.departmentId,
+      progress: 0,
+      dueAt: daysFromNow(2 + Math.floor(this.random() * 5)),
+      createdAt: now,
+      updatedAt: now,
+      tags: ['thường kỳ'],
+    });
+    this.activity({ agentId: pm.id, taskId: task.id, kind: 'tasks_created', templateKey: 'tasks_created', params: { agent: pm.id, title: task.title, count: 1 } });
   }
 
   private moveToReview(task: Task): void {

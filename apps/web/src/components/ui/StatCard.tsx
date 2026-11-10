@@ -36,7 +36,7 @@ export function StatCard({ icon, value, label, secondary, accent = 'cyan', color
           <span className="block text-2xl font-extrabold leading-none tracking-tight md:text-[28px]" style={{ color }}>
             {value}
           </span>
-          <span className="mt-1 block truncate text-sm font-semibold text-text">{label}</span>
+          <span className="mt-1 line-clamp-2 text-sm font-semibold leading-tight text-text">{label}</span>
           {secondary ? <span className="block truncate text-[11px] text-text-muted">{secondary}</span> : null}
         </span>
         {trend ? <span className="shrink-0 self-start">{trend}</span> : null}
