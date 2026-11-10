@@ -73,7 +73,10 @@ describe('OfficeEngine – mô hình AI CEO', () => {
       expect(reviewing.map((t) => t.departmentId)).toContain((qa.location as { departmentId: string }).departmentId);
       expect(reviewing.map((t) => t.id)).toContain(qa.currentTaskId);
     }
-    const engine2 = new OfficeEngine(store, { provider: new MockBrain(), simulation: false, random: () => 0.1 });
+    // Kiểm định luôn đạt để kết quả xác định (MockBrain.reviewTask dùng Math.random để mô phỏng tỷ lệ đạt).
+    const alwaysPass = new MockBrain();
+    alwaysPass.reviewTask = async () => ({ passed: true, note: 'Đạt yêu cầu' });
+    const engine2 = new OfficeEngine(store, { provider: alwaysPass, simulation: false, random: () => 0.1 });
     for (let i = 0; i < 6; i++) await engine2.tick();
     expect(store.getTask(task.id)?.status).toBe('completed');
     expect(store.getSnapshot().activities.some((a) => a.kind === 'review_passed' && a.taskId === task.id)).toBe(true);
@@ -184,5 +187,46 @@ describe('OfficeEngine – phản hồi review: đồng thời, hàng đợi, ch
     engine.updateSettings({ executionMode: 'hybrid' });
     await engine.sendMessage('agent_pm', 'Tiến độ thế nào?');
     expect(cloudCalls).toBe(1);
+  });
+});
+
+describe('OfficeEngine – vòng review 2: hàng đợi quá hạn, đọc lại công việc, giao việc, .env', () => {
+  it('việc con quá hạn khi kế hoạch chưa duyệt vẫn được khởi động sau khi duyệt', async () => {
+    const { store, engine } = setup(() => 0.99);
+    const { planTask, approval } = await engine.handleOwnerRequest('Kế hoạch quảng cáo ngắn hạn.');
+    // Đẩy hạn của mọi việc con về quá khứ rồi chạy một nhịp → chúng bị đánh dấu quá hạn.
+    for (const c of store.getSnapshot().tasks.filter((t) => t.parentId === planTask.id)) {
+      store.upsertTask({ ...c, dueAt: new Date(Date.now() - 3_600_000).toISOString() });
+    }
+    await engine.tick();
+    const children = () => store.getSnapshot().tasks.filter((t) => t.parentId === planTask.id);
+    expect(children().some((t) => t.status === 'overdue')).toBe(true);
+    engine.decideApproval(approval!.id, 'approve');
+    await engine.tick();
+    expect(children().some((t) => t.status === 'in_progress')).toBe(true);
+  });
+
+  it('lệnh của Owner trong lúc chờ kiểm định không bị nhịp mô phỏng ghi đè', async () => {
+    const store = new OfficeStore(createSeedSnapshot());
+    let release: (() => void) | undefined;
+    const slow = new MockBrain();
+    slow.reviewTask = () => new Promise((r) => { release = () => r({ passed: true, note: 'ok' }); });
+    const engine = new OfficeEngine(store, { provider: slow, simulation: false, random: () => 0.01 });
+    const pending = engine.tick();
+    engine.updateTask('task_crm_flow', { status: 'completed' });
+    release!();
+    await pending;
+    expect(store.getTask('task_crm_flow')?.status).toBe('completed');
+    expect(store.getTask('task_crm_flow')?.progress).toBe(100);
+  });
+
+  it('giao người phụ trách cho việc chưa bắt đầu đưa việc vào hàng đợi và được khởi động', async () => {
+    const { store, engine } = setup(() => 0.99);
+    const task = engine.createTask({ title: 'Việc chưa có người phụ trách' });
+    expect(task.stage).toBe('receive');
+    engine.updateTask(task.id, { assigneeId: 'agent_spec_data' });
+    expect(store.getTask(task.id)?.stage).toBe('assign');
+    await engine.tick();
+    expect(store.getTask(task.id)?.status).toBe('in_progress');
   });
 });

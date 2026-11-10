@@ -18,8 +18,10 @@ export const i18n = i18next.createInstance();
 
 export async function setupI18n(): Promise<typeof i18n> {
   i18n.use(LanguageDetector).use(initReactI18next);
+  // Đọc lựa chọn đã lưu trước khi khởi tạo: i18next ưu tiên `lng` tường minh hơn bộ dò, nên phải truyền đúng giá trị đã lưu.
   await initI18n({
     instance: i18n,
+    lng: readSavedLocale(),
     overrides: {
       detection: {
         order: ['localStorage'],
@@ -44,6 +46,15 @@ export async function changeLocale(locale: Locale): Promise<void> {
     window.localStorage.setItem(LOCALE_STORAGE_KEY, locale);
   } catch {
     /* localStorage có thể bị chặn – bỏ qua */
+  }
+}
+
+function readSavedLocale(): Locale {
+  try {
+    const saved = window.localStorage.getItem(LOCALE_STORAGE_KEY);
+    return saved ? normalizeLocale(saved) : DEFAULT_LOCALE;
+  } catch {
+    return DEFAULT_LOCALE;
   }
 }
 

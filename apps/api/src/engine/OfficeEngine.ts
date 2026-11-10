@@ -252,6 +252,8 @@ export class OfficeEngine {
         this.assertNotPaused(agent);
         next.assigneeId = agent.id;
         next.departmentId = agent.departmentId;
+        // Việc mới được giao mà chưa bắt đầu → đưa vào hàng đợi phân công để nhịp mô phỏng khởi động.
+        if (next.stage === 'receive' && (next.status === 'not_started' || next.status === 'pending')) next.stage = 'assign';
       }
     }
     if (patch.priority) next.priority = patch.priority;
@@ -342,7 +344,7 @@ export class OfficeEngine {
     this.store.upsertAgent({ ...agent, status: 'idle', location: { kind: 'desk' } });
     const queued = this.store
       .getSnapshot()
-      .tasks.filter((t) => t.assigneeId === agentId && t.status === 'pending' && (t.stage === 'execute' || t.stage === 'assign') && !this.awaitsPlanApproval(t))
+      .tasks.filter((t) => t.assigneeId === agentId && (t.status === 'pending' || t.status === 'overdue') && (t.stage === 'execute' || t.stage === 'assign') && !this.awaitsPlanApproval(t))
       .map((t) => t.id);
     this.startQueuedTasks(queued);
     this.activity({ agentId, kind: 'agent_resumed', templateKey: 'agent_resumed', params: { agent: agentId } });
@@ -388,7 +390,10 @@ export class OfficeEngine {
     const snapshot = this.store.getSnapshot();
     const now = Date.now();
 
-    for (const task of snapshot.tasks) {
+    // Đọc lại từng công việc theo id ở mỗi vòng: lệnh của Owner có thể đã thay đổi nó trong lúc chờ bộ não kiểm định.
+    for (const taskId of snapshot.tasks.map((t) => t.id)) {
+      const task = this.store.getTask(taskId);
+      if (!task) continue;
       if (task.status === 'in_progress' && task.assigneeId) {
         const agent = this.store.getAgent(task.assigneeId);
         if (!agent || agent.status === 'paused' || agent.status === 'error') continue;
@@ -418,7 +423,10 @@ export class OfficeEngine {
         (t) =>
           t.assigneeId &&
           t.stage !== 'receive' &&
-          (t.status === 'not_started' || (t.status === 'pending' && t.stage === 'assign' && !this.awaitsPlanApproval(t))),
+          (t.status === 'not_started' ||
+            ((t.status === 'pending' || t.status === 'overdue') &&
+              (t.stage === 'assign' || t.stage === 'execute') &&
+              !this.awaitsPlanApproval(t))),
       );
     this.startQueuedTasks(queued.map((t) => t.id));
 
@@ -509,12 +517,13 @@ export class OfficeEngine {
     for (const id of taskIds) {
       const task = this.store.getTask(id);
       if (!task || !task.assigneeId) continue;
-      if (!['not_started', 'pending'].includes(task.status)) continue;
+      // Việc quá hạn mà chưa chạy vẫn được khởi động (độ trễ thể hiện qua dueAt), không bị kẹt vĩnh viễn.
+      if (!['not_started', 'pending', 'overdue'].includes(task.status)) continue;
       const agent = this.store.getAgent(task.assigneeId);
       if (!agent || agent.status === 'paused' || agent.status === 'error') continue;
       const running = this.store.getSnapshot().tasks.filter((t) => t.assigneeId === agent.id && t.status === 'in_progress').length;
       if (running >= MAX_CONCURRENT_PER_AGENT) {
-        if (task.status !== 'pending') this.store.upsertTask({ ...task, status: 'pending', stage: 'assign' });
+        if (task.status === 'not_started') this.store.upsertTask({ ...task, status: 'pending', stage: 'assign' });
         continue;
       }
       const started = this.store.upsertTask({ ...task, status: 'in_progress', stage: 'execute', startedAt: task.startedAt ?? nowIso() });
