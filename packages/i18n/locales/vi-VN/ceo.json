@@ -1,0 +1,141 @@
+{
+  "description": "Trung tâm điều hành và quản trị toàn bộ hoạt động của công ty AI",
+  "loading": "Đang nạp dữ liệu trung tâm điều hành…",
+  "header": {
+    "statusLive": "Đang hoạt động",
+    "statusLiveSecondary": "Running / Active",
+    "statusOffline": "Mất kết nối máy chủ",
+    "statusOfflineSecondary": "Backend offline",
+    "statusReconnecting": "Đang kết nối lại…",
+    "statusReconnectingSecondary": "Reconnecting",
+    "ceoMissing": "Chưa khởi tạo AI CEO – Giám đốc điều hành AI. Hãy kiểm tra dữ liệu hệ thống nền (Backend)."
+  },
+  "profile": {
+    "performance": "Hiệu suất",
+    "performanceSecondary": "Performance",
+    "tasksCompleted": "Đã hoàn thành",
+    "tasksCompletedSecondary": "Tasks completed",
+    "openProfile": "Xem hồ sơ AI CEO",
+    "openProfileSecondary": "View profile"
+  },
+  "chat": {
+    "title": "Hội thoại với AI CEO",
+    "secondary": "Conversation",
+    "empty": "Chưa có trao đổi nào. Hãy gửi yêu cầu đầu tiên cho AI CEO – Giám đốc điều hành AI.",
+    "owner": "Bạn",
+    "ownerSecondary": "Owner",
+    "relatedTasks_one": "{{count}} công việc liên quan",
+    "relatedTasks_other": "{{count}} công việc liên quan",
+    "inputLabel": "Yêu cầu cho AI CEO",
+    "placeholder": "Nhập yêu cầu cho AI CEO… (Message AI CEO)",
+    "send": "Gửi",
+    "sendSecondary": "Send",
+    "sending": "Đang gửi…",
+    "hint": "AI CEO sẽ lập kế hoạch, phân công cho các phòng và gửi yêu cầu phê duyệt cho bạn.",
+    "sent": "Đã gửi yêu cầu. AI CEO đang lập kế hoạch và sẽ phản hồi trong giây lát.",
+    "minLength": "Yêu cầu cần ít nhất 3 ký tự."
+  },
+  "plan": {
+    "title": "Kế hoạch (Tóm tắt)",
+    "secondary": "Plan Summary",
+    "empty": "Chưa có kế hoạch nào. Gửi yêu cầu bên dưới để AI CEO lập kế hoạch.",
+    "awaitingApproval": "Chờ phê duyệt",
+    "awaitingApprovalSecondary": "Awaiting approval",
+    "approved": "Đã duyệt & đang triển khai",
+    "approvedSecondary": "Approved & executing",
+    "rejected": "Đã từ chối – AI CEO đang điều chỉnh",
+    "rejectedSecondary": "Rejected",
+    "noApproval": "Kế hoạch này không có yêu cầu phê duyệt đang chờ.",
+    "viewDetails": "Xem kế hoạch chi tiết",
+    "viewDetailsSecondary": "View Plan",
+    "approveExecute": "Phê duyệt & triển khai",
+    "approveExecuteSecondary": "Approve & Execute",
+    "approving": "Đang phê duyệt…",
+    "createdAt": "Lập lúc {{time}}",
+    "steps_one": "{{count}} hạng mục",
+    "steps_other": "{{count}} hạng mục",
+    "childTasks_one": "{{count}} công việc đã phân rã",
+    "childTasks_other": "{{count}} công việc đã phân rã",
+    "approveSuccess": "Đã phê duyệt. Nhân sự AI bắt đầu triển khai các công việc."
+  },
+  "office": {
+    "title": "Văn phòng ảo 3D (Thu nhỏ)",
+    "secondary": "Virtual Office 3D (Mini View)",
+    "openFull": "Mở toàn màn hình",
+    "openFullSecondary": "Full Screen",
+    "total": "Tổng: {{count}} nhân sự AI",
+    "totalSecondary": "AI Agents"
+  },
+  "tasks": {
+    "description": "Nhiệm vụ mới nhất của toàn công ty – bấm vào hàng để xem chi tiết",
+    "tabs": {
+      "all": "Tất cả",
+      "in_progress": "Đang thực hiện",
+      "needs_approval": "Chờ duyệt",
+      "completed": "Hoàn thành",
+      "overdue": "Quá hạn"
+    },
+    "columns": {
+      "index": "#",
+      "task": "Nhiệm vụ",
+      "taskSecondary": "Task",
+      "assignee": "Phụ trách",
+      "assigneeSecondary": "Assignee",
+      "priority": "Ưu tiên",
+      "prioritySecondary": "Priority",
+      "progress": "Tiến độ",
+      "progressSecondary": "Progress",
+      "due": "Hạn hoàn thành",
+      "dueSecondary": "Due Date"
+    },
+    "viewAll": "Xem tất cả nhiệm vụ",
+    "viewAllSecondary": "View All Tasks",
+    "empty": "Không có nhiệm vụ nào trong nhóm này",
+    "unassigned": "Chưa phân công",
+    "noDue": "Chưa đặt hạn",
+    "openTask": "Mở chi tiết: {{title}}",
+    "progressValue": "Tiến độ {{percent}}%"
+  },
+  "kpi": {
+    "description": "So với kỳ trước",
+    "descriptionSecondary": "vs previous period",
+    "costPerLeadNote": "Giảm là tốt",
+    "roiNote": "Doanh thu thu về trên mỗi đồng chi phí",
+    "empty": "Chưa có dữ liệu KPI – Chỉ số đánh giá hiệu suất từ hệ thống nền"
+  },
+  "chart": {
+    "description": "Khách hàng tiềm năng và tỷ lệ chuyển đổi theo tuần",
+    "ariaLabel": "Biểu đồ hiệu suất tiếp thị theo tuần: khách hàng tiềm năng (cột) và tỷ lệ chuyển đổi (đường)",
+    "tableToggle": "Xem dạng bảng",
+    "tableToggleSecondary": "Table view",
+    "weekColumn": "Tuần",
+    "empty": "Chưa có dữ liệu hiệu suất tiếp thị"
+  },
+  "report": {
+    "title": "Báo cáo nhanh của AI CEO",
+    "secondary": "AI CEO Quick Report",
+    "updatedAt": "Cập nhật lúc: {{time}}",
+    "project": "Tiến độ dự án «{{name}}»: {{percent}}%",
+    "completed": "Đã hoàn thành {{count}}/{{total}} công việc (tỷ lệ hoàn thành {{percent}}%).",
+    "inProgress": "Đang thực hiện {{count}} công việc; {{waiting}} công việc đang chờ bắt đầu.",
+    "risk": "Rủi ro: {{overdue}} công việc quá hạn, {{blocked}} công việc bị chặn – cần bổ sung nguồn lực.",
+    "riskNone": "Rủi ro: chưa ghi nhận công việc quá hạn hay bị chặn.",
+    "proposal": "Đề xuất: {{count}} yêu cầu đang chờ bạn phê duyệt – «{{title}}».",
+    "proposalNone": "Đề xuất: không có yêu cầu nào đang chờ phê duyệt.",
+    "goToApprovals": "Mở trung tâm phê duyệt",
+    "empty": "Chưa đủ dữ liệu để lập báo cáo nhanh"
+  },
+  "connectors": {
+    "description": "{{connected}}/{{total}} công cụ đã kết nối",
+    "viewAll": "Xem tất cả",
+    "viewAllSecondary": "View All",
+    "empty": "Chưa cấu hình công cụ kết nối nào"
+  },
+  "registry": {
+    "description": "Bấm vào thẻ để mở hồ sơ và giao tiếp với nhân sự AI",
+    "viewDetails": "Xem chi tiết",
+    "viewDetailsSecondary": "View Details",
+    "openProfile": "Xem hồ sơ: {{name}}",
+    "empty": "Chưa có nhân sự AI nào được khởi tạo"
+  }
+}

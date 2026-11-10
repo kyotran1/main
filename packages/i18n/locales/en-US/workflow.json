@@ -1,0 +1,61 @@
+{
+  "description": "The AI company's six-stage standard operating pipeline – click a stage to see the tasks in it",
+  "loading": "Loading workflow diagram…",
+  "pipeline": {
+    "title": "Pipeline",
+    "secondary": "Sơ đồ quy trình",
+    "step": "Step {{n}}",
+    "owner": "Owner role",
+    "ownerSecondary": "Phụ trách",
+    "openTasks_one": "{{count}} task",
+    "openTasks_other": "{{count}} tasks",
+    "selectStage": "Show tasks in stage {{stage}}",
+    "noAgent": "No agent assigned",
+    "nextStage": "then"
+  },
+  "stages": {
+    "receive": "The Owner submits a request; the AI CEO receives it and clarifies goals, scope and priority.",
+    "plan": "The AI CEO drafts the master plan, splits it into items, estimates budget and sends it to the Owner for approval.",
+    "assign": "The AI Project Manager breaks the plan into concrete tasks and assigns them to specialists in each department.",
+    "execute": "AI Specialists carry out the work (research, content, ads, data…) and update progress continuously.",
+    "review": "The AI QA Reviewer checks quality; anything below standard goes back for revision.",
+    "report": "The AI COO consolidates results, KPIs and optimisation proposals into a report for the Owner."
+  },
+  "stageTasks": {
+    "title": "Tasks in stage",
+    "secondary": "Công việc ở giai đoạn",
+    "all": "All stages",
+    "count_one": "{{count}} open task",
+    "count_other": "{{count}} open tasks",
+    "empty": "No open tasks in this stage",
+    "emptyDescription": "Tasks will appear here when the pipeline reaches this stage.",
+    "unassigned": "Unassigned",
+    "openTask": "Open details: {{title}}",
+    "showAll": "Show all stages"
+  },
+  "rules": {
+    "title": "Governance Rules",
+    "secondary": "Quy tắc quản trị",
+    "description": "A fixed chain of responsibility for every Owner request",
+    "actions": {
+      "plan": "plans",
+      "approve": "approves",
+      "assign": "assigns",
+      "execute": "executes",
+      "review": "reviews",
+      "report": "reports"
+    },
+    "items": {
+      "approvalFirst": "No plan or budget is executed before the Owner has decided.",
+      "qaGate": "Every deliverable passes quality review before publishing or reporting.",
+      "realtime": "Progress, agent status and the activity log sync in real time on every screen."
+    }
+  },
+  "recent": {
+    "title": "Recent Flow",
+    "secondary": "Luồng gần đây",
+    "description": "The 8 latest activities moving through the pipeline",
+    "viewAll": "View full activity log",
+    "viewAllSecondary": "Nhật ký hoạt động"
+  }
+}

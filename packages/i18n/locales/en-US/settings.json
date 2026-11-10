@@ -1,0 +1,96 @@
+{
+  "description": "Interface language, execution mode, company profile and the connection to the backend",
+  "loading": "Loading system settings…",
+  "saved": "Changes saved",
+  "saving": "Saving…",
+  "language": {
+    "description": "Vietnamese is always the primary label language; the English build is a preview for cross-checking terms.",
+    "current": "In use",
+    "applied": "Interface language changed"
+  },
+  "executionMode": {
+    "description": "Decides where AI models run. Orchestration data, tasks and logs always stay on your machine in every mode.",
+    "current": "Current mode",
+    "currentSecondary": "Chế độ hiện tại",
+    "apply": "Apply mode",
+    "applied": "Switched to {{mode}} mode",
+    "modes": {
+      "local": {
+        "title": "Run on your machine",
+        "body": "AI models run through Ollama locally. Nothing leaves the machine; speed depends on your hardware.",
+        "badge": "Most private"
+      },
+      "cloud": {
+        "title": "Call cloud models",
+        "body": "Uses Anthropic Claude through the API. Highest reasoning quality; needs network access and an API key.",
+        "badge": "Most capable"
+      },
+      "hybrid": {
+        "title": "Combine local and cloud",
+        "body": "Routine work runs locally; complex or quality-critical work goes to the cloud. Balances cost, speed and privacy.",
+        "badge": "Recommended"
+      }
+    }
+  },
+  "company": {
+    "title": "Company profile",
+    "secondary": "Thông tin công ty",
+    "description": "Shown in the header, the greeting and reports produced by AI agents.",
+    "name": "Company name",
+    "nameSecondary": "Tên công ty",
+    "namePlaceholder": "e.g. ADS-NOLIMIT AI OFFICE",
+    "ownerName": "Owner name",
+    "ownerNameSecondary": "Tên Chủ doanh nghiệp",
+    "ownerNamePlaceholder": "e.g. Nguyen Van A",
+    "tagline": "Tagline",
+    "taglineSecondary": "Khẩu hiệu",
+    "version": "System version",
+    "versionSecondary": "Phiên bản",
+    "save": "Save company profile",
+    "saved": "Company profile updated",
+    "unchanged": "Nothing to save yet"
+  },
+  "backend": {
+    "title": "Backend connection",
+    "secondary": "Kết nối hệ thống nền",
+    "description": "The interface reads everything from a single source and receives realtime updates.",
+    "status": "Connection status",
+    "statusSecondary": "Trạng thái kết nối",
+    "states": {
+      "connecting": "Connecting…",
+      "live": "Realtime sync",
+      "reconnecting": "Reconnecting…",
+      "offline": "Server unreachable"
+    },
+    "revision": "Data revision",
+    "revisionSecondary": "Số hiệu bản dữ liệu",
+    "updatedAt": "Last update",
+    "updatedAtSecondary": "Cập nhật gần nhất",
+    "notYet": "No data yet",
+    "endpoint": "Service endpoint",
+    "endpointSecondary": "Địa chỉ dịch vụ",
+    "refresh": "Refresh data",
+    "refreshSecondary": "Làm mới dữ liệu",
+    "refreshed": "Reloaded the full snapshot from the backend",
+    "reset": "Reset demo data",
+    "resetSecondary": "Đặt lại dữ liệu mẫu",
+    "resetConfirmTitle": "Reset all demo data?",
+    "resetConfirmBody": "Every current task, approval, message and log entry will be replaced by the original sample data. This cannot be undone.",
+    "resetConfirm": "Confirm reset",
+    "resetDone": "Demo data has been reset"
+  },
+  "standard": {
+    "title": "UI language standard",
+    "secondary": "Chuẩn ngôn ngữ giao diện",
+    "description": "Every screen follows the same rules so Vietnamese users understand immediately while still learning the original terms.",
+    "rules": [
+      "Vietnamese is the default language of the whole interface; English is a preview only.",
+      "Every English industry term is paired with its Vietnamese meaning – on one line or as a smaller second line.",
+      "AI job titles are shown in full, e.g. AI CEO – Giám đốc điều hành AI.",
+      "Brand names and technical identifiers (Meta Ads, Google Ads, Zalo OA, error codes) are never translated.",
+      "Content produced by AI agents (task titles, messages, reports) is data and is displayed verbatim."
+    ],
+    "link": "Look up terms in the Knowledge Base",
+    "linkSecondary": "Mở bảng thuật ngữ"
+  }
+}

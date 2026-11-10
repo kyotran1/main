@@ -1,0 +1,65 @@
+{
+  "description": "Chỉ số KPI, hiệu suất tiếp thị và tình trạng vận hành của nhân sự AI – cập nhật theo thời gian thực",
+  "loading": "Đang nạp số liệu bảng điều khiển…",
+  "period": {
+    "label": "Kỳ báo cáo",
+    "secondary": "Reporting period",
+    "this_month": "Tháng này",
+    "this_monthSecondary": "This Month",
+    "last_month": "Tháng trước",
+    "last_monthSecondary": "Last Month",
+    "quarter": "Quý này",
+    "quarterSecondary": "This Quarter"
+  },
+  "kpi": {
+    "vsPrevious": "so với kỳ trước",
+    "vsPreviousSecondary": "vs previous period",
+    "costPerLeadNote": "Giảm là tốt",
+    "roiNote": "Doanh thu thu về trên mỗi đồng chi phí",
+    "empty": "Chưa có dữ liệu KPI từ hệ thống nền"
+  },
+  "chart": {
+    "description": "Khách hàng tiềm năng và tỷ lệ chuyển đổi theo tuần; lượt tiếp cận ở biểu đồ phụ bên dưới",
+    "reachPanel": "Lượt tiếp cận theo tuần",
+    "reachPanelSecondary": "Reach by week",
+    "tableToggle": "Xem dạng bảng",
+    "tableToggleSecondary": "Table view",
+    "weekColumn": "Tuần",
+    "ariaLabel": "Biểu đồ hiệu suất tiếp thị theo tuần: khách hàng tiềm năng, tỷ lệ chuyển đổi và lượt tiếp cận",
+    "empty": "Chưa có dữ liệu hiệu suất tiếp thị"
+  },
+  "taskStatus": {
+    "description": "Tổng {{total}} công việc – hoàn thành {{percent}}%",
+    "byDepartment": "Tiến độ theo phòng ban",
+    "byDepartmentSecondary": "Progress by department",
+    "doneOf": "{{done}}/{{total}}",
+    "empty": "Chưa có công việc nào trong hệ thống",
+    "emptyDepartments": "Chưa có phòng ban nào có nhân sự AI"
+  },
+  "agents": {
+    "description": "{{count}} nhân sự AI – bấm vào thẻ để xem hồ sơ và giao tiếp",
+    "performance": "Hiệu suất",
+    "performanceSecondary": "Performance",
+    "openProfile": "Xem hồ sơ: {{name}}",
+    "empty": "Chưa có nhân sự AI nào được khởi tạo"
+  },
+  "workflow": {
+    "description": "Số công việc đang mở ở từng giai đoạn của quy trình chuẩn",
+    "tasksInStage_one": "{{count}} công việc",
+    "tasksInStage_other": "{{count}} công việc",
+    "ownerPrefix": "Phụ trách",
+    "step": "Bước {{n}}"
+  },
+  "approvals": {
+    "pendingCount_one": "{{count}} yêu cầu chờ duyệt",
+    "pendingCount_other": "{{count}} yêu cầu chờ duyệt",
+    "requestedBy": "Đề xuất bởi",
+    "amount": "Ngân sách",
+    "empty": "Không có yêu cầu nào đang chờ duyệt",
+    "emptyDescription": "Mọi yêu cầu đã được xử lý. Yêu cầu mới từ nhân sự AI sẽ xuất hiện tại đây.",
+    "approveTitle": "Duyệt yêu cầu: {{title}}",
+    "rejectTitle": "Từ chối yêu cầu: {{title}}",
+    "moreCount_one": "và {{count}} yêu cầu khác",
+    "moreCount_other": "và {{count}} yêu cầu khác"
+  }
+}

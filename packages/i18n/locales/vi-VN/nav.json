@@ -1,0 +1,30 @@
+{
+  "groups": {
+    "operate": "Vận hành",
+    "manage": "Quản trị",
+    "insight": "Phân tích",
+    "system": "Hệ thống"
+  },
+  "items": {
+    "overview": { "label": "Tổng quan", "secondary": "Overview", "description": "Bức tranh toàn cảnh công ty AI hôm nay" },
+    "dashboard": { "label": "Bảng điều khiển", "secondary": "Dashboard", "description": "Chỉ số, biểu đồ và tình trạng nhân sự AI" },
+    "office": { "label": "Văn phòng ảo 3D", "secondary": "Virtual Office 3D", "description": "Mô hình văn phòng tương tác, đồng bộ trạng thái công việc" },
+    "ceo": { "label": "AI CEO – Giám đốc điều hành AI", "secondary": "AI CEO Command Center", "description": "Giao việc, duyệt kế hoạch và nhận báo cáo từ AI CEO" },
+    "orgChart": { "label": "Sơ đồ tổ chức", "secondary": "Organization Chart", "description": "Cấu trúc phòng ban và chuỗi báo cáo" },
+    "tasks": { "label": "Quản lý công việc", "secondary": "Task Management", "description": "Theo dõi và điều phối toàn bộ nhiệm vụ" },
+    "projects": { "label": "Dự án & Chiến dịch", "secondary": "Projects & Campaigns", "description": "Danh mục dự án và chiến dịch marketing" },
+    "agents": { "label": "Nhân sự AI", "secondary": "AI Agents – Agent Registry", "description": "Danh sách, hồ sơ và cấu hình nhân sự AI" },
+    "workflow": { "label": "Quy trình làm việc", "secondary": "Workflow", "description": "Luồng Tiếp nhận → Lập kế hoạch → Phân công → Thực thi → Kiểm định → Báo cáo" },
+    "approvals": { "label": "Trung tâm phê duyệt", "secondary": "Approval Center", "description": "Các yêu cầu đang chờ Owner quyết định" },
+    "connectors": { "label": "Kỹ năng & Kết nối", "secondary": "Skill & Connector", "description": "Kỹ năng của Agent và công cụ kết nối bên ngoài" },
+    "activity": { "label": "Nhật ký hoạt động", "secondary": "Activity Log", "description": "Dòng thời gian mọi hành động của hệ thống" },
+    "reports": { "label": "Báo cáo & Phân tích", "secondary": "Reports & Analytics", "description": "Báo cáo KPI và hiệu suất marketing" },
+    "knowledge": { "label": "Kho tri thức", "secondary": "Knowledge Base", "description": "Tài liệu, hướng dẫn và dữ liệu tham chiếu" },
+    "settings": { "label": "Cài đặt hệ thống", "secondary": "Settings", "description": "Ngôn ngữ, chế độ vận hành và cấu hình chung" }
+  },
+  "footer": {
+    "version": "Phiên bản: {{version}}",
+    "mode": "Chế độ: {{mode}}",
+    "modeSecondary": "Hybrid: Local + Cloud"
+  }
+}

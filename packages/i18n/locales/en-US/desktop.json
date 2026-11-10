@@ -1,0 +1,24 @@
+{
+  "menu": {
+    "app": "Application",
+    "about": "About ADS-NOLIMIT AI OFFICE",
+    "quit": "Quit",
+    "navigate": "Navigate",
+    "view": "View",
+    "reload": "Reload interface",
+    "fullscreen": "Full Screen",
+    "devtools": "Developer Tools",
+    "language": "Language",
+    "help": "Help",
+    "docs": "Project documentation"
+  },
+  "about": {
+    "detail": "Desktop App sharing the dictionary and interface with the Web build. Hybrid Local + Cloud architecture."
+  },
+  "errors": {
+    "webMissing": {
+      "title": "Cannot reach the Web interface",
+      "explain": "Failed to load the interface from {{url}}. Start the Local Runtime with `pnpm --filter @ads-nolimit/api start` (after `pnpm build`) or set ADS_NOLIMIT_WEB_URL to the dev server (http://localhost:5173)."
+    }
+  }
+}

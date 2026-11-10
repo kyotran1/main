@@ -1,0 +1,25 @@
+{
+  "name": "@ads-nolimit/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Ứng dụng máy tính (Electron) – dùng chung từ điển và giao diện với bản Web",
+  "main": "./dist/main.cjs",
+  "scripts": {
+    "build": "node build.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "dev": "node build.mjs && cross-env ADS_NOLIMIT_WEB_URL=http://localhost:5173 electron .",
+    "start": "node build.mjs && electron ."
+  },
+  "dependencies": {
+    "@ads-nolimit/i18n": "workspace:*",
+    "@ads-nolimit/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.18.0",
+    "cross-env": "^7.0.3",
+    "electron": "^38.1.2",
+    "esbuild": "^0.25.9",
+    "typescript": "^5.9.2"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "generic": {
+    "title": "Something went wrong",
+    "retry": "Retry",
+    "contactSupport": "If the error persists, check the system log or contact your administrator."
+  },
+  "codes": {
+    "not_found": { "title": "Data not found", "explain": "The requested record does not exist or was deleted." },
+    "validation_failed": { "title": "Invalid input", "explain": "Please check required fields and formats." },
+    "conflict": { "title": "Data conflict", "explain": "The record was changed by another process. Refresh and try again." },
+    "agent_paused": { "title": "Agent is paused", "explain": "Resume the agent before assigning work." },
+    "approval_already_decided": { "title": "Request already decided", "explain": "This request was previously approved or rejected." },
+    "provider_unavailable": { "title": "AI model provider unavailable", "explain": "Check the local model runtime or the cloud API key." },
+    "rate_limited": { "title": "Rate limit exceeded", "explain": "Too many requests at once. Try again in a few minutes." },
+    "internal": { "title": "Internal server error", "explain": "The server hit an unexpected problem. Technical details were logged." },
+    "network": { "title": "Network error", "explain": "Cannot reach the local server. Make sure the backend is running." },
+    "websocket_disconnected": { "title": "Realtime sync lost", "explain": "Data may be stale; the system will reconnect automatically." }
+  },
+  "technicalDetails": "Technical details"
+}

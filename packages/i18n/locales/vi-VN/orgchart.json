@@ -1,0 +1,61 @@
+{
+  "description": "Cấu trúc báo cáo của công ty AI – từ AI CEO xuống từng chuyên viên, kèm trạng thái và việc đang mở",
+  "loading": "Đang dựng sơ đồ tổ chức…",
+  "view": {
+    "label": "Chế độ xem",
+    "labelSecondary": "View",
+    "tree": "Cây tổ chức",
+    "treeSecondary": "Tree",
+    "department": "Theo phòng ban",
+    "departmentSecondary": "By department"
+  },
+  "zoom": {
+    "label": "Thu phóng",
+    "labelSecondary": "Zoom",
+    "in": "Phóng to",
+    "out": "Thu nhỏ",
+    "reset": "Kích thước gốc"
+  },
+  "tree": {
+    "expandAll": "Mở rộng tất cả",
+    "collapseAll": "Thu gọn tất cả",
+    "collapse": "Thu gọn nhánh ({{count}})",
+    "expand": "Mở rộng nhánh ({{count}})",
+    "scrollHint": "Kéo ngang để xem toàn bộ sơ đồ",
+    "owner": "Chủ doanh nghiệp",
+    "ownerSecondary": "Owner",
+    "ownerHint": "Phê duyệt và giao yêu cầu cho AI CEO"
+  },
+  "node": {
+    "openTasks_one": "{{count}} việc mở",
+    "openTasks_other": "{{count}} việc mở",
+    "openProfile": "Mở hồ sơ: {{name}}",
+    "reports_one": "{{count}} cấp dưới",
+    "reports_other": "{{count}} cấp dưới"
+  },
+  "department": {
+    "members_one": "{{count}} nhân sự",
+    "members_other": "{{count}} nhân sự",
+    "openTasks_one": "{{count}} việc mở",
+    "openTasks_other": "{{count}} việc mở",
+    "empty": "Chưa có nhân sự trong phòng này"
+  },
+  "legend": {
+    "title": "Chú thích trạng thái",
+    "secondary": "Status legend",
+    "roleTitle": "Màu viền theo chức vụ",
+    "roleSecondary": "Role ring colors"
+  },
+  "summary": {
+    "levels": "Cấp bậc",
+    "levelsSecondary": "Levels",
+    "agents": "Nhân sự AI",
+    "agentsSecondary": "AI Agents",
+    "departments": "Phòng ban",
+    "departmentsSecondary": "Departments",
+    "openTasks": "Việc đang mở",
+    "openTasksSecondary": "Open tasks"
+  },
+  "empty": "Chưa có dữ liệu tổ chức",
+  "emptyDescription": "Khi máy chủ khởi tạo đội ngũ nhân sự AI, sơ đồ sẽ hiển thị tại đây."
+}

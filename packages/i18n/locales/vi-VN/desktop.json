@@ -1,0 +1,24 @@
+{
+  "menu": {
+    "app": "Ứng dụng",
+    "about": "Giới thiệu ADS-NOLIMIT AI OFFICE",
+    "quit": "Thoát",
+    "navigate": "Điều hướng",
+    "view": "Hiển thị",
+    "reload": "Tải lại giao diện",
+    "fullscreen": "Toàn màn hình (Full Screen)",
+    "devtools": "Công cụ nhà phát triển (DevTools)",
+    "language": "Ngôn ngữ (Language)",
+    "help": "Trợ giúp",
+    "docs": "Tài liệu dự án"
+  },
+  "about": {
+    "detail": "Ứng dụng máy tính (Desktop App) dùng chung từ điển và giao diện với bản Web. Kiến trúc Hybrid Local + Cloud – kết hợp cục bộ + đám mây."
+  },
+  "errors": {
+    "webMissing": {
+      "title": "Không kết nối được giao diện Web",
+      "explain": "Không tải được giao diện từ {{url}}. Hãy chạy Local Runtime bằng `pnpm --filter @ads-nolimit/api start` (sau khi `pnpm build`) hoặc đặt biến ADS_NOLIMIT_WEB_URL trỏ tới máy chủ phát triển (http://localhost:5173)."
+    }
+  }
+}

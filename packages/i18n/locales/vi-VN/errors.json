@@ -1,0 +1,20 @@
+{
+  "generic": {
+    "title": "Đã xảy ra lỗi",
+    "retry": "Thử lại",
+    "contactSupport": "Nếu lỗi lặp lại, hãy kiểm tra nhật ký hệ thống hoặc liên hệ quản trị viên."
+  },
+  "codes": {
+    "not_found": { "title": "Không tìm thấy dữ liệu", "explain": "Not Found – Bản ghi bạn yêu cầu không tồn tại hoặc đã bị xóa." },
+    "validation_failed": { "title": "Dữ liệu nhập chưa hợp lệ", "explain": "Validation Failed – Vui lòng kiểm tra lại các trường bắt buộc và định dạng." },
+    "conflict": { "title": "Xung đột dữ liệu", "explain": "Conflict – Bản ghi đã được thay đổi bởi tiến trình khác. Hãy làm mới và thử lại." },
+    "agent_paused": { "title": "Nhân sự AI đang tạm dừng", "explain": "Agent Paused – Hãy cho nhân sự AI tiếp tục (Resume) trước khi giao việc." },
+    "approval_already_decided": { "title": "Yêu cầu đã được quyết định", "explain": "Approval Already Decided – Yêu cầu này đã được duyệt hoặc từ chối trước đó." },
+    "provider_unavailable": { "title": "Không kết nối được nhà cung cấp mô hình AI", "explain": "Provider Unavailable – Kiểm tra mô hình cục bộ (Local) hoặc khóa truy cập đám mây (Cloud)." },
+    "rate_limited": { "title": "Vượt giới hạn tần suất", "explain": "Rate Limited – Hệ thống đang nhận quá nhiều yêu cầu, vui lòng thử lại sau ít phút." },
+    "internal": { "title": "Lỗi hệ thống nội bộ", "explain": "Internal Error – Máy chủ gặp sự cố không mong muốn. Chi tiết kỹ thuật đã được ghi vào nhật ký." },
+    "network": { "title": "Mất kết nối mạng", "explain": "Network Error – Không thể liên lạc với máy chủ cục bộ. Kiểm tra dịch vụ backend đang chạy." },
+    "websocket_disconnected": { "title": "Mất đồng bộ thời gian thực", "explain": "WebSocket Disconnected – Dữ liệu có thể chưa cập nhật mới nhất; hệ thống sẽ tự kết nối lại." }
+  },
+  "technicalDetails": "Chi tiết kỹ thuật (Technical details)"
+}

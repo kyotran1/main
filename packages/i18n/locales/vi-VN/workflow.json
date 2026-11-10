@@ -1,0 +1,61 @@
+{
+  "description": "Quy trình vận hành chuẩn 6 giai đoạn của công ty AI – bấm vào một giai đoạn để xem công việc đang ở đó",
+  "loading": "Đang nạp sơ đồ quy trình…",
+  "pipeline": {
+    "title": "Sơ đồ quy trình",
+    "secondary": "Pipeline",
+    "step": "Bước {{n}}",
+    "owner": "Phụ trách",
+    "ownerSecondary": "Owner role",
+    "openTasks_one": "{{count}} công việc",
+    "openTasks_other": "{{count}} công việc",
+    "selectStage": "Xem công việc ở giai đoạn {{stage}}",
+    "noAgent": "Chưa có nhân sự đảm nhận",
+    "nextStage": "chuyển sang"
+  },
+  "stages": {
+    "receive": "Chủ doanh nghiệp giao yêu cầu; AI CEO tiếp nhận, làm rõ mục tiêu, phạm vi và mức ưu tiên.",
+    "plan": "AI CEO lập kế hoạch tổng thể, chia hạng mục, dự kiến ngân sách và gửi Chủ doanh nghiệp phê duyệt.",
+    "assign": "AI Project Manager phân rã kế hoạch thành công việc cụ thể và giao cho chuyên viên từng phòng.",
+    "execute": "AI Specialist thực thi công việc (nghiên cứu, nội dung, quảng cáo, dữ liệu…) và cập nhật tiến độ liên tục.",
+    "review": "AI QA Reviewer kiểm định chất lượng kết quả; chưa đạt thì trả lại để chỉnh sửa.",
+    "report": "AI COO tổng hợp kết quả, KPI và đề xuất tối ưu thành báo cáo gửi Chủ doanh nghiệp."
+  },
+  "stageTasks": {
+    "title": "Công việc ở giai đoạn",
+    "secondary": "Tasks in stage",
+    "all": "Tất cả giai đoạn",
+    "count_one": "{{count}} công việc đang mở",
+    "count_other": "{{count}} công việc đang mở",
+    "empty": "Không có công việc đang mở ở giai đoạn này",
+    "emptyDescription": "Công việc sẽ xuất hiện khi quy trình chuyển tới giai đoạn này.",
+    "unassigned": "Chưa phân công",
+    "openTask": "Mở chi tiết: {{title}}",
+    "showAll": "Xem tất cả giai đoạn"
+  },
+  "rules": {
+    "title": "Quy tắc quản trị",
+    "secondary": "Governance Rules",
+    "description": "Chuỗi trách nhiệm cố định cho mọi yêu cầu của Chủ doanh nghiệp",
+    "actions": {
+      "plan": "lập kế hoạch",
+      "approve": "phê duyệt",
+      "assign": "phân công",
+      "execute": "thực thi",
+      "review": "kiểm định",
+      "report": "báo cáo"
+    },
+    "items": {
+      "approvalFirst": "Không kế hoạch hay ngân sách nào được triển khai khi chưa có quyết định của Chủ doanh nghiệp.",
+      "qaGate": "Mọi kết quả phải qua kiểm định chất lượng trước khi xuất bản hoặc báo cáo.",
+      "realtime": "Tiến độ, trạng thái nhân sự và nhật ký được đồng bộ thời gian thực trên mọi màn hình."
+    }
+  },
+  "recent": {
+    "title": "Luồng gần đây",
+    "secondary": "Recent Flow",
+    "description": "8 hoạt động mới nhất đi qua quy trình",
+    "viewAll": "Xem toàn bộ nhật ký",
+    "viewAllSecondary": "Activity Log"
+  }
+}

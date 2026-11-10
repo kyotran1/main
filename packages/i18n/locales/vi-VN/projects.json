@@ -1,0 +1,58 @@
+{
+  "description": "Danh mục dự án và chiến dịch marketing do nhân sự AI chủ trì – tiến độ, ngân sách, mốc thời gian và công việc liên quan",
+  "loading": "Đang nạp danh sách dự án…",
+  "summary": {
+    "total": "Tổng số dự án",
+    "totalSecondary": "Projects",
+    "active": "Đang triển khai",
+    "activeSecondary": "Active projects",
+    "budget": "Tổng ngân sách",
+    "budgetSecondary": "Total budget",
+    "avgProgress": "Tiến độ trung bình",
+    "avgProgressSecondary": "Average progress"
+  },
+  "filter": {
+    "label": "Lọc theo trạng thái",
+    "secondary": "Filter by status",
+    "all": "Tất cả",
+    "count": "{{shown}}/{{total}} dự án"
+  },
+  "card": {
+    "objective": "Mục tiêu",
+    "objectiveSecondary": "Objective",
+    "owner": "Chủ trì",
+    "ownerSecondary": "Owner",
+    "departments": "Phòng ban tham gia",
+    "departmentsSecondary": "Departments",
+    "budget": "Ngân sách",
+    "budgetSecondary": "Budget",
+    "timeline": "Mốc thời gian",
+    "timelineSecondary": "Timeline",
+    "noBudget": "Chưa đặt ngân sách",
+    "noEnd": "Chưa có ngày kết thúc",
+    "daysLeft_one": "Còn {{count}} ngày",
+    "daysLeft_other": "Còn {{count}} ngày",
+    "daysOverdue_one": "Trễ {{count}} ngày",
+    "daysOverdue_other": "Trễ {{count}} ngày",
+    "endsToday": "Kết thúc hôm nay",
+    "progress": "Tiến độ dự án",
+    "progressSecondary": "Project progress",
+    "tasks": "Công việc thuộc dự án",
+    "tasksSecondary": "Project tasks",
+    "taskCount_one": "{{count}} công việc",
+    "taskCount_other": "{{count}} công việc",
+    "doneOf": "Hoàn thành {{done}}/{{total}}",
+    "noTasks": "Chưa có công việc nào được gắn với dự án này",
+    "showTasks": "Xem danh sách công việc",
+    "hideTasks": "Thu gọn danh sách công việc",
+    "openTask": "Mở chi tiết công việc: {{title}}",
+    "unassigned": "Chưa phân công",
+    "ownerUnknown": "Chưa xác định chủ trì"
+  },
+  "empty": {
+    "title": "Chưa có dự án nào",
+    "description": "Khi AI CEO lập kế hoạch cho một yêu cầu mới, dự án sẽ xuất hiện tại đây.",
+    "filtered": "Không có dự án nào ở trạng thái đã chọn",
+    "filteredDescription": "Hãy chọn trạng thái khác hoặc xem tất cả dự án."
+  }
+}

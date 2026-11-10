@@ -1,0 +1,73 @@
+{
+  "page": {
+    "description": "Mô hình văn phòng tương tác: nhân sự AI, phòng ban và tiến độ công việc đồng bộ theo thời gian thực từ hệ thống nền."
+  },
+  "scene": {
+    "loading": "Đang dựng văn phòng ảo…",
+    "ariaLabel": "Văn phòng ảo 3D tương tác: {{agents}} nhân sự AI, {{departments}} phòng ban",
+    "webgl": {
+      "title": "Trình duyệt chưa hỗ trợ đồ họa 3D (WebGL)",
+      "explain": "WebGL – Hãy bật tăng tốc phần cứng hoặc dùng trình duyệt mới hơn để xem văn phòng ảo 3D."
+    }
+  },
+  "sync": {
+    "connecting": "Đang kết nối máy chủ…",
+    "updatedAt": "Cập nhật lúc {{time}}"
+  },
+  "toolbar": {
+    "legend": { "label": "Chú giải trạng thái nhân sự", "secondary": "Agent status legend" },
+    "filter": { "label": "Lọc theo phòng ban", "secondary": "Filter by department", "all": "Tất cả phòng ban" },
+    "labels": { "show": "Hiện nhãn", "hide": "Ẩn nhãn", "secondary": "Labels" },
+    "fullscreen": { "exit": "Thoát toàn màn hình", "exitSecondary": "Exit Full Screen" }
+  },
+  "room": {
+    "openTasks_one": "{{count}} việc đang mở",
+    "openTasks_other": "{{count}} việc đang mở",
+    "clickHint": "Nhấn để xem chi tiết phòng ban",
+    "functional": "Phòng chức năng"
+  },
+  "agent": {
+    "currentTask": { "label": "Công việc hiện tại", "secondary": "Current task" },
+    "noTask": "Chưa có công việc đang xử lý",
+    "clickHint": "Nhấn để mở hồ sơ nhân sự và đưa camera tới",
+    "location": {
+      "meeting_room": "Đang họp tại Phòng họp",
+      "reception": "Đang ở Sảnh chính",
+      "pantry": "Đang nghỉ tại khu Pantry",
+      "department": "Đang kiểm định tại {{department}}"
+    }
+  },
+  "panel": {
+    "title": { "label": "Chi tiết phòng ban", "secondary": "Department details" },
+    "members": { "label": "Nhân sự AI", "secondary": "Members" },
+    "openTasks": { "label": "Việc đang mở", "secondary": "Open tasks" },
+    "completion": { "label": "Hoàn thành", "secondary": "Completion" },
+    "tasks": { "label": "Công việc", "secondary": "Tasks" },
+    "visiting": "Đang ghé phòng",
+    "noAgents": "Chưa có nhân sự AI nào trong phòng này",
+    "noTasks": "Chưa có công việc nào thuộc phòng này",
+    "functionalNote": "Phòng chức năng – nhân sự AI ghé khi họp, kiểm định hoặc nghỉ giải lao.",
+    "viewAllTasks": "Xem tất cả công việc",
+    "focusCamera": "Đưa camera tới nhân sự này"
+  },
+  "stats": {
+    "runningTasks": { "label": "Công việc đang chạy", "secondary": "Running Tasks" }
+  },
+  "pipeline": {
+    "subtitle": "Số công việc đang mở ở mỗi giai đoạn quy trình",
+    "step": "Bước {{n}}",
+    "owner": "Phụ trách: {{role}}"
+  },
+  "approvals": {
+    "pending_one": "{{count}} yêu cầu chờ duyệt",
+    "pending_other": "{{count}} yêu cầu chờ duyệt",
+    "pendingShort_one": "{{count}} chờ duyệt",
+    "pendingShort_other": "{{count}} chờ duyệt",
+    "requestedBy": "Đề xuất bởi: {{name}}",
+    "empty": "Không có yêu cầu nào đang chờ Owner quyết định",
+    "amount": "Ngân sách: {{amount}}"
+  },
+  "taskStatus": {
+    "subtitle": "Tổng hợp từ toàn bộ công việc trong hệ thống"
+  }
+}

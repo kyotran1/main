@@ -1,0 +1,65 @@
+{
+  "description": "KPIs, marketing performance and AI agent operations – updated in real time",
+  "loading": "Loading dashboard figures…",
+  "period": {
+    "label": "Reporting period",
+    "secondary": "Kỳ báo cáo",
+    "this_month": "This Month",
+    "this_monthSecondary": "Tháng này",
+    "last_month": "Last Month",
+    "last_monthSecondary": "Tháng trước",
+    "quarter": "This Quarter",
+    "quarterSecondary": "Quý này"
+  },
+  "kpi": {
+    "vsPrevious": "vs previous period",
+    "vsPreviousSecondary": "so với kỳ trước",
+    "costPerLeadNote": "Lower is better",
+    "roiNote": "Revenue returned per unit of cost",
+    "empty": "No KPI data from the backend yet"
+  },
+  "chart": {
+    "description": "Leads and conversion rate by week; reach in the secondary chart below",
+    "reachPanel": "Reach by week",
+    "reachPanelSecondary": "Lượt tiếp cận theo tuần",
+    "tableToggle": "Table view",
+    "tableToggleSecondary": "Xem dạng bảng",
+    "weekColumn": "Week",
+    "ariaLabel": "Weekly marketing performance chart: leads, conversion rate and reach",
+    "empty": "No marketing performance data yet"
+  },
+  "taskStatus": {
+    "description": "{{total}} tasks in total – {{percent}}% completed",
+    "byDepartment": "Progress by department",
+    "byDepartmentSecondary": "Tiến độ theo phòng ban",
+    "doneOf": "{{done}}/{{total}}",
+    "empty": "No tasks in the system yet",
+    "emptyDepartments": "No department has AI agents yet"
+  },
+  "agents": {
+    "description": "{{count}} AI agents – select a card to open the profile and chat",
+    "performance": "Performance",
+    "performanceSecondary": "Hiệu suất",
+    "openProfile": "Open profile: {{name}}",
+    "empty": "No AI agents have been created yet"
+  },
+  "workflow": {
+    "description": "Open tasks at each stage of the standard workflow",
+    "tasksInStage_one": "{{count}} task",
+    "tasksInStage_other": "{{count}} tasks",
+    "ownerPrefix": "Owner",
+    "step": "Step {{n}}"
+  },
+  "approvals": {
+    "pendingCount_one": "{{count}} request awaiting decision",
+    "pendingCount_other": "{{count}} requests awaiting decision",
+    "requestedBy": "Requested by",
+    "amount": "Budget",
+    "empty": "No requests awaiting approval",
+    "emptyDescription": "Everything has been handled. New requests from AI agents will appear here.",
+    "approveTitle": "Approve request: {{title}}",
+    "rejectTitle": "Reject request: {{title}}",
+    "moreCount_one": "and {{count}} more request",
+    "moreCount_other": "and {{count}} more requests"
+  }
+}
