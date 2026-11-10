@@ -1,1 +1,45 @@
-{}
+{
+  "subtitle": "AI company command center – Hybrid Local + Cloud",
+  "loading": "Loading office data from the backend…",
+  "stats": {
+    "agents": { "label": "AI Agents", "secondary": "Nhân sự AI" },
+    "running": { "label": "Running", "secondary": "Đang thực hiện" },
+    "completed": { "label": "Completed", "secondary": "Đã hoàn thành" },
+    "pending": { "label": "Pending", "secondary": "Đang chờ" },
+    "needsApproval": { "label": "Needs Approval", "secondary": "Cần phê duyệt" },
+    "openHint": "Open {{page}}"
+  },
+  "office": {
+    "description": "Interactive office model, synced in real time with AI agent positions and status",
+    "departments_one": "{{count}} department",
+    "departments_other": "{{count}} departments",
+    "agentsPresent_one": "{{count}} AI agent on the floor",
+    "agentsPresent_other": "{{count}} AI agents on the floor",
+    "goToDepartment": "Go to {{name}} in the 3D office",
+    "liveLabel": "Live sync",
+    "liveSecondary": "Đồng bộ trực tiếp"
+  },
+  "functions": {
+    "description": "Shortcuts to the modules you use most",
+    "open": "Open {{name}} – {{secondary}}"
+  },
+  "keyTasks": {
+    "empty": "No key tasks for today yet",
+    "emptyDescription": "When the AI CEO plans work or you flag a task as key, it will appear here.",
+    "markDone": "Mark as completed: {{title}}",
+    "alreadyDone": "Completed: {{title}}",
+    "unassigned": "Unassigned",
+    "openTask": "Open task details"
+  },
+  "activities": {
+    "empty": "No AI agent activity yet",
+    "emptyDescription": "Once the AI agents start working, the timeline will show up here."
+  },
+  "progress": {
+    "completedLabel": "Completed",
+    "completedSecondary": "Hoàn thành",
+    "ofTotal": "{{done}}/{{total}} tasks",
+    "empty": "No tasks to summarize yet",
+    "chartAriaLabel": "Donut chart: share of tasks by status, {{percent}}% completed"
+  }
+}

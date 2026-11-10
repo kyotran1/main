@@ -1,1 +1,66 @@
-{}
+{
+  "description": "Các yêu cầu từ nhân sự AI đang chờ Chủ doanh nghiệp quyết định – duyệt hoặc từ chối kèm ghi chú",
+  "loading": "Đang nạp danh sách yêu cầu phê duyệt…",
+  "stats": {
+    "pendingHint": "Cần bạn quyết định",
+    "approvedHint": "Đã triển khai",
+    "rejectedHint": "AI CEO đang điều chỉnh"
+  },
+  "filters": {
+    "status": "Trạng thái",
+    "statusSecondary": "Status",
+    "type": "Loại yêu cầu",
+    "typeSecondary": "Approval type",
+    "all": "Tất cả",
+    "reset": "Xóa bộ lọc",
+    "result_one": "{{count}} yêu cầu",
+    "result_other": "{{count}} yêu cầu"
+  },
+  "list": {
+    "title": "Danh sách yêu cầu",
+    "secondary": "Approval Requests",
+    "empty": "Không có yêu cầu nào khớp bộ lọc hiện tại",
+    "emptyDescription": "Thử chọn trạng thái hoặc loại yêu cầu khác.",
+    "emptyAll": "Chưa có yêu cầu phê duyệt nào",
+    "emptyAllDescription": "Khi nhân sự AI cần quyết định của bạn về kế hoạch, ngân sách, nội dung, xuất bản hoặc kết nối, yêu cầu sẽ xuất hiện tại đây."
+  },
+  "card": {
+    "requestedBy": "Đề xuất bởi",
+    "requestedBySecondary": "Requested by",
+    "linkedTask": "Công việc liên quan",
+    "linkedTaskSecondary": "Linked task",
+    "openTask": "Mở công việc: {{title}}",
+    "amount": "Số tiền đề xuất",
+    "amountSecondary": "Amount",
+    "project": "Dự án",
+    "projectSecondary": "Project",
+    "createdAt": "Gửi lúc {{time}}",
+    "decidedAt": "Quyết định lúc {{time}}",
+    "note": "Ghi chú quyết định",
+    "noteSecondary": "Decision note",
+    "noNote": "Không có ghi chú"
+  },
+  "decision": {
+    "approve": "Duyệt",
+    "approveSecondary": "Approve",
+    "reject": "Từ chối",
+    "rejectSecondary": "Reject",
+    "noteLabel": "Ghi chú gửi nhân sự AI (không bắt buộc)",
+    "notePlaceholderApprove": "Ví dụ: Đồng ý, ưu tiên kênh Facebook trong hai tuần đầu…",
+    "notePlaceholderReject": "Ví dụ: Giảm ngân sách TikTok xuống 15% và gửi lại phương án…",
+    "confirmApprove": "Xác nhận duyệt",
+    "confirmReject": "Xác nhận từ chối",
+    "cancel": "Hủy",
+    "processing": "Đang xử lý…",
+    "approveHint": "Nhân sự AI sẽ triển khai ngay sau khi bạn duyệt.",
+    "rejectHint": "AI CEO sẽ điều chỉnh và gửi lại phương án mới để bạn xem xét.",
+    "done": "Đã ghi nhận quyết định của bạn."
+  },
+  "history": {
+    "title": "Lịch sử quyết định",
+    "secondary": "Decision History",
+    "description": "Các yêu cầu đã được duyệt hoặc từ chối, mới nhất trước",
+    "empty": "Chưa có quyết định nào được ghi nhận",
+    "decidedBy": "Chủ doanh nghiệp"
+  }
+}

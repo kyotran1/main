@@ -1,1 +1,66 @@
-{}
+{
+  "description": "Requests from AI agents waiting for the Owner's decision – approve or reject with a note",
+  "loading": "Loading approval requests…",
+  "stats": {
+    "pendingHint": "Needs your decision",
+    "approvedHint": "In execution",
+    "rejectedHint": "AI CEO is revising"
+  },
+  "filters": {
+    "status": "Status",
+    "statusSecondary": "Trạng thái",
+    "type": "Approval type",
+    "typeSecondary": "Loại yêu cầu",
+    "all": "All",
+    "reset": "Clear filters",
+    "result_one": "{{count}} request",
+    "result_other": "{{count}} requests"
+  },
+  "list": {
+    "title": "Approval Requests",
+    "secondary": "Danh sách yêu cầu",
+    "empty": "No requests match the current filters",
+    "emptyDescription": "Try another status or request type.",
+    "emptyAll": "No approval requests yet",
+    "emptyAllDescription": "When an AI agent needs your decision on a plan, budget, content, publishing or connector access, it will appear here."
+  },
+  "card": {
+    "requestedBy": "Requested by",
+    "requestedBySecondary": "Đề xuất bởi",
+    "linkedTask": "Linked task",
+    "linkedTaskSecondary": "Công việc liên quan",
+    "openTask": "Open task: {{title}}",
+    "amount": "Proposed amount",
+    "amountSecondary": "Số tiền",
+    "project": "Project",
+    "projectSecondary": "Dự án",
+    "createdAt": "Sent {{time}}",
+    "decidedAt": "Decided {{time}}",
+    "note": "Decision note",
+    "noteSecondary": "Ghi chú quyết định",
+    "noNote": "No note"
+  },
+  "decision": {
+    "approve": "Approve",
+    "approveSecondary": "Duyệt",
+    "reject": "Reject",
+    "rejectSecondary": "Từ chối",
+    "noteLabel": "Note for the AI agent (optional)",
+    "notePlaceholderApprove": "e.g. Agreed, prioritise Facebook for the first two weeks…",
+    "notePlaceholderReject": "e.g. Cut the TikTok budget to 15% and resubmit…",
+    "confirmApprove": "Confirm approval",
+    "confirmReject": "Confirm rejection",
+    "cancel": "Cancel",
+    "processing": "Processing…",
+    "approveHint": "AI agents start executing as soon as you approve.",
+    "rejectHint": "The AI CEO will revise and send a new proposal for review.",
+    "done": "Your decision has been recorded."
+  },
+  "history": {
+    "title": "Decision History",
+    "secondary": "Lịch sử quyết định",
+    "description": "Requests already approved or rejected, newest first",
+    "empty": "No decisions recorded yet",
+    "decidedBy": "Owner"
+  }
+}

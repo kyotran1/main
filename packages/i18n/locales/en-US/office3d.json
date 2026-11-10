@@ -1,1 +1,73 @@
-{}
+{
+  "page": {
+    "description": "Interactive office model: AI agents, departments and task progress synced in real time from the backend."
+  },
+  "scene": {
+    "loading": "Building the virtual office…",
+    "ariaLabel": "Interactive 3D virtual office: {{agents}} AI agents, {{departments}} departments",
+    "webgl": {
+      "title": "Your browser does not support 3D graphics (WebGL)",
+      "explain": "WebGL – Enable hardware acceleration or use a newer browser to view the 3D virtual office."
+    }
+  },
+  "sync": {
+    "connecting": "Connecting to server…",
+    "updatedAt": "Updated at {{time}}"
+  },
+  "toolbar": {
+    "legend": { "label": "Agent status legend", "secondary": "Chú giải trạng thái nhân sự" },
+    "filter": { "label": "Filter by department", "secondary": "Lọc theo phòng ban", "all": "All departments" },
+    "labels": { "show": "Show labels", "hide": "Hide labels", "secondary": "Nhãn" },
+    "fullscreen": { "exit": "Exit full screen", "exitSecondary": "Thoát toàn màn hình" }
+  },
+  "room": {
+    "openTasks_one": "{{count}} open task",
+    "openTasks_other": "{{count}} open tasks",
+    "clickHint": "Click to view department details",
+    "functional": "Functional room"
+  },
+  "agent": {
+    "currentTask": { "label": "Current task", "secondary": "Công việc hiện tại" },
+    "noTask": "No task in progress",
+    "clickHint": "Click to open the agent profile and move the camera here",
+    "location": {
+      "meeting_room": "In a meeting (Meeting Room)",
+      "reception": "At the Reception",
+      "pantry": "Taking a break at the Pantry",
+      "department": "Reviewing at {{department}}"
+    }
+  },
+  "panel": {
+    "title": { "label": "Department details", "secondary": "Chi tiết phòng ban" },
+    "members": { "label": "AI agents", "secondary": "Nhân sự AI" },
+    "openTasks": { "label": "Open tasks", "secondary": "Việc đang mở" },
+    "completion": { "label": "Completion", "secondary": "Hoàn thành" },
+    "tasks": { "label": "Tasks", "secondary": "Công việc" },
+    "visiting": "Visiting",
+    "noAgents": "No AI agents are assigned to this room",
+    "noTasks": "No tasks belong to this department yet",
+    "functionalNote": "Functional room – AI agents drop in for meetings, reviews or breaks.",
+    "viewAllTasks": "View all tasks",
+    "focusCamera": "Move the camera to this agent"
+  },
+  "stats": {
+    "runningTasks": { "label": "Running Tasks", "secondary": "Công việc đang chạy" }
+  },
+  "pipeline": {
+    "subtitle": "Open tasks at each workflow stage",
+    "step": "Step {{n}}",
+    "owner": "Owner: {{role}}"
+  },
+  "approvals": {
+    "pending_one": "{{count}} request awaiting approval",
+    "pending_other": "{{count}} requests awaiting approval",
+    "pendingShort_one": "{{count}} pending",
+    "pendingShort_other": "{{count}} pending",
+    "requestedBy": "Requested by: {{name}}",
+    "empty": "No requests are waiting for the Owner's decision",
+    "amount": "Budget: {{amount}}"
+  },
+  "taskStatus": {
+    "subtitle": "Aggregated from every task in the system"
+  }
+}

@@ -1,1 +1,141 @@
-{}
+{
+  "description": "Command and govern every operation of the AI company from one place",
+  "loading": "Loading command center data…",
+  "header": {
+    "statusLive": "Running / Active",
+    "statusLiveSecondary": "Đang hoạt động",
+    "statusOffline": "Backend offline",
+    "statusOfflineSecondary": "Mất kết nối máy chủ",
+    "statusReconnecting": "Reconnecting…",
+    "statusReconnectingSecondary": "Đang kết nối lại",
+    "ceoMissing": "No AI CEO has been initialised. Check the backend seed data."
+  },
+  "profile": {
+    "performance": "Performance",
+    "performanceSecondary": "Hiệu suất",
+    "tasksCompleted": "Tasks completed",
+    "tasksCompletedSecondary": "Đã hoàn thành",
+    "openProfile": "View AI CEO profile",
+    "openProfileSecondary": "Xem hồ sơ"
+  },
+  "chat": {
+    "title": "Conversation with AI CEO",
+    "secondary": "Hội thoại",
+    "empty": "No messages yet. Send your first request to the AI CEO.",
+    "owner": "You",
+    "ownerSecondary": "Chủ doanh nghiệp",
+    "relatedTasks_one": "{{count}} related task",
+    "relatedTasks_other": "{{count}} related tasks",
+    "inputLabel": "Request for AI CEO",
+    "placeholder": "Message AI CEO…",
+    "send": "Send",
+    "sendSecondary": "Gửi",
+    "sending": "Sending…",
+    "hint": "The AI CEO will plan, delegate to departments and send you approval requests.",
+    "sent": "Request sent. The AI CEO is planning and will reply shortly.",
+    "minLength": "A request needs at least 3 characters."
+  },
+  "plan": {
+    "title": "Plan Summary",
+    "secondary": "Kế hoạch (Tóm tắt)",
+    "empty": "No plan yet. Send a request below and the AI CEO will draft one.",
+    "awaitingApproval": "Awaiting approval",
+    "awaitingApprovalSecondary": "Chờ phê duyệt",
+    "approved": "Approved & executing",
+    "approvedSecondary": "Đã duyệt & đang triển khai",
+    "rejected": "Rejected – AI CEO is revising",
+    "rejectedSecondary": "Đã từ chối",
+    "noApproval": "This plan has no pending approval request.",
+    "viewDetails": "View Plan",
+    "viewDetailsSecondary": "Xem kế hoạch chi tiết",
+    "approveExecute": "Approve & Execute",
+    "approveExecuteSecondary": "Phê duyệt & triển khai",
+    "approving": "Approving…",
+    "createdAt": "Drafted {{time}}",
+    "steps_one": "{{count}} item",
+    "steps_other": "{{count}} items",
+    "childTasks_one": "{{count}} task broken down",
+    "childTasks_other": "{{count}} tasks broken down",
+    "approveSuccess": "Approved. AI agents are starting the tasks."
+  },
+  "office": {
+    "title": "Virtual Office 3D (Mini View)",
+    "secondary": "Văn phòng ảo 3D (Thu nhỏ)",
+    "openFull": "Full Screen",
+    "openFullSecondary": "Mở toàn màn hình",
+    "total": "Total: {{count}} AI agents",
+    "totalSecondary": "Nhân sự AI"
+  },
+  "tasks": {
+    "description": "Latest tasks across the company – click a row for details",
+    "tabs": {
+      "all": "All",
+      "in_progress": "In Progress",
+      "needs_approval": "Needs Approval",
+      "completed": "Completed",
+      "overdue": "Overdue"
+    },
+    "columns": {
+      "index": "#",
+      "task": "Task",
+      "taskSecondary": "Nhiệm vụ",
+      "assignee": "Assignee",
+      "assigneeSecondary": "Phụ trách",
+      "priority": "Priority",
+      "prioritySecondary": "Ưu tiên",
+      "progress": "Progress",
+      "progressSecondary": "Tiến độ",
+      "due": "Due Date",
+      "dueSecondary": "Hạn hoàn thành"
+    },
+    "viewAll": "View All Tasks",
+    "viewAllSecondary": "Xem tất cả nhiệm vụ",
+    "empty": "No tasks in this group",
+    "unassigned": "Unassigned",
+    "noDue": "No due date",
+    "openTask": "Open details: {{title}}",
+    "progressValue": "Progress {{percent}}%"
+  },
+  "kpi": {
+    "description": "vs previous period",
+    "descriptionSecondary": "So với kỳ trước",
+    "costPerLeadNote": "Lower is better",
+    "roiNote": "Revenue returned per unit of cost",
+    "empty": "No KPI data from the backend yet"
+  },
+  "chart": {
+    "description": "Leads and conversion rate by week",
+    "ariaLabel": "Weekly marketing performance chart: leads (bars) and conversion rate (line)",
+    "tableToggle": "Table view",
+    "tableToggleSecondary": "Xem dạng bảng",
+    "weekColumn": "Week",
+    "empty": "No marketing performance data yet"
+  },
+  "report": {
+    "title": "AI CEO Quick Report",
+    "secondary": "Báo cáo nhanh của AI CEO",
+    "updatedAt": "Updated at: {{time}}",
+    "project": "Project “{{name}}” progress: {{percent}}%",
+    "completed": "Completed {{count}}/{{total}} tasks (completion rate {{percent}}%).",
+    "inProgress": "{{count}} tasks in progress; {{waiting}} waiting to start.",
+    "risk": "Risk: {{overdue}} overdue and {{blocked}} blocked tasks – more capacity needed.",
+    "riskNone": "Risk: no overdue or blocked tasks recorded.",
+    "proposal": "Proposal: {{count}} requests await your approval – “{{title}}”.",
+    "proposalNone": "Proposal: no requests awaiting approval.",
+    "goToApprovals": "Open approval center",
+    "empty": "Not enough data for a quick report yet"
+  },
+  "connectors": {
+    "description": "{{connected}}/{{total}} connectors online",
+    "viewAll": "View All",
+    "viewAllSecondary": "Xem tất cả",
+    "empty": "No connectors configured yet"
+  },
+  "registry": {
+    "description": "Click a card to open the agent profile and chat",
+    "viewDetails": "View Details",
+    "viewDetailsSecondary": "Xem chi tiết",
+    "openProfile": "View profile: {{name}}",
+    "empty": "No AI agents have been initialised"
+  }
+}

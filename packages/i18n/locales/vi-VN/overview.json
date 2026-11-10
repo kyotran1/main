@@ -1,1 +1,45 @@
-{}
+{
+  "subtitle": "Trung tâm điều hành công ty AI – Hybrid Local + Cloud (kết hợp cục bộ + đám mây)",
+  "loading": "Đang nạp dữ liệu văn phòng từ hệ thống nền…",
+  "stats": {
+    "agents": { "label": "Nhân sự AI", "secondary": "AI Agents" },
+    "running": { "label": "Đang thực hiện", "secondary": "Running" },
+    "completed": { "label": "Đã hoàn thành", "secondary": "Completed" },
+    "pending": { "label": "Đang chờ", "secondary": "Pending" },
+    "needsApproval": { "label": "Cần phê duyệt", "secondary": "Needs Approval" },
+    "openHint": "Mở {{page}}"
+  },
+  "office": {
+    "description": "Mô hình văn phòng tương tác, đồng bộ vị trí và trạng thái nhân sự AI theo thời gian thực",
+    "departments_one": "{{count}} phòng ban",
+    "departments_other": "{{count}} phòng ban",
+    "agentsPresent_one": "{{count}} nhân sự AI đang có mặt",
+    "agentsPresent_other": "{{count}} nhân sự AI đang có mặt",
+    "goToDepartment": "Tới phòng {{name}} trong văn phòng 3D",
+    "liveLabel": "Đồng bộ trực tiếp",
+    "liveSecondary": "Live"
+  },
+  "functions": {
+    "description": "Lối tắt tới các phân hệ dùng thường xuyên",
+    "open": "Mở {{name}} – {{secondary}}"
+  },
+  "keyTasks": {
+    "empty": "Hôm nay chưa có công việc trọng tâm",
+    "emptyDescription": "Khi AI CEO lập kế hoạch hoặc bạn đánh dấu công việc trọng tâm, chúng sẽ xuất hiện tại đây.",
+    "markDone": "Đánh dấu hoàn thành: {{title}}",
+    "alreadyDone": "Đã hoàn thành: {{title}}",
+    "unassigned": "Chưa phân công",
+    "openTask": "Mở chi tiết công việc"
+  },
+  "activities": {
+    "empty": "Chưa có hoạt động nào từ nhân sự AI",
+    "emptyDescription": "Khi nhân sự AI bắt đầu làm việc, dòng thời gian sẽ hiển thị tại đây."
+  },
+  "progress": {
+    "completedLabel": "Hoàn thành",
+    "completedSecondary": "Completed",
+    "ofTotal": "{{done}}/{{total}} công việc",
+    "empty": "Chưa có công việc để thống kê",
+    "chartAriaLabel": "Biểu đồ vòng: tỷ lệ công việc theo trạng thái, hoàn thành {{percent}}%"
+  }
+}
